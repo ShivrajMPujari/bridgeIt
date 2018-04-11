@@ -1,5 +1,6 @@
 package com.bridgeIt.utility;
 
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,11 +11,11 @@ public class Utility {
 
 	// all scanner inputs
 	static Scanner sc = new Scanner(System.in);
-
+         
 	public static int inputInt() {
 
 		int a = sc.nextInt();
-
+           
 		return a;
 
 	}
@@ -70,11 +71,12 @@ public class Utility {
 	
 	public static String[] splitString(String inputString,String name){
 		
+		String toReplaced="<<UserName>>,";
 		String []stringArray=inputString.split("\\s");
 		
 		for (int i = 0; i < stringArray.length; i++) {
 			
-			if(stringArray[i].equals("<<UserName>>,")){
+			if(stringArray[i].equals(toReplaced)){
 				
 				stringArray[i]=name+",";
 				break;
@@ -88,6 +90,7 @@ public class Utility {
 		
 	}
 	
+	//converts String array to String
 	public static String convertToString(String [] st){
 			String output="";
 			
@@ -106,6 +109,10 @@ public class Utility {
 	// question 2(head and tail)(functional)
 	public static void flip(int number) {
 
+		/*using variables head and tails as counter to count head and tails  
+		 * headPercent and tailsPercentage to calculate percent of outcome of head and tails
+		 * flipper to store random values from Math.random()
+		 * */
 		double head = 0;
 		double tails = 0;
 		double total = 0;
@@ -143,32 +150,39 @@ public class Utility {
 
 		if (year.length()<4) {
 
-			System.out.println("You entered invalid the digits of year");
+			System.out.println("Please enter the years digits greater then three");
 			return;
 		}
 
 		saal = Integer.parseInt(year);
 
-		if (saal % 4 == 0) {
+		if (saal % 4 == 0 &&  saal%100!=0) {
 
 			System.out.println(saal + " is leap year");
 			return;
 		}
 
-		if (saal % 400 == 0) {
+		if (saal % 4==0 && saal%100 == 0 && saal%400!=0) {
+
+			System.out.println(saal + " is not a leap year");
+			return;
+		}
+		
+		if (saal % 4==0&& saal%100 == 0 && saal%400==0){
 
 			System.out.println(saal + " is leap year");
 			return;
 		}
-
-		System.out.println(saal + " is not leap year");
+		
 
 	}
 
 	// question 4--- 2 raise to power table (functional)
 	
-	public static void createTable(int pow){
+	public static void createTable(String power){
 		
+		/*converting variable String to integer storing in pow variable */
+		int pow=Integer.parseInt(power);
 		if (pow>=31){
 			
 			System.out.println("plz select power less then 31");
@@ -176,16 +190,32 @@ public class Utility {
 		}
 		
 		for (int i = 1; i <=pow; i++) {
-			System.out.println(2+" raise to "+i+"="+(Math.pow(2, i)));
+			
+			/*calling methods raiseToTwo which returns integer value*/
+			
+			System.out.println(2+" raise to "+i+"="+raiseToTwo(i));
 		}
 		
 	}
 	
+	public static int raiseToTwo(int num){
+			
+			int sum=1;
+			for(int i=1;i<=num;i++){	
+				sum=sum*2;
+			}
+			return sum;
+		}
+
+
+	
+	
+	
 	// question 5 Harmonic number(functional)
-	public static void harmonicCalculation(double n) {
+	public static void calculateHarmonic(double n) {
 		double sum = 0;
 		if (n == 0) {
-			System.out.println("Invalid proper harmonic number");
+			System.out.println("Invalid harmonic number");
 		}
 
 		for (double i = 1; i <= n; i++) {
@@ -241,8 +271,7 @@ public class Utility {
 		}
 		if (n > 1)
 			System.out.println(n);
-		else
-			System.out.println();
+		
 	}
 	
 	// question 7 gambler (functional)
@@ -288,17 +317,55 @@ public class Utility {
 	
 	// question 8 Coupon number
 	
-	
+	 public static int NUMBER=0;
 	public static float random() {
 		return (float) Math.random() * 9999;
 	}
 	
+	public static boolean search(float[] a,float num){
+		
+		for(int i=0;i<a.length;i++){
+			
+			if(a[i]==num){
+				
+				return true;
+			}
+			
+		}
+
+		return false;
+	}
 	
-	public static void couponGenerator(int n) {
+	
+	public static float[] coupon(int n){
+		
+		float a[] = new float[n];
+		int count=0;
+		int i=0;
+		while(i!=a.length){
+			//System.out.println(1);
+			float value=random();
+			count++;
+			System.out.println(value);
+			if(search(a,value)==false){
+				a[i]=value;
+				
+				
+				i++;
+			}
+
+		}
+		System.out.println(count);
+			return a;
+	}
+
+	
+	/*public static void couponGenerator(int n) {
 		boolean same = false;
 		int a[] = new int[n];
 		for (int i = 0; i < n; i++) {
 			float value = random();
+			NUMBER++;
 			for (int j = 0; j < n; j++) {
 				if (a[j] == value) {
 					same = true;
@@ -316,10 +383,11 @@ public class Utility {
 		for (int i = 0; i < n; i++) {
 			System.out.print(a[i] + " ");
 		}
-
+		System.out.println();
+		System.out.println("\n Count of random numbers is " + NUMBER);
 	}
 	
-	
+	*/
 	
 	// question 10 triplet (functional)
 
@@ -372,25 +440,42 @@ public class Utility {
 		
 
 	}
-	
-	
-	
-	
-	public static  void selectArray() {
+	/*public static void printOut(String st) {
+
+		PrintWriter pw = new PrintWriter(OutputStream out);
+		pw.print(st);
+
+		pw.flush();
 		
+
+	}
+	*/
+
+	public static <T extends Comparable<T>> void printsArray(T[][] array,int row ,int column){
+		
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < column; j++) {
+				prints(array[i][j]+" ");
+			}
+			System.out.println( );
+				}
+	
+	}
+	
+	public static void selectArray() {
+
 		int size = 0;
 		System.out.println("select the array type:- 1.integer 2.boolean 3.double");
-	//	Utility.printing("select the array type:- 1.integer 2.boolean 3.double");
-		int a= Utility.inputInt();
+		int a = Utility.inputInt();
 		System.out.println(a);
 		if (a == 1) {
 
 			System.out.println("Enter the row of array");
 			int row = Utility.inputInt();
-			
+
 			System.out.println("Enter the column of array");
 			int column = Utility.inputInt();
-			int[][] arr = new int[row ][column];
+			Integer[][] arr = new Integer[row][column];
 
 			for (int i = 0; i < row; i++) {
 				for (int j = 0; j < column; j++) {
@@ -400,65 +485,37 @@ public class Utility {
 				}
 
 			}
-			//reading 
 
-			for (int i = 0; i < row; i++) {
-				for (int j = 0; j < column; j++) {
-					
-					String val=Integer.toString(arr[i][j]);
-						Utility.prints(val+" ");	
+			printsArray(arr, row, column);
 
-				}
-				System.out.println();
-			}
-			
-
-		}
-		else if(a==2){
-			
+		} else if (a == 2) {
 
 			System.out.println("Enter the row of array");
 			int row = Utility.inputInt();
-			
+
 			System.out.println("Enter the column of array");
 			int column = Utility.inputInt();
-		//	int[][] arr = new int[column ][row];
-
-			
-			
-//			System.out.println("enter the size of array");
-//			size = Utility.inputInt();
-			boolean[][] arr = new boolean[row ][column];
-
-			for (int i = 0; i <row; i++) {
-				for (int j = 0; j < column; j++) {
-					System.out.println("enter the values to array");
-					arr[i][j] = Utility.inputBoolean();
-
-				}
-
-			}
-			//reading 
+			Boolean[][] arr = new Boolean[row][column];
 
 			for (int i = 0; i < row; i++) {
 				for (int j = 0; j < column; j++) {
-					
-					String val=Boolean.toString(arr[i][j]);
-						Utility.prints(val+" ");	
-
+					System.out.println("enter the values to array");
+					arr[i][j] = Utility.inputBoolean();
 				}
-				System.out.println();
+
 			}
-			
-			
-		}
-		else if (a==3){
-			System.out.println("enter the column of array");
-			int column = Utility.inputInt();
-			
+			// reading
+
+			printsArray(arr, row, column);
+
+		} else if (a == 3) {
+
 			System.out.println("enter the row of array");
 			int row = Utility.inputInt();
-			double[][] arr = new double[row][column];
+			System.out.println("enter the column of array");
+			int column = Utility.inputInt();
+
+			Double[][] arr = new Double[row][column];
 
 			for (int i = 0; i < row; i++) {
 				for (int j = 0; j < column; j++) {
@@ -468,26 +525,15 @@ public class Utility {
 				}
 
 			}
-			
-			//reading 
 
-			for (int i = 0; i < row; i++) {
-				for (int j = 0; j < column; j++) {
-					
-					String val=Double.toString(arr[i][j]);
-						Utility.prints(val+" ");	
+			// reading
 
-				}
-				System.out.println();
-			}
-			
+			printsArray(arr, row, column);
 		}
-		
-		else{
-			System.out.println("enter the correct value");
+
+		else {
+			System.out.println("Invalid selection");
 		}
-		
-		
 
 	}
 	
@@ -508,13 +554,16 @@ public class Utility {
 		double result= Math.pow(sum ,0.5);
 		System.out.println("Euclidian distance is "+result);
 		
-		
-		
+
 	}
 	
 	//question 12 permutation of string 
-	
-	//swap
+	/*	
+		swaping two indexs i and j
+		@param any string 
+		@param i index to be swapped
+		@param j index to be swapped
+	*/
     public static  String swap(String a, int i, int j)
     {
         char temp;
@@ -745,6 +794,7 @@ public class Utility {
 	
 	// question 15 Quadratic equation 
 	
+	//delta calculations
 	public static double deltaCalculation(double a,double b,double c){
 		double delta=0;
 		double b2=0;
@@ -755,7 +805,7 @@ public class Utility {
 		return delta;
 
 	} 
-	
+	//root calculations
 	public static void calculateRoots(double delta,double a,double b,double c){
 		
 		double dsqt=Math.sqrt(delta);
@@ -770,9 +820,12 @@ public class Utility {
 	
 	//question 16 (wind chill) 
 	
-	public static void chillCalculation(double temperature,double speed) {
-		double t=temperature;
-		double v= speed;
+	public static void chillCalculation(String temperature,String speed) {
+		
+		
+		
+		double t=Double.parseDouble(temperature);
+		double v= Double.parseDouble(speed);
 		double r=0;
 		double w=0;
 		
