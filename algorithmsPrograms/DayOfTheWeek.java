@@ -1,3 +1,10 @@
+/* 
+ *  Purpose:Takes a date as input and prints the day of the week that date falls on.
+ * 	@author  Shivraj Pujari
+ *  @version 1.0
+ *  @since   09-4-2018
+ * 
+ * */
 package com.bridgeIt.algorithmsPrograms;
 
 import com.bridgeIt.utility.Utility;
@@ -5,14 +12,25 @@ import com.bridgeIt.utility.Utility;
 public class DayOfTheWeek {
 
 	public static void main(String[] args) {
-		System.out.println("Enter the date [M-D-Y]");
-		System.out.println("Month:");
-		int m=Utility.inputInt();
-		System.out.println("Date:");
-		int d=Utility.inputInt();
-		System.out.println("Year:");
-		int y=Utility.inputInt();
+		System.out.println("The date [M-D-Y]");
+		
+		System.out.println("Month: "+args[0]);				//taking command line argument
+		int m=Integer.parseInt(args[0]);					// converting to int storing in variable
+		
+		System.out.println("Date: "+args[1]);				//taking command line argument
+		int d=Integer.parseInt(args[1]);					// converting to int storing in variable
+		
+		System.out.println("Year: "+args[2]);				//taking command line argument
+		int y=Integer.parseInt(args[2]);					// converting to int storing in variable
+		
+		/* Function takes date with respect to month/day/year and calculates the day of the week
+		 * @param month/day/year
+		 * */
 		int day=Utility.findingDay(m,d,y);
+		
+		/* Function takes day number and prints particular day of the week.
+		 * @param day number according to Gregorian calendar 
+		 * */
 		Utility.printDay(day);
 		//System.out.println(day);
 

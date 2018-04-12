@@ -942,7 +942,8 @@ public class Utility {
 
 	 public static int[] primeNumbers(int n)
 	    {
-	            int a[]=new int[n];int k=0;
+	            int a[]=new int[n];
+	            int k=0;
 	            for(int i=0;i<n;i++)
 	            {
 	                if(isPrime(i))
@@ -1110,6 +1111,141 @@ public class Utility {
 	    
 	    
 	// QUESTION 4 Utility methods
+	    
+	    
+
+		//Method For Insertion Sort
+	    public static <T extends Comparable<T>> void insertionSort(T array[]) {
+	        int length=array.length;
+	        int j;
+	        T temp;
+	        for(int i=0;i<length;i++)
+	        {
+	            j=i;
+	            temp = array[i];
+	            while(j>0&&temp.compareTo(array[j-1])<0)
+	            {
+	                array[j]=array[j-1];
+	                j=j-1;
+	            }
+	            array[j]=temp;//insert unsorted element
+	        }
+	        for (int i = 0; i < array.length; i++)
+	        {
+	            System.out.println(array[i]);
+	        }
+	    }
+
+	    
+	    //generic array for insertion sort
+	    public static <T extends Comparable<T>> double insertionStopWatch(T[] array){
+			double start=0;
+			double end=0;
+			double result=0;
+		//	String [] st={"zon","bcon","ac","mk","za","ad"};
+		//	Integer arr[]= {2,3,1,54,0,7,5};
+			start = Utility.getTimeNano();
+			System.out.println(start);
+			insertionSort(array);
+			end = Utility.getTimeNano();
+			System.out.println(end);
+			result=Utility.stopWatchNano(start, end);
+			return result;
+		}
+	    
+	  
+	    //generic stopwatch for binary search
+	  	public static <T extends Comparable<T>> double binarySearchStopWatch(T[] array,T search){
+	  		double start=0;
+	  		double end=0;
+	  		double result=0;
+	  		//String [] st={"zon","bcon","ac","mk","za","ad"};
+	  		start = Utility.getTimeNano();
+	  		System.out.println(start);
+	  	//	insertionSort(array);
+	  		binarySearch(array,search);
+	  		end = Utility.getTimeNano();
+	  		System.out.println(end);
+	  		result=Utility.stopWatchNano(start, end);
+	  		return result;
+	  	}
+	  	
+	  	
+	    //generic method  for binary search in the array
+	  	//elements should be sorted to perform search operation
+	    public static<T extends Comparable<T>> void binarySearch(T[] array,T search)
+	    {
+	        int length=array.length;
+	        int first=0;
+	        int last=length-1;
+	        int mid;
+	       
+	        while(first<=last)
+	        {    mid=(first+last)/2;
+	            if(array[mid].compareTo(search)<0)
+	            {
+	                first=mid+1;
+	            }
+	            else if(array[mid].compareTo(search)==0)
+	            {
+	                System.out.println(search+" found in location "+mid);
+	                break;
+	            }
+	            else if(array[mid].compareTo(search)>0)
+	            {
+	                last=mid-1;
+	            }
+	        }
+	        if(first > last)
+	        {
+	            System.out.println(search+"Not found");
+	        }
+	 
+	        
+	}
+	 
+	    //generic method for bubble sorting the array
+	    public static <T extends Comparable<T>> void bubbleSort(T array[]) {
+	        int length=array.length;
+	       
+	       
+	        for(int i=0;i<length-1;i++)
+	        {
+	            for(int j=i+1;j<length;j++)
+	            {
+	                if(array[i].compareTo(array[j])>0)
+	                {
+	                    T temp=array[i];
+	                    array[i]=array[j];
+	                    array[j]=temp;
+	                }
+	            }
+	        }
+	        for (int i = 0; i < array.length; i++) {
+	            System.out.println(array[i]);
+	        }
+	}
+	    
+	//StopWatch for Insertion sort String
+		
+	  	public static <T extends Comparable<T>> double bubbleSortStopWatch(T[] array){
+	  		double start=0;
+	  		double end=0;
+	  		double result=0;
+	  		start = Utility.getTimeNano();
+	  		System.out.println(start);
+	  		bubbleSort(array);
+	  		end = Utility.getTimeNano();
+	  		System.out.println(end);
+	  		result=Utility.stopWatchNano(start, end);
+	  		return result;
+	  	}
+	  	
+	    
+	    
+	    
+	    
+	    
 
 	public static void binarySearchInt(int arr[], int sIndex, int eIndex, int x) {
 
@@ -1229,6 +1365,9 @@ public class Utility {
 
 	}
 	
+	
+	
+	//Integer sort 
 	public static void binarySortInt(int arr[]) {
 
 		for (int i = 0; i < arr.length; i++) {
@@ -1254,6 +1393,8 @@ public class Utility {
 		}
 
 	}
+	
+	
 
 	public static void bSortString(String st[]) {
 
@@ -1380,10 +1521,13 @@ public class Utility {
 	}
 
 	
+	    
+	    
 	//question number 5 user search binary
 	
 
-
+	
+	    
 	public static int[]  createArray(int a , int b){
 		int size= (b-a)+1;
 		System.out.println(size+" "+a+" "+b);
@@ -1620,114 +1764,110 @@ public class Utility {
 	        default: break;
 	        }   
 	}
-	 // toBinary() takes integer number as parameter and converts to binary string representation
-	  public static String toBinary(int num){
-			
-			
-			String st="";
-			while(true){
-				if(num>0){
-					
-					if(num%2==0){
-						st="0"+st;
-					
-						num=num/2;
-						
-					}else{
-	
-						st="1"+st;
-						num=num/2;
-					}
-					if(num==0)break;
+
+	// toBinary() takes integer number as parameter and converts to binary
+	// string representation
+	public static String toBinary(int num) {
+
+		String st = "";
+		while (true) {
+			if (num > 0) {
+
+				if (num % 2 == 0) {
+					st = "0" + st;
+
+					num = num / 2;
+
+				} else {
+
+					st = "1" + st;
+					num = num / 2;
 				}
-				
+				if (num == 0)
+					break;
 			}
-			
-			return st;
-			
+
+		}
+
+		return st;
+
 	}
-	
-	  //takes any integer and convert it into binary with 8-bit length
-	  public static String increseLength(int number){
-			
-			String binary=Utility.toBinary(number);
-			
-			while(binary.length()!=8){
 
-				binary="0"+binary;
+	// takes any integer and convert it into binary with 8-bit length
+	public static String increseLength(int number) {
+
+		String binary = Utility.toBinary(number);
+
+		while (binary.length() != 8) {
+
+			binary = "0" + binary;
+
+		}
+
+		return binary;
+	}
+
+	// swaps the nibbles of any binary 8-bit number
+	public static String swapNibble(String binary) {
+
+		// creating char array ch[]
+		char ch[] = binary.toCharArray();
+		char temp = ' ';
+
+		for (int i = 0; i < (binary.length() / 2); i++) {
+
+			temp = ch[i];
+			ch[i] = ch[i + 4];
+			ch[i + 4] = temp;
+
+		}
+
+		String result = new String(ch);
+		return result;
+
+	}
+
+	// converts any binary number into integer
+	public static int toInt(String binary) {
+
+		int j = 0;
+		int sum = 0;
+		for (int i = binary.length() - 1; i >= 0; i--) {
+			if (binary.charAt(i) == '1') {
+
+				sum = sum + Utility.raiseToTwo(j);
 
 			}
-		
-			return binary;
+
+			j++;
 		}
-		
+
+		return sum;
+
+	}
 	  
-	  //swaps the nibbles of any binary 8-bit number
-		public static String swapNibble(String binary){
-			
-			//creating char array ch[]
-			char ch[]= binary.toCharArray();
-			char temp=' ';						
-			
-			for (int i = 0; i <(binary.length()/2); i++) {
-				
-					temp = ch[i] ;
-			        ch[i] = ch[i+4];
-			        ch[i+4] = temp;
-				
+	// To check whether the given number is power of two
+	public static boolean findPowOfTwo(String binary) {
+
+		int count = 0;
+		for (int i = 0; i < binary.length(); i++) {
+
+			if (binary.charAt(i) == '1') {
+				count++;
+
 			}
-			
-			String result= new String(ch);
-			return result;
-			
 
 		}
-		
-		
-		//converts any binary number into integer
-		public static int toInt(String binary){
-			
-			int j=0;
-			int sum=0;
-			for(int i=binary.length()-1;i>=0;i--){
-				if(binary.charAt(i)=='1'){
-					
-					sum=sum+Utility.raiseToTwo(j);
 
-				}
-				
-				j++;
-			}
+		if (count == 1) {
+			return true;
 
-			return sum;
-			
+		} else {
+
+			return false;
 		}
-	  
-	  
-		//To check whether the given number is power of two
-		public static boolean findPowOfTwo(String binary){
-			
-			int count=0;
-			for (int i = 0; i < binary.length(); i++) {
-				
-				
-				if(binary.charAt(i)=='1'){
-					count++;
 
-				}
-				
-			}
-			
-			if(count==1){
-				return true;
-				
-			}else{
-				
-				return false;
-			}
-			
-		}
-		
+	}
 	  
 	  
 	  

@@ -1,5 +1,4 @@
-/*
- * 
+/* 
  *  Purpose:Check whether the two strings are anagram or not.
  * 	@author  Shivraj Pujari
  *  @version 1.0
