@@ -1620,5 +1620,115 @@ public class Utility {
 	        default: break;
 	        }   
 	}
-	 
+	 // toBinary() takes integer number as parameter and converts to binary string representation
+	  public static String toBinary(int num){
+			
+			
+			String st="";
+			while(true){
+				if(num>0){
+					
+					if(num%2==0){
+						st="0"+st;
+					
+						num=num/2;
+						
+					}else{
+	
+						st="1"+st;
+						num=num/2;
+					}
+					if(num==0)break;
+				}
+				
+			}
+			
+			return st;
+			
+	}
+	
+	  //takes any integer and convert it into binary with 8-bit length
+	  public static String increseLength(int number){
+			
+			String binary=Utility.toBinary(number);
+			
+			while(binary.length()!=8){
+
+				binary="0"+binary;
+
+			}
+		
+			return binary;
+		}
+		
+	  
+	  //swaps the nibbles of any binary 8-bit number
+		public static String swapNibble(String binary){
+			
+			//creating char array ch[]
+			char ch[]= binary.toCharArray();
+			char temp=' ';						
+			
+			for (int i = 0; i <(binary.length()/2); i++) {
+				
+					temp = ch[i] ;
+			        ch[i] = ch[i+4];
+			        ch[i+4] = temp;
+				
+			}
+			
+			String result= new String(ch);
+			return result;
+			
+
+		}
+		
+		
+		//converts any binary number into integer
+		public static int toInt(String binary){
+			
+			int j=0;
+			int sum=0;
+			for(int i=binary.length()-1;i>=0;i--){
+				if(binary.charAt(i)=='1'){
+					
+					sum=sum+Utility.raiseToTwo(j);
+
+				}
+				
+				j++;
+			}
+
+			return sum;
+			
+		}
+	  
+	  
+		//To check whether the given number is power of two
+		public static boolean findPowOfTwo(String binary){
+			
+			int count=0;
+			for (int i = 0; i < binary.length(); i++) {
+				
+				
+				if(binary.charAt(i)=='1'){
+					count++;
+
+				}
+				
+			}
+			
+			if(count==1){
+				return true;
+				
+			}else{
+				
+				return false;
+			}
+			
+		}
+		
+	  
+	  
+	  
 }
