@@ -64,7 +64,6 @@ public class Utility {
 
 		String st = null;
 		st = statement.replace("<<UserName>>", name);
-
 		return st;
 	}
 	
@@ -81,9 +80,7 @@ public class Utility {
 				stringArray[i]=name+",";
 				break;
 
-			}
-			
-			
+			}		
 		}
 		return stringArray;
 		
@@ -109,9 +106,9 @@ public class Utility {
 	// question 2(head and tail)(functional)
 	public static void flip(int number) {
 
-		/*using variables head and tails as counter to count head and tails  
-		 * headPercent and tailsPercentage to calculate percent of outcome of head and tails
-		 * flipper to store random values from Math.random()
+		/*	using variables head and tails as counter to count head and tails  
+		 *  headPercent and tailsPercentage to calculate percent of outcome of head and tails
+		 *  flipper to store random values from Math.random()
 		 * */
 		double head = 0;
 		double tails = 0;
@@ -144,37 +141,33 @@ public class Utility {
 	
 	// question 3 (leap year)(functional)
 
-	public static void checkLeapYear(String year) {
+	public static void checkLeapYear(int year) {
 
-		int saal = 0;
-
-		if (year.length()<4) {
+		if (year/4==0) {
 
 			System.out.println("Please enter the years digits greater then three");
 			return;
 		}
 
-		saal = Integer.parseInt(year);
+		if (year % 4 == 0 &&  year%100!=0) {
 
-		if (saal % 4 == 0 &&  saal%100!=0) {
-
-			System.out.println(saal + " is leap year");
+			System.out.println(year + " is leap year");
 			return;
 		}
 
-		if (saal % 4==0 && saal%100 == 0 && saal%400!=0) {
+		if (year % 4==0 && year%100 == 0 && year%400!=0) {
 
-			System.out.println(saal + " is not a leap year");
-			return;
-		}
-		
-		if (saal % 4==0&& saal%100 == 0 && saal%400==0){
-
-			System.out.println(saal + " is leap year");
+			System.out.println(year + " is not a leap year");
 			return;
 		}
 		
+		if (year % 4==0&& year%100 == 0 && year%400==0){
 
+			System.out.println(year + " is leap year");
+			return;
+		}
+		
+		System.out.println(year + " is not a leap year");
 	}
 
 	// question 4--- 2 raise to power table (functional)
@@ -219,7 +212,6 @@ public class Utility {
 		}
 
 		for (double i = 1; i <= n; i++) {
-			// System.out.println(i);
 			sum = sum + (1 / i);
 
 		}
@@ -228,8 +220,7 @@ public class Utility {
 
 	}
 
-	// question 6 primefactor (functional)
-
+	/* question 6 primefactor (functional)*/
 	public static void factorization(int num) {
 
 		for (int j = 0; j <= num; j++) {
@@ -355,7 +346,7 @@ public class Utility {
 			}
 
 		}
-		System.out.println(count);
+		System.out.println("Total random number needed to have all distinct numbers is "+count);
 			return a;
 	}
 
@@ -388,6 +379,7 @@ public class Utility {
 	}
 	
 	*/
+	
 	
 	// question 10 triplet (functional)
 
@@ -808,10 +800,10 @@ public class Utility {
 	//root calculations
 	public static void calculateRoots(double delta,double a,double b,double c){
 		
-		double dsqt=Math.sqrt(delta);
+		double dsqt=Math.sqrt(delta);    							//using function to calculate square roots
 		
-		double r1=(-b+dsqt)/(2*a);
-		double r2=(-b-dsqt)/(2*a);
+		double r1=(-b+dsqt)/(2*a);									//calculating root1 (-b + sqrt(delta))/(2*a)
+		double r2=(-b-dsqt)/(2*a);									//calculating root2(-b - sqrt(delta))/(2*a)
 		
 		System.out.println("root 1 "+r1);
 		System.out.println("root 2 "+r2);

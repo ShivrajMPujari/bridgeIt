@@ -22,12 +22,11 @@ public class PrimeFactors {
 		long number=Utility.inputLong();
 		
 
-		/* Function to generate the prime factors of any integer number 
+		/* Function factorizePrime generates prime factors of any integer number 
 		 * @param number for generating prime factor of that number
 		 * */
 		
 		Utility.factorizePrime(number);
-		
 		
 		
 	}

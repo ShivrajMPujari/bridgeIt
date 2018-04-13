@@ -18,8 +18,8 @@ public class SumsToZero {
 	public static void main(String[] args) {
 		
 		System.out.println("Enter the size of array");
-		// taking users input
-		int size = Utility.inputInt();
+		
+		int size = Utility.inputInt();								// taking users input
 		
 		/* Function create an array and checks the distinct values equals to zero
 		 * @param size used to take the size of an array

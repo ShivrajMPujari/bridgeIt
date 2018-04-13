@@ -22,6 +22,8 @@ public class StopWatch {
 		/*Using system class function to get current instance of time in millisecond  */
 		 start = Utility.getTime();
 		System.out.println(start);
+		
+		
 		try {
 			/*Using Thread class sleep method to consume some span of time in milliseconds */
 			Thread.sleep(1000);
@@ -29,9 +31,12 @@ public class StopWatch {
 			
 			e.printStackTrace();
 		}
+		
+		
 		/*Using system class function to get current instance of time in millisecond  */
 		end = Utility.getTime();
 		System.out.println(end);
+		
 		
 		/*
 		 * Function for calculating the elapsed time 

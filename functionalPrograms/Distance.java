@@ -15,7 +15,7 @@ public class Distance {
 
 	public static void main(String[] args) {
 		
-		//taking command line arguments
+		
 		String x1=args[0];
 		String y1=args[1];
 		

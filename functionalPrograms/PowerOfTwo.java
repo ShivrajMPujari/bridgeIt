@@ -8,7 +8,6 @@
  * */
 
 
-
 package com.bridgeIt.functionalPrograms;
 
 import com.bridgeIt.utility.Utility;
@@ -22,16 +21,12 @@ public class PowerOfTwo {
 		System.out.println("Power of 2 till raise to "+power);
 		
 		
-		/* Function creates raise to power 2 table 
+		/* Function createTable create raise to power 2 table 
 		 * @param power takes the number till which table is printed
 		 * 
 		 * */
 		Utility.createTable(power);
 		
-		
-		
-		
-
 	}
 
 	

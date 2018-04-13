@@ -49,7 +49,7 @@ public class UnorderedList {
 		
 			current=head;
 			if(head.data==data){
-				
+				System.out.println(current.data +"--- "+data);
 				head.next=head;
 				head.previous=null;
 				return;
@@ -58,7 +58,7 @@ public class UnorderedList {
 			while(current.data!=data){
 				
 				current=current.next;
-
+				System.out.println(current.data +" "+data);
 			}
 			if(current.next==null){
 				
@@ -71,56 +71,52 @@ public class UnorderedList {
 			current.next=null;
 			current.previous=null;
 			
-	}
+	}	
 		
 	/* Function removes the elements inside a list
 	 * @param data to be removed inside list
 	 * */
 	public static <T extends Comparable<T>> boolean search(T data){
 		
-		Node current=head;
-		while(current.data!=data){
+		 current=head;
+		while(current.data==data){
 			
-			/*if(current.next==null) return false;
-			if(current.next.data==data) return true;*/
-			if(current.next==null){
-				System.out.println(current.data+"--");
+			if(current.next==null) return false;
+			if(current.next.data==data) return true;
+			if(current.next==null){		
 				return false;}
-			current=current.next;
+				current=current.next;
 			
 			
 		}
 
-		
 	return true;	
+
 
 	}
 	
 	public static <T extends Comparable<T>> void printList(){
 		
-	  current=head;
-		
+	current=head;
 	if(current.data==null){
 		return;
 	}
 	while(current.data!=null){
 		
 		System.out.println(current.data);
-	//	printWriting((T) current.data);
+		printWriting();
 		current=current.next;
 		if(current==null)break;
 	}
-		
-		
-	}
+			}
 	
 	public static  <T extends Comparable<T>> void action(T data){
 		boolean res=search(data);
 		System.out.println(res);
 		if(search(data)==true){
 			
-		remove(data);
-			
+		//remove(data);
+			removeing(data);
 		}else{
 			
 			add(data);
@@ -152,24 +148,23 @@ public class UnorderedList {
 			}
 			  
 			
-		//	printList();
+			printList();
 			
 			action("raj");
 			action("world");
-			action("raj");
+			//action("raj");
 		//	printList();
 			
 			printWriting();
 			
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+			
 		}
 	
-	
-		
-		
+
 	}
 	
 	public static  <T extends Comparable<T>> void printWriting(){
@@ -195,26 +190,42 @@ public class UnorderedList {
 					if(current==null)break;
 				}
 
-			
-			
 			pw.flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-		
+	public static  <T extends Comparable<T>> void removeing(T item) 
+	{
+		if(head==null)
+		{
+			System.out.println("No elements to remove");	
+		}
+		else
+		{
+			Node temp=head;
+			if(temp.data==item)
+			{
+				head=temp.next;
+			}
+			else
+			{
+				while(!(temp.next.data.equals(item)) && temp.next!=null)
+				{
+					temp=temp.next;
+				}
+				System.out.println(temp.next.data+" is deleted");
+				temp.next=temp.next.next;
+			}
+		}
+
+}
+
+
 	}
 	
 

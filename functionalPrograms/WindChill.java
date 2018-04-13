@@ -15,13 +15,13 @@ public class WindChill {
 	public static void main(String[] args) {
 
 		
-		String temperature = args[0];
+		String temperature = args[0];						//using command line argument
 		System.out.println("Entered value for temperature(less then 50 Fahrenheit) "+temperature);
 		
-		String speed =args[1];
+		String speed =args[1];								//using command line argument
 		System.out.println("Entered value for wind speed(between 3 to 120)(in miles per hour) "+speed);
 		
-		/* Function calculates the wind chill 
+		/* Function chillCalculation calculates the wind chill 
 		 * @param command line arguments
 		 * */
 		Utility.chillCalculation(temperature, speed);

@@ -21,7 +21,7 @@ public class Harmonic {
 		double number = Utility.inputDouble();
 		
 		
-		/*Function to calculate nth harmonic value
+		/*Function calculateHarmonic calculates nth harmonic value
 		 * @param number to give nth term
 		 * */
 		Utility.calculateHarmonic(number);
