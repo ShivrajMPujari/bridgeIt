@@ -16,10 +16,10 @@ public class PowerOfTwo {
 
 	public static void main(String[] args) {
 		
-		//Given command line argument
-		String power=args[0];
-		System.out.println("Power of 2 till raise to "+power);
 		
+		String power=args[0];								//Given command line argument
+		
+		System.out.println("Power of 2 till raise to "+power);
 		
 		/* Function createTable create raise to power 2 table 
 		 * @param power takes the number till which table is printed

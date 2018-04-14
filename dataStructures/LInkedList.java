@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class LInkedList {
+public class LInkedList  {
 
 	
 	static Node head;
@@ -26,7 +26,6 @@ public class LInkedList {
 			
 			current.next.previous=current.previous;
 			current.previous.next=current.next;
-			
 			
 		}
 
@@ -92,7 +91,6 @@ public class LInkedList {
 		while(current.data!=null){
 			
 			System.out.println(current.data);
-		//	printWriting();
 			current=current.next;
 			if(current==null)break;
 		}

@@ -17,18 +17,21 @@ public class LeapYear {
 
 	public static void main(String[] args) {
 		
-		int year=0;
-		
+
 		System.out.println("Enter the any year");
 		
 		//taking users input
-		year=Utility.inputInt();
+		int year=Utility.inputInt();
 		
 		/* Function for checking whether given year is leap year or not 
 		 *
 		 * @param year takes any year 
 		 * */
 		Utility.checkLeapYear(year);
+		
+		
+	
+		
 		
 	}
 }

@@ -146,7 +146,7 @@ public class Utility {
 
 	public static void checkLeapYear(int year) {
 
-		if (year/4==0) {
+		if (year/1000==0) {
 
 			System.out.println("Please enter the years digits greater then three");
 			return;
@@ -866,7 +866,7 @@ public class Utility {
 			}
 
 		} else {
-			System.out.println("Given strings are no an anagram");
+				System.out.println("Given strings are no an anagram");
 		}
 
 	}
@@ -1254,7 +1254,6 @@ public class Utility {
 
 	public static void binarySearchInt(int arr[], int sIndex, int eIndex, int x) {
 
-		// int mid=(sIndex+eIndex)/2;
 		if (eIndex >= sIndex) {
 			int mid = sIndex + (eIndex - sIndex) / 2;
 
@@ -1279,7 +1278,6 @@ public class Utility {
 
 	public static void binarySearchString(String st[], int sIndex, int eIndex, String x) {
 
-		// int mid=(sIndex+eIndex)/2;
 		if (eIndex >= sIndex) {
 			int mid = sIndex + (eIndex - sIndex) / 2;
 

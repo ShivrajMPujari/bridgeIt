@@ -1,6 +1,5 @@
 
 /*
- * 
  *  Purpose:i. Swap nibbles of binary number and find the new number.
 			ii. Find the resultant number is the number is a power of 2.
  * 	@author  Shivraj Pujari
@@ -17,19 +16,17 @@ public class SwapNIbbles {
 	public static void main(String[] args) {
 		
 		System.out.println("Enter any integer number which will be conveted to binary ");
-		int number=Utility.inputInt();				//taking users input
+		int number=Utility.inputInt();				
 		
 		/* Function will take integer number and convert it into binary 8-bit 
 		 * @param number any integer number
 		 * */
-		String str=Utility.increseLength(number);  
-		//System.out.println(str);
+		String str=Utility.increseLength(number); 
 		
 		/* Function will swap nibbles of 8--bit binary number
 		 * @param String of binary number 
 		 * */
 	    String s=Utility.swapNibble(str);
-	   // System.out.println(s);
 	    
 	    /* Function converts the binary number into integer
 		 * @param String of binary number 

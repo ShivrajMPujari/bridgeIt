@@ -18,14 +18,13 @@ public class Gambler {
 
 	public static void main(String[] args) {
 		
-		
-		//Taking users input for stake,goal and times
 		System.out.println("Enter stakes");
 		int stake=Utility.inputInt();
 		System.out.println("Enter goal");
 		int goal=Utility.inputInt();
 		System.out.println("Enter numbers of times");
 		int times=Utility.inputInt();
+		
 		
 		/* Function to simulate gambling through randomness
 		 * @param stake money to with

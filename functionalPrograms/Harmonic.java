@@ -17,7 +17,7 @@ public class Harmonic {
 	public static void main(String[] args) {
 		
 		System.out.println("Enter the number to calculate the harmonic");
-		//taking user input (double)
+		
 		double number = Utility.inputDouble();
 		
 		
@@ -26,7 +26,5 @@ public class Harmonic {
 		 * */
 		Utility.calculateHarmonic(number);
 		
-		
-
 	}
 }
