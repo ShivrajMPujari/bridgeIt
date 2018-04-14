@@ -19,6 +19,11 @@ public class Node<N> implements Comparable<N> {
 
 	}
 
+	
+	public static void main(String[] args) {
+		System.out.println();
+	}
+	
 
 	@Override
 	public int compareTo(N data) {

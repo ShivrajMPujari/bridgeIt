@@ -4,7 +4,10 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 
 public class Utility {
@@ -1103,8 +1106,17 @@ public class Utility {
 	    
 	    
 	// QUESTION 4 Utility methods
-	    
-	    
+	    public static TreeMap<Double, String> hm = new TreeMap<Double, String>();
+	    public static void sortbykey() {
+			ArrayList<Double> sortedKeys = new ArrayList<Double>(hm.keySet());
+
+			Collections.sort(sortedKeys, Collections.reverseOrder());
+
+			// Display the TreeMap which is naturally sorted
+			for (Double x : sortedKeys)
+				System.out.println("Performance time = " + x + ",Method Name = " + hm.get(x));
+		}
+
 
 		//Method For Insertion Sort
 	    public static <T extends Comparable<T>> void insertionSort(T array[]) {
@@ -1130,7 +1142,7 @@ public class Utility {
 
 	    
 	    //generic array for insertion sort
-	    public static <T extends Comparable<T>> double insertionStopWatch(T[] array){
+	    public static <T extends Comparable<T>> Double insertionStopWatch(T[] array){
 			double start=0;
 			double end=0;
 			double result=0;
@@ -1142,12 +1154,13 @@ public class Utility {
 			end = Utility.getTimeNano();
 			System.out.println(end);
 			result=Utility.stopWatchNano(start, end);
+			
 			return result;
 		}
 	    
 	  
 	    //generic stopwatch for binary search
-	  	public static <T extends Comparable<T>> double binarySearchStopWatch(T[] array,T search){
+	  	public static <T extends Comparable<T>>  Double  binarySearchStopWatch(T[] array,T search){
 	  		double start=0;
 	  		double end=0;
 	  		double result=0;
@@ -1220,7 +1233,7 @@ public class Utility {
 	    
 	//StopWatch for Insertion sort String
 		
-	  	public static <T extends Comparable<T>> double bubbleSortStopWatch(T[] array){
+	  	public static <T extends Comparable<T>>  Double  bubbleSortStopWatch(T[] array){
 	  		double start=0;
 	  		double end=0;
 	  		double result=0;

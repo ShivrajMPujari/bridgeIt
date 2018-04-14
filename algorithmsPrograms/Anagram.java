@@ -17,11 +17,9 @@ public class Anagram {
 		String s1 = null;
 		String s2 = null;
 
-		//Taking user input storing in String s1
 		System.out.println("Enter String1");
 		s1 = Utility.inputString();
 		
-		//Taking user input storing in String s2
 		System.out.println("Enter String2");
 		s2 = Utility.inputString();
 		

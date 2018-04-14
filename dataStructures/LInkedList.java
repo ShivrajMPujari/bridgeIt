@@ -185,7 +185,6 @@ public class LInkedList {
 				e.printStackTrace();
 			}
 
-
 		}
 		
 }
