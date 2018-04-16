@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -65,13 +66,17 @@ public class Utility {
 	// question 1 (replace username)(functional)
 	public static String replace(String name, String statement) {
 
-		String st = null;
-		st = statement.replace("<<UserName>>", name);
-		return st;
+		statement = statement.replace("<<UserName>>", name);
+		return statement;
 	}
 	
 	
-	public static String[] splitString(String inputString,String name){
+	/*
+	 * Function to replace string from given pattern
+	 * @param inputString contains pattern
+	 * @param name contains desired string to replace
+	 */
+	public  String[] splitString(String inputString,String name){
 		
 		String toReplaced="<<UserName>>,";
 		String []stringArray=inputString.split("\\s");
@@ -91,6 +96,13 @@ public class Utility {
 	}
 	
 	//converts String array to String
+	
+	
+	/*
+	 * Function converts string array to string and storing in variable
+	 * outcome
+	 * @param string array
+	 */
 	public static String convertToString(String [] st){
 			String output="";
 			
@@ -99,7 +111,6 @@ public class Utility {
 			output=output+st[i]+" ";
 		}
 		
-		
 		return output;
 
 	}
@@ -107,17 +118,20 @@ public class Utility {
 	
 
 	// question 2(head and tail)(functional)
+	
+	/* Function flip to take number of flip and generate head and tails percentage and
+	 * displays percent of head and tails 
+	 * @param num takes number of flips
+	 * 
+	 * */
 	public static void flip(int number) {
 
-		/*	using variables head and tails as counter to count head and tails  
-		 *  headPercent and tailsPercentage to calculate percent of outcome of head and tails
-		 *  flipper to store random values from Math.random()
-		 * */
+		
 		double head = 0;
 		double tails = 0;
 		double total = 0;
-		double headPercent = 0.0;
-		double tailsPercent = 0.0;
+		double headPercent = 0;
+		double tailsPercent = 0;
 		double flipper=0;
 
 		for (int i = 0; i < number; i++) {
@@ -144,6 +158,12 @@ public class Utility {
 	
 	// question 3 (leap year)(functional)
 
+	
+
+	/* Function for checking whether given year is leap year or not 
+	 *
+	 * @param year takes any year 
+	 * */
 	public static void checkLeapYear(int year) {
 
 		if (year/1000==0) {
@@ -157,14 +177,7 @@ public class Utility {
 			System.out.println(year + " is leap year");
 			return;
 		}
-
-		if (year % 4==0 && year%100 == 0 && year%400!=0) {
-
-			System.out.println(year + " is not a leap year");
-			return;
-		}
-		
-		if (year % 4==0&& year%100 == 0 && year%400==0){
+		if (year%400==0){
 
 			System.out.println(year + " is leap year");
 			return;
@@ -208,6 +221,11 @@ public class Utility {
 	
 	
 	// question 5 Harmonic number(functional)
+	
+	
+	/*Function calculateHarmonic calculates nth harmonic value
+	 * @param number to give nth term
+	 * */
 	public static void calculateHarmonic(double n) {
 		double sum = 0;
 		if (n == 0) {
@@ -256,6 +274,10 @@ public class Utility {
 	
 	// question 6 prime factorization(functional)
 
+
+	/* Function factorizePrime generates prime factors of any integer number 
+	 * @param number for generating prime factor of that number
+	 * */
 	public static void factorizePrime(long n) {
 		for (long i = 2; i * i <= n; i++) {
 			while (n % i == 0) {
@@ -269,6 +291,14 @@ public class Utility {
 	}
 	
 	// question 7 gambler (functional)
+	
+	
+	
+	/* Function to simulate gambling through randomness
+	 * @param stake money to with
+	 * @param goal gambler's target to achieve 
+	 * @param times for playing n numbers of times
+	 * */
 	public static void gambling(int stake, int goal, int times) {
 		int wins = 0;
 		int loss = 0;
@@ -310,13 +340,13 @@ public class Utility {
 	}
 	
 	// question 8 Coupon number
-	
-	 public static int NUMBER=0;
-	public static float random() {
-		return (float) Math.random() * 9999;
+	public static int NUMBER=0;
+	public static int random() {
+		Random num= new Random();
+		return num.nextInt(NUMBER+3);
 	}
 	
-	public static boolean search(float[] a,float num){
+	public static boolean search(int[] a,int num){
 		
 		for(int i=0;i<a.length;i++){
 			
@@ -331,20 +361,22 @@ public class Utility {
 	}
 	
 	
-	public static float[] coupon(int n){
+	/* coupon function generates n distinct number
+	 * @param n number of distinct coupon
+	 * 
+	 * */
+	public static int[] coupon(int n){
 		
-		float a[] = new float[n];
+		int a[] = new int[n];
 		int count=0;
 		int i=0;
 		while(i!=a.length){
 			//System.out.println(1);
-			float value=random();
+			int value=random();
 			count++;
 			System.out.println(value);
 			if(search(a,value)==false){
 				a[i]=value;
-				
-				
 				i++;
 			}
 
@@ -385,7 +417,11 @@ public class Utility {
 	
 	
 	// question 10 triplet (functional)
+	
 
+	/* Function create an array and checks the distinct values equals to zero
+	 * @param size used to take the size of an array
+	 * */
 	public static void tripletChecking(int size) {
 
 		int arr[] = new int[size];
@@ -395,9 +431,9 @@ public class Utility {
 
 		}
 
-		for (int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length-2; i++) {
 			for (int j = i + 1; j < arr.length - 1; j++) {
-				for (int k = j + 1; k < arr.length - 2; k++) {
+				for (int k = j + 1; k < arr.length ; k++) {
 
 					if (arr[i] + arr[j] + arr[k] == 0) {
 
@@ -457,14 +493,23 @@ public class Utility {
 	
 	}
 	
+	
+	
+
+	/* Function function to select type of the array and to display the contains
+	 * @returns displays the contains of an array
+	 * */
 	public static void selectArray() {
 
 		int size = 0;
 		System.out.println("select the array type:- 1.integer 2.boolean 3.double");
 		int a = Utility.inputInt();
 		System.out.println(a);
-		if (a == 1) {
-
+		
+		switch(a){
+		
+		case 1:{
+			
 			System.out.println("Enter the row of array");
 			int row = Utility.inputInt();
 
@@ -478,13 +523,13 @@ public class Utility {
 					arr[i][j] = Utility.inputInt();
 
 				}
-
 			}
-
 			printsArray(arr, row, column);
-
-		} else if (a == 2) {
-
+			break;
+			
+		}
+		case 2:{
+			
 			System.out.println("Enter the row of array");
 			int row = Utility.inputInt();
 
@@ -502,8 +547,12 @@ public class Utility {
 			// reading
 
 			printsArray(arr, row, column);
-
-		} else if (a == 3) {
+			
+			break;
+			
+		}
+		case 3:{
+			
 
 			System.out.println("enter the row of array");
 			int row = Utility.inputInt();
@@ -524,16 +573,27 @@ public class Utility {
 			// reading
 
 			printsArray(arr, row, column);
+			break;
 		}
-
-		else {
-			System.out.println("Invalid selection");
+		default:{
+			System.out.println("Entered value is incorrent");
+			break;
 		}
-
+		}
+		
+		
+	
 	}
 	
 	
 	// question 11 euclidian distance
+	
+	
+	
+	/* Function calculating the euclidean distance from origin
+	 * @param euclidean distance at desired point along x-axis
+	 *  @param euclidean distance at desired point along y-axis
+	 * */
 	public static void calculateDistance(String x1,String y1){
 		
 		
@@ -570,7 +630,13 @@ public class Utility {
     }
 	
 	//recursive permute
-	
+    
+    
+    /* Function takes the users input and permutes the string
+	 * @param str any desired string
+	 * @param number the starting index
+	 * @param number last index of the string 
+	 * */
     public static void permute(String str, int l, int r)
     {
         if (l == r)
@@ -581,7 +647,7 @@ public class Utility {
             {
                 str = swap(str,l,i);
                 permute(str, l+1, r);
-             //  str = swap(str,l,i);
+            
             }
         }
     }
@@ -801,6 +867,11 @@ public class Utility {
 
 	} 
 	//root calculations
+	
+	
+	/* Function to calculate the roots of the equation a*x*x + b*x + c=0
+	 * @param delta ,a,b,c
+	 * */
 	public static void calculateRoots(double delta,double a,double b,double c){
 		
 		double dsqt=Math.sqrt(delta);    							//using function to calculate square roots
@@ -815,6 +886,9 @@ public class Utility {
 	
 	//question 16 (wind chill) 
 	
+	/* Function chillCalculation calculates the wind chill 
+	 * @param command line arguments
+	 * */
 	public static void chillCalculation(String temperature,String speed) {
 		
 		
@@ -841,6 +915,10 @@ public class Utility {
 	// ALOGORITHMS -------------
 
 	// QUESTION 1 ANAGRAM detection
+	
+	/* Function checks two Strings are anagram or not
+	 * @param string s1 and s2 
+	 * */
 	public static void  detectAnagram(String s1, String s2) {
 
 		char[] a1 = s1.toCharArray();
@@ -874,6 +952,9 @@ public class Utility {
 
 	// question 2 prime number range
 
+	/* Function takes two ranges and prints the prime numbers within that range
+	 * @param initial and final range
+	 * */
 	public static void  makeRange(int a, int b) {
 
 		for (int i = a; i <= b; i++) {
@@ -898,9 +979,7 @@ public class Utility {
 
 		}
 		if (count == 0) {
-			System.out.println(p + " ");
-			// Utility.storeArray(p);
-			
+			System.out.println(p + " ");			
 			Utility.checkPalindromic(p);
 
 		}
@@ -909,6 +988,9 @@ public class Utility {
 
 	// question 3 extension
 
+	/* Function checks the number is palindrome or not
+	 * @param prime numbers from an array
+	 * */
 	public static void checkPalindromic(int num) {
 
 		String st = Integer.toString(num);
@@ -934,7 +1016,10 @@ public class Utility {
 	}
  
 
-
+	/* Function finds the prime numbers and store the numbers in an array
+	 * @param number takes the range 
+	 * @returns integer array of prime number
+	 * */
 	 public static int[] primeNumbers(int n)
 	    {
 	            int a[]=new int[n];
@@ -1038,6 +1123,7 @@ public class Utility {
 	       
 	}
 	  //Method to display array
+	  //prints the contents in an array of prime numbers
 	    public static void display(int array[])
 	    {
 	       
@@ -1084,6 +1170,12 @@ public class Utility {
 
 	}
 	*/
+	    
+	    
+	    
+		/* Function checks the number is palindrome or not
+		 * @param prime numbers from an array
+		 * */
 	    public static void checkIntAnagaram(int n1, int n2){
 
 	        String num1=String.valueOf(n1);
@@ -1107,6 +1199,10 @@ public class Utility {
 	    
 	// QUESTION 4 Utility methods
 	    public static TreeMap<Double, String> hm = new TreeMap<Double, String>();
+	    
+		/* Function sortbyKey sorts the key in descending order
+		 * @returns all the elements in Treemap -(key,value) 
+		 * */
 	    public static void sortbykey() {
 			ArrayList<Double> sortedKeys = new ArrayList<Double>(hm.keySet());
 
@@ -1114,11 +1210,14 @@ public class Utility {
 
 			// Display the TreeMap which is naturally sorted
 			for (Double x : sortedKeys)
-				System.out.println("Performance time = " + x + ",Method Name = " + hm.get(x));
+				System.out.println("Performance time = " + x + " nsec,Method Name = " + hm.get(x));
 		}
 
 
-		//Method For Insertion Sort
+		//Method For Insertion Sort(generic)
+		/* Function takes generic array and sorts it 
+		 * @param generic array
+		 * */
 	    public static <T extends Comparable<T>> void insertionSort(T array[]) {
 	        int length=array.length;
 	        int j;
@@ -1141,7 +1240,7 @@ public class Utility {
 	    }
 
 	    
-	    //generic array for insertion sort
+	    //generic array for insertion sort stopwatch
 	    public static <T extends Comparable<T>> Double insertionStopWatch(T[] array){
 			double start=0;
 			double end=0;
@@ -1210,6 +1309,10 @@ public class Utility {
 	}
 	 
 	    //generic method for bubble sorting the array
+	    
+	    /* Function takes any array and sorts it by bubble sort
+		 * @param any array 
+		 * */
 	    public static <T extends Comparable<T>> void bubbleSort(T array[]) {
 	        int length=array.length;
 	       
@@ -1276,6 +1379,10 @@ public class Utility {
 		}
 	}
 
+	
+	/* Function to search the element
+	 * @param String s1 ,starting index ,end index, word
+	 * */
 	public static void binarySearchString(String st[], int sIndex, int eIndex, String x) {
 
 		if (eIndex >= sIndex) {
@@ -1529,7 +1636,9 @@ public class Utility {
 	//question number 5 user search binary
 	
 
-	
+	/* Function creates an array between two ranges
+	 * @param Numbers initial range and final range
+	 * */
 	    
 	public static int[]  createArray(int a , int b){
 		int size= (b-a)+1;
@@ -1551,6 +1660,11 @@ public class Utility {
 	
 	//search method
 
+	
+	
+	/* Function to search the users assumed number
+	 * @param Numbers array,starting ,index length
+	 * */
 	public static void binarySearchingUser(int arr[], int sIndex, int eIndex) {
 
 		int want = 0;
@@ -1613,9 +1727,13 @@ public class Utility {
 	
 	//question 8 bubble sort Integers list
 	
-	public static int[] stringTOInt(String [] s){
+	
+	 /* Function takes String array and converts it to integer array
+	  * @param integer array 
+	 * */
+	public static Integer[] stringToInt(String [] s){
 		
-		int integer[]= new int[s.length];
+		Integer integer[]= new Integer[s.length];
 		 
 		 for(int i=0;i<s.length;i++){
 			 
@@ -1682,6 +1800,12 @@ public class Utility {
 
 	//question 14 sqt using newton
 	
+	 
+
+		/* Function calculates the square root of number
+		 * @param double epsilon and a number 
+		 * @return integer value which is square root of a number
+		 * */
 	 public static int sqrt(double e, int c) {
 
 			int t = c;
@@ -1701,6 +1825,12 @@ public class Utility {
 		}
 	 
 	 //day of the week
+	 
+	 
+		/* Function takes date with respect to month/day/year and calculates the day of the week
+		 * @param month/day/year
+		 * @returns integer day of the week
+		 * */
 	 public static int findingDay(int m, int d, int y)
 	    {
 	        /*y0 = y − (14 − m) / 12
@@ -1711,9 +1841,13 @@ public class Utility {
 	        int x=y1+y1/4-y1/100+y1/400;
 	        int m1=m + 12 * ((14 - m) / 12) - 2;
 	        int d1=(d+x+31*m1/12) % 7;
-	        //System.out.println(d1);
+	       
 	        return d1;
 	}
+	 
+	 /* Function takes day number and prints particular day of the week.
+		 * @param day number according to Gregorian calendar 
+		 * */
 	 
 	 public static void printDay(int num){
 			
@@ -1748,6 +1882,9 @@ public class Utility {
 
 	 //temperature conversion
 	 
+	 /* Function number takes in choice and temperature to calculate conversions
+		 * @param initial and final range
+		 * */
 	  public static void temperatureConvert(int choice, int temperature)
 	    {
 	        /*Celsius to Fahrenheit:   (°C × 9/5) + 32 = °F
@@ -1768,8 +1905,12 @@ public class Utility {
 	        }   
 	}
 
-	// toBinary() takes integer number as parameter and converts to binary
-	// string representation
+	
+	  
+	  /* Function  converts integer number to binary
+		 * @param number which will be converted to binary
+		 * @return String value which holds binary representation
+		 * */
 	public static String toBinary(int num) {
 
 		String st = "";
@@ -1797,6 +1938,11 @@ public class Utility {
 	}
 
 	// takes any integer and convert it into binary with 8-bit length
+	
+	
+	/* Function will take integer number and convert it into binary 8-bit 
+	 * @param number any integer number
+	 * */
 	public static String increseLength(int number) {
 
 		String binary = Utility.toBinary(number);
@@ -1811,6 +1957,10 @@ public class Utility {
 	}
 
 	// swaps the nibbles of any binary 8-bit number
+	
+	/* Function will swap nibbles of 8--bit binary number
+	 * @param String of binary number 
+	 * */
 	public static String swapNibble(String binary) {
 
 		// creating char array ch[]
@@ -1831,6 +1981,10 @@ public class Utility {
 	}
 
 	// converts any binary number into integer
+	
+	 /* Function converts the binary number into integer
+	 * @param String of binary number 
+	 * */
 	public static int toInt(String binary) {
 
 		int j = 0;
@@ -1850,6 +2004,10 @@ public class Utility {
 	}
 	  
 	// To check whether the given number is power of two
+	
+	/* Function to find the binary number is power of two or not
+	 * @param String of binary number 
+	 * */
 	public static boolean findPowOfTwo(String binary) {
 
 		int count = 0;

@@ -24,14 +24,7 @@ public class RangePrime {
 		System.out.println("Enter the value for final range ");
 		int b = Utility.inputInt();										//taking user input for final range
 
-		
-		/* Function takes two ranges and prints the prime numbers within that range
-		 * @param initial and final range
-		 * */
 		Utility.makeRange(a, b);
-/*	//	ArrayList al=Utility.adder();
-		System.out.println(al.size());
-		Utility.checkAnagram(al);*/
 
 	}
 

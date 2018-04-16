@@ -17,10 +17,6 @@ public class TwoDArray {
 
 	public static void main(String[] args) {
 
-
-		/* Function function to select type of the array and to display the contains
-		 * @returns displays the contains of an array
-		 * */
 		Utility.selectArray();
 
 	}

@@ -20,18 +20,10 @@ public class LeapYear {
 
 		System.out.println("Enter the any year");
 		
-		//taking users input
+		
 		int year=Utility.inputInt();
 		
-		/* Function for checking whether given year is leap year or not 
-		 *
-		 * @param year takes any year 
-		 * */
 		Utility.checkLeapYear(year);
-		
-		
-	
-		
-		
+
 	}
 }

@@ -21,9 +21,7 @@ public class WindChill {
 		String speed =args[1];								//using command line argument
 		System.out.println("Entered value for wind speed(between 3 to 120)(in miles per hour) "+speed);
 		
-		/* Function chillCalculation calculates the wind chill 
-		 * @param command line arguments
-		 * */
+		
 		Utility.chillCalculation(temperature, speed);
 
 	}

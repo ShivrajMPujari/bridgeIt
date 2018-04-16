@@ -18,20 +18,16 @@ public class PrimeAnagram {
 	public static void main(String[] args) {
 		
 		System.out.println("Enter the nth term:");
-		int n=Utility.inputInt();  								//taking user input for range
+		int num=Utility.inputInt();  								
 		
-		/* Function finds the prime numbers and store the numbers in an array
-		 * @param number takes the range 
-		 * */
-		int[] out=Utility.primeNumbers(n);							
+	
+		int[] out=Utility.primeNumbers(num);							
 		Utility.display(out);
 		
 		for (int i = 0; i < out.length-1; i++) {
 			for (int j = i+1; j < out.length; j++) {
 				
-				/* Function checks the number is palindrome or not
-				 * @param prime numbers from an array
-				 * */
+			
 				Utility.checkIntAnagaram(out[i], out[j]);
 			}
 			

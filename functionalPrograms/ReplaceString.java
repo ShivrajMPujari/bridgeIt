@@ -18,21 +18,8 @@ public class ReplaceString {
 		System.out.println("Enter your name");
 		String name = Utility.inputString(); 
 		String inputString = "Hello <<UserName>>, How are you?";
-
-		/*
-		 * Function to replace string from given pattern
-		 * @param inputString contains pattern
-		 * @param name contains desired string to replace
-		 */
-		String[] result = Utility.splitString(inputString, name);
-
-		/*
-		 * Function converts string array to string and storing in variable
-		 * outcome
-		 * @param string array
-		 */
-		String outcome = Utility.convertToString(result);
-		System.out.println(outcome);
+		inputString= Utility.replace(name, inputString);
+		System.out.println(inputString);
 
 	}
 

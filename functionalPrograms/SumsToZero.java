@@ -19,9 +19,6 @@ public class SumsToZero {
 		
 		int size = Utility.inputInt();								
 		
-		/* Function create an array and checks the distinct values equals to zero
-		 * @param size used to take the size of an array
-		 * */
 		Utility.tripletChecking(size);
 
 	}

@@ -18,9 +18,6 @@ public class PrimeFactors {
 		long number=Utility.inputLong();
 		
 
-		/* Function factorizePrime generates prime factors of any integer number 
-		 * @param number for generating prime factor of that number
-		 * */
 		Utility.factorizePrime(number);
 		
 		

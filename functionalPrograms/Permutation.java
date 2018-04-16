@@ -23,14 +23,7 @@ public class Permutation {
 	        String str = Utility.inputString();
 	        int n = str.length();
 	        
-	    	
-			/* Function takes the users input and permutes the string
-			 * @param str any desired string
-			 * @param number the starting index
-			 * @param number last index of the string 
-			 * */
 	        Utility.permute(str, 0, n-1);
 	    }
-
 
 }

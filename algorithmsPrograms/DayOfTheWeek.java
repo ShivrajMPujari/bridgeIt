@@ -23,16 +23,11 @@ public class DayOfTheWeek {
 		System.out.println("Year: "+args[2]);				//taking command line argument
 		int y=Integer.parseInt(args[2]);					// converting to int storing in variable
 		
-		/* Function takes date with respect to month/day/year and calculates the day of the week
-		 * @param month/day/year
-		 * */
+	
 		int day=Utility.findingDay(m,d,y);
 		
-		/* Function takes day number and prints particular day of the week.
-		 * @param day number according to Gregorian calendar 
-		 * */
+		
 		Utility.printDay(day);
-		//System.out.println(day);
 
 	}
 

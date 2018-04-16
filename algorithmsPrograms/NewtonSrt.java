@@ -1,3 +1,13 @@
+
+/*
+ * 
+ *  Purpose:compute the square root of a nonnegative number c given in the input using Newton's method.
+ * 	@author  Shivraj Pujari
+ *  @version 1.0
+ *  @since   12-4-2018
+ * 
+ * */
+
 package com.bridgeIt.algorithmsPrograms;
 
 import com.bridgeIt.utility.Utility;

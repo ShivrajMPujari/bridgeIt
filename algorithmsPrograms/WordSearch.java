@@ -39,9 +39,7 @@ public class WordSearch {
 			
 			String word=Utility.inputString();				//taking users input
 			
-			/* Function to search the element
-			 * @param String s1 ,starting index ,end index, word
-			 * */
+			
 			Utility.binarySearchString(s1, 0, s1.length, word);		
 			
 			

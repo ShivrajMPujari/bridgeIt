@@ -21,15 +21,8 @@ public class FindNumber {
 		System.out.println("Enter the value for b..");
 		int b = Utility.inputInt();								//user input for final range
 
-		
-		/* Function creates an array between two ranges
-		 * @param Numbers initial range and final range
-		 * */
 		int arr[] = Utility.createArray(a, b);
 
-		/* Function to search the users assumed number
-		 * @param Numbers array,starting ,index length
-		 * */
 		Utility.binarySearchingUser(arr, 0, arr.length);
 
 	}

@@ -18,24 +18,16 @@ public class SwapNIbbles {
 		System.out.println("Enter any integer number which will be conveted to binary ");
 		int number=Utility.inputInt();				
 		
-		/* Function will take integer number and convert it into binary 8-bit 
-		 * @param number any integer number
-		 * */
+		
 		String str=Utility.increseLength(number); 
 		
-		/* Function will swap nibbles of 8--bit binary number
-		 * @param String of binary number 
-		 * */
+	
 	    String s=Utility.swapNibble(str);
 	    
-	    /* Function converts the binary number into integer
-		 * @param String of binary number 
-		 * */
+	   
 		int num=Utility.toInt(s);
 		
-		/* Function to find the binary number is power of two or not
-		 * @param String of binary number 
-		 * */
+
 		boolean result=Utility.findPowOfTwo(s);
 		
 		System.out.println(num+" is resultant number");

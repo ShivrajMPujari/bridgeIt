@@ -8,10 +8,11 @@ import java.io.PrintWriter;
 
 public class OrderedLinkedList<T extends Comparable<T>>{
 
-	MyNode<T> head;	//starting node
+	MyNode<T> head;		//starting node
 	MyNode<T> current;	//last node
-	int position;	//position of last node
+	int position;		//position of last node
 
+	
 	public OrderedLinkedList(){
 		head = null;
 		current = null;
@@ -210,13 +211,14 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 		
 	}
 	
-	public  void printer(){
+	public  void printer(String file){
 		
 		FileWriter fw;
 		PrintWriter pw;
 		try {
-			fw = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//OrderedListOut.txt");
-			 pw=new PrintWriter(fw);
+		//	fw = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//OrderedListOut.txt");
+			fw = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"",true);
+			pw=new PrintWriter(fw);
 			//pw.print(data);
 			
 			 MyNode current=head;
@@ -226,13 +228,15 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 				while(current.data!=null){
 					
 					System.out.println(current.data);
-					pw.print(current.data+" ");
+				//	pw.print(current.data+" ");
+					pw.append(current.data+" ");
 				//	printWriting();
 					current=current.next;
 					if(current==null)break;
 				}
 
 			pw.flush();
+			pw.close();
 		} catch (IOException e) {
 			
 			e.printStackTrace();
@@ -263,12 +267,10 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 				  
 				   in[i]=Integer.valueOf(s[i]);
 				   ol.add(in[i]);
-				 //  System.out.println(in[i]);
 			}
-			 
 			  ol.action(32);
 			  ol.printList();
-			  ol.printer();
+			  ol.printer("OrderedListOut.txt");
 	} catch (IOException e) {
 		
 		e.printStackTrace();

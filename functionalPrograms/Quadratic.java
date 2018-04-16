@@ -27,9 +27,6 @@ public class Quadratic {
 		double delta= Utility. deltaCalculation(a, b, c);
 		 System.out.println(delta);
 		 
-		/* Function to calculate the roots of the equation a*x*x + b*x + c=0
-		 * @param delta ,a,b,c
-		 * */
 		Utility.calculateRoots(delta, a, b, c);
 		 
 		 

@@ -14,19 +14,17 @@ public class Anagram {
 
 	public static void main(String[] args) {
 
-		String s1 = null;
-		String s2 = null;
+		String string1 = null;
+		String string2 = null;
 
 		System.out.println("Enter String1");
-		s1 = Utility.inputString();
+		string1 = Utility.inputString();
 		
 		System.out.println("Enter String2");
-		s2 = Utility.inputString();
+		string2 = Utility.inputString();
 		
-		/* Function to check two Strings are anagram or not
-		 * @param string s1 and s2 
-		 * */
-		Utility.detectAnagram(s1, s2);
+		
+		Utility.detectAnagram(string1, string2);
 
 	}
 

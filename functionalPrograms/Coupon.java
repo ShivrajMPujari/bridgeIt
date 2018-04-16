@@ -23,13 +23,7 @@ public class Coupon {
 		//Taking user input for number of distinct coupon numbers
 		int n = Utility.inputInt();
 		Utility.NUMBER=n;
-		
-
-		/* coupon function generates n distinct number
-		 * @param n number of distinct coupon
-		 * 
-		 * */
-		float[] b=Utility.coupon(n);
+		int[] b=Utility.coupon(n);
 		System.out.println(Arrays.toString(b));			
 		
 	}

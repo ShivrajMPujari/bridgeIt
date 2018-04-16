@@ -8,9 +8,9 @@ public class VendingMachine {
 	
 		System.out.println("Enter the amount for changes");
 		int amount=Utility.inputInt();
+		
 		Utility.vendingMachine(amount);
 		
-
 	}
 
 }
