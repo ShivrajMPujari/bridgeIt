@@ -103,7 +103,6 @@ public class Demo1 {
         System.out.println("Given Array");
         printArray(arr);
  
-     //   MergeSort ob = new MergeSort();
         sort(arr, 0, arr.length-1);
  
         System.out.println("\nSorted array");

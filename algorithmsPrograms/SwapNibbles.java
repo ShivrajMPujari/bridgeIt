@@ -11,7 +11,7 @@ package com.bridgeIt.algorithmsPrograms;
 
 import com.bridgeIt.utility.Utility;
 
-public class SwapNIbbles {
+public class SwapNibbles {
 
 	public static void main(String[] args) {
 		

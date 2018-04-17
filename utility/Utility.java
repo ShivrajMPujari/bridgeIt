@@ -64,6 +64,12 @@ public class Utility {
 	//-----------------------------------
 
 	// question 1 (replace username)(functional)
+
+	/*
+	 * Function to replace string from given pattern
+	 * @param inputString contains pattern
+	 * @param name contains desired string to replace
+	 */
 	public static String replace(String name, String statement) {
 
 		statement = statement.replace("<<UserName>>", name);
@@ -71,29 +77,6 @@ public class Utility {
 	}
 	
 	
-	/*
-	 * Function to replace string from given pattern
-	 * @param inputString contains pattern
-	 * @param name contains desired string to replace
-	 */
-	public  String[] splitString(String inputString,String name){
-		
-		String toReplaced="<<UserName>>,";
-		String []stringArray=inputString.split("\\s");
-		
-		for (int i = 0; i < stringArray.length; i++) {
-			
-			if(stringArray[i].equals(toReplaced)){
-				
-				stringArray[i]=name+",";
-				break;
-
-			}		
-		}
-		return stringArray;
-		
-		
-	}
 	
 	//converts String array to String
 	
@@ -343,7 +326,7 @@ public class Utility {
 	public static int NUMBER=0;
 	public static int random() {
 		Random num= new Random();
-		return num.nextInt(NUMBER+3);
+		return num.nextInt(NUMBER);
 	}
 	
 	public static boolean search(int[] a,int num){
@@ -371,50 +354,20 @@ public class Utility {
 		int count=0;
 		int i=0;
 		while(i!=a.length){
-			//System.out.println(1);
 			int value=random();
 			count++;
-			System.out.println(value);
 			if(search(a,value)==false){
 				a[i]=value;
+				System.out.println(Arrays.toString(a));
 				i++;
 			}
-
+			if(i==a.length-1)break;
 		}
+		
 		System.out.println("Total random number needed to have all distinct numbers is "+count);
 			return a;
 	}
 
-	
-	/*public static void couponGenerator(int n) {
-		boolean same = false;
-		int a[] = new int[n];
-		for (int i = 0; i < n; i++) {
-			float value = random();
-			NUMBER++;
-			for (int j = 0; j < n; j++) {
-				if (a[j] == value) {
-					same = true;
-					break;
-
-				}
-				if (same == false) {
-					a[i] = (int) value;
-				}
-
-			}
-
-		}
-		System.out.println("Distinct Coupon number are:");
-		for (int i = 0; i < n; i++) {
-			System.out.print(a[i] + " ");
-		}
-		System.out.println();
-		System.out.println("\n Count of random numbers is " + NUMBER);
-	}
-	
-	*/
-	
 	
 	// question 10 triplet (functional)
 	
@@ -919,34 +872,39 @@ public class Utility {
 	/* Function checks two Strings are anagram or not
 	 * @param string s1 and s2 
 	 * */
-	public static void  detectAnagram(String s1, String s2) {
-
-		char[] a1 = s1.toCharArray();
-		char[] a2 = s2.toCharArray();
+	public static void  detectAnagram(String str1, String str2) {
+		 str1=str1.replace(" ", "");
+		 str2=str2.replace(" ","");
+		 str1=str1.toLowerCase();
+		 str2=str2.toLowerCase();
+		char[] charArray1 = str1.toCharArray();
+		char[] charArray2 = str2.toCharArray();
 		int count = 0;
 
-		if (a1.length == a2.length) {
-			for (int i = 0; i < a1.length; i++) {
+		if (charArray1.length ==charArray2.length) {
+			for (int i = 0; i <charArray1.length; i++) {
 
-				for (int j = 0; j < a2.length; j++) {
+				for (int j = 0; j < charArray2.length; j++) {
 
-					if (a1[i] == a2[j]) {
+					if (charArray1[i] == charArray2[j]) {
 
-						a2[j] = 0;
+						charArray2[j] = 0;
 						count++;
 					}
 
 				}
 
 			}
-			if (count == a1.length) {
+			if (count == charArray1.length) {
 				System.out.println("Given strings are anagram");
-			}
-
-		} else {
+			}else {
 				System.out.println("Given strings are no an anagram");
 		}
 
+		} 
+		else{
+			System.out.println("Given strings are no an anagram");
+		}
 	}
 
 
@@ -965,7 +923,9 @@ public class Utility {
 
 	}
 
-	
+	/* Function takes integer number and checks whether it is prime number or not
+	 * @param integer number
+	 * */
 	public static void primer(int p) {
 
 		
@@ -978,9 +938,9 @@ public class Utility {
 			}
 
 		}
-		if (count == 0) {
+		if (count == 0&& p!=1) {
 			System.out.println(p + " ");			
-			Utility.checkPalindromic(p);
+		//	Utility.checkPalindromic(p);
 
 		}
 
@@ -1198,19 +1158,19 @@ public class Utility {
 	    
 	    
 	// QUESTION 4 Utility methods
-	    public static TreeMap<Double, String> hm = new TreeMap<Double, String>();
+	    public static TreeMap<Double, String> TMAP = new TreeMap<Double, String>();
 	    
 		/* Function sortbyKey sorts the key in descending order
 		 * @returns all the elements in Treemap -(key,value) 
 		 * */
 	    public static void sortbykey() {
-			ArrayList<Double> sortedKeys = new ArrayList<Double>(hm.keySet());
+			ArrayList<Double> sortedKeys = new ArrayList<Double>(TMAP.keySet());
 
 			Collections.sort(sortedKeys, Collections.reverseOrder());
 
 			// Display the TreeMap which is naturally sorted
 			for (Double x : sortedKeys)
-				System.out.println("Performance time = " + x + " nsec,Method Name = " + hm.get(x));
+				System.out.println("Performance time = " + x + " nsec,Method Name = " + TMAP.get(x));
 		}
 
 
@@ -1640,16 +1600,15 @@ public class Utility {
 	 * @param Numbers initial range and final range
 	 * */
 	    
-	public static int[]  createArray(int a , int b){
-		int size= (b-a)+1;
-		System.out.println(size+" "+a+" "+b);
+	public static int[]  createArray(int range ){
+		int size= (range);
+		System.out.println(size);
 		
 		int [] ary= new int[size];
 		System.out.println(Arrays.toString(ary));
 		for(int i=0;i<size;i++){
 					
-			ary[i]=a;
-			a++;
+			ary[i]=i;
 			
 		}
 		System.out.println(Arrays.toString(ary));
@@ -1668,7 +1627,6 @@ public class Utility {
 	public static void binarySearchingUser(int arr[], int sIndex, int eIndex) {
 
 		int want = 0;
-		// int mid=(sIndex+eIndex)/2;
 		if (eIndex >= sIndex) {
 			int mid = sIndex + (eIndex - sIndex) / 2;
 			System.out.println(arr[mid] + " is this number is your disered value ? ");
@@ -1681,7 +1639,6 @@ public class Utility {
 
 			} else if (want == 2) {
 
-				System.out.println(mid);
 				binarySearchingUser(arr, sIndex, mid - 1);
 
 			} else if (want == 3) {
@@ -1694,6 +1651,29 @@ public class Utility {
 			System.out.println("match not found");
 		}
 	}
+	
+	
+	/* Function does binary seach to find the desired number
+	 * @param Integer array 
+	 * */
+	public static void binarySearchInArray(int[] array) {
+		int start = 0;
+		int end = array.length;
+		int mid = (start + end) / 2;
+		while (start < end) {
+			System.out.println("You are between " + (start + 1) + " and " + (end) + "\nEnter true or false");
+			boolean b = Utility.inputBoolean();
+			mid = (start + end) / 2;
+			if (b == true) {
+				start = mid + 1;
+			} else if (b == false) {
+				end = mid;
+			}
+		}
+		System.out.println("Your Number is : " + array[mid]);
+	}
+
+	
 	
 	
 	//QUESTION 6 binary search the word from word list
@@ -1779,20 +1759,80 @@ public class Utility {
 	}
 	
 	//question 9
+	//Method for merge sort
+    public static <T extends Comparable<T>> void mergeSort (T a[] , int low , int high )
+    {
+        if(low < high)
+        {
+            int mid = (low + high )/2;
+            mergeSort (a,low,mid);
+            mergeSort (a,mid+1,high);            
+            merge(a,low,mid,high);  
+       }                   
+    }
+   
+    public static <T extends Comparable<T>> void merge(T a[] , int start, int mid, int end)
+    {
+        //stores the starting position of both parts in temporary variables.
+        int p = start , q = mid+1;
+        Object[] arr1 = new Object[end-start+1];
+        int k=0;
+        for(int i = start ;i <= end ;i++)
+        {
+            //checks if first part comes to an end or not .
+            if(p>mid)     
+            {
+                arr1[k++] = a[q++] ;
+            }
+            //checks if second part comes to an end or not
+            else if ( q > end)  
+            {
+               arr1[k++] = a[p++];
+            }
+            //checks which part has smaller element.
+            else if( a[p].compareTo(a[q])<0)    
+            {
+               arr1[ k++ ] = a[p++];
+            }
+            else
+            {
+               arr1[ k++ ] = a[q++];
+            }
+        }
+        for (int l=0 ; l< k ;l ++)
+        {
+              a[start++] = (T) arr1[l] ;                         
+        }
+        System.out.println("After Sorting:");
+        for (int i = 0; i < a.length; i++)
+        {
+            System.out.println(a[i]);
+        }
+}
+	
+	
+	
+	
+	
+	
 	 public static void vendingMachine( int changes)
 	    {
+		 		
 	            int notes[]={1, 2, 5, 10, 50, 100, 500, 1000};
 	            int len=notes.length;
 	            int count=0;
 	            for (int i = len-1; i >= 0; i--)
 	            {
+	            	int num=0;
 	                while(changes>=notes[i])
 	                {
 	                    changes-=notes[i];
-	                    System.out.print(notes[i]+" ");
+	                 //   System.out.print(notes[i]+" ");
 	                    count++;
+	                    num++;
 	                }
-
+	                if(num>0)
+	                System.out.println(notes[i]+"x"+num);
 	            }
 	           
 	            System.out.println("\nNumber of changes:"+count);
@@ -1833,10 +1873,7 @@ public class Utility {
 		 * */
 	 public static int findingDay(int m, int d, int y)
 	    {
-	        /*y0 = y − (14 − m) / 12
-	                x = y0 + y0/4 − y0/100 + y0/400
-	                m0 = m + 12 × ((14 − m) / 12) − 2
-	                d0 = (d + x + 31m0 / 12) mod 7*/
+	       
 	        int y1=y-(14-m)/12;
 	        int x=y1+y1/4-y1/100+y1/400;
 	        int m1=m + 12 * ((14 - m) / 12) - 2;
@@ -1905,6 +1942,18 @@ public class Utility {
 	        }   
 	}
 
+	  
+	  /* Function converts the pricipal amount into appropriate salary 
+		 * @param numbers principal,rate of interest and years
+		 * @return number payments
+		 * */ 
+	  public static void monthlyPayment(double p,double r,int y)
+	    {
+	        double n=y*12;
+	        double rate= r/(12*100);
+	        double payment=(p*rate)/(1-Math.pow(1+rate,-n));
+	        System.out.println("Monthly Payment is:"+payment);
+	}
 	
 	  
 	  /* Function  converts integer number to binary
@@ -1952,7 +2001,7 @@ public class Utility {
 			binary = "0" + binary;
 
 		}
-
+		System.out.println(binary);
 		return binary;
 	}
 
@@ -1976,6 +2025,7 @@ public class Utility {
 		}
 
 		String result = new String(ch);
+		System.out.println(result);
 		return result;
 
 	}

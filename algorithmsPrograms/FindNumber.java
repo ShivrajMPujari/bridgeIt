@@ -15,13 +15,10 @@ public class FindNumber {
 
 	public static void main(String[] args) {
 
-		System.out.println("Choose a number range..a and b");
-		System.out.println("Enter the value for a..");
-		int a = Utility.inputInt();								//user input for initial range
-		System.out.println("Enter the value for b..");
-		int b = Utility.inputInt();								//user input for final range
+								
+		int range = Integer.parseInt(args[0]);							
 
-		int arr[] = Utility.createArray(a, b);
+		int arr[] = Utility.createArray( range);
 
 		Utility.binarySearchingUser(arr, 0, arr.length);
 

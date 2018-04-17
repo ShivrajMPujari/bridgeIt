@@ -24,32 +24,26 @@ public class WordSearch {
 		
 		try {
 			
-			//using filereader and bufferedreader to store the list of words from a file
-			FileReader fr = new FileReader("//home//bridgeit//Downloads//shiv//ExpCode//src//com//bridgelabz//algorithms//demo.txt");
-			BufferedReader br = new BufferedReader(fr);
+			FileReader fileRead = new FileReader("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//algorithmsPrograms//demo.txt");
+			BufferedReader reader = new BufferedReader(fileRead);
 			
-			String st=br.readLine();						//read the file in a line  
+			String string=reader.readLine();						
 			
-			System.out.println(st);
-		    String [] s=st.split("\\s");					//Splitting a string to string array
+			System.out.println(string);
+		    String [] strArray=string.split("\\s");					
 		   
-		    String [] s1=Utility.wordSort(s);   			//sorting the words
-		    System.out.println(Arrays.toString(s1));
+		    String [] strArray1=Utility.wordSort(strArray);   			
+		    System.out.println(Arrays.toString(strArray));
 			System.out.println("enter the word to search");
 			
-			String word=Utility.inputString();				//taking users input
+			String word=Utility.inputString();				
 			
-			
-			Utility.binarySearchString(s1, 0, s1.length, word);		
-			
-			
+			Utility.binarySearch(strArray1, word);
 		} catch (IOException e) {
 			
 			e.printStackTrace();
 		}
-		
-		
-		
+
 	}
 
 }

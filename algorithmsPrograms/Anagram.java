@@ -18,12 +18,13 @@ public class Anagram {
 		String string2 = null;
 
 		System.out.println("Enter String1");
-		string1 = Utility.inputString();
+		string1 = Utility.inputStringLong();
 		
 		System.out.println("Enter String2");
-		string2 = Utility.inputString();
+		string2 = Utility.inputStringLong();
 		
-		
+		 string1=string1.replace(" ", "");
+		 string2=string2.replace(" ","");
 		Utility.detectAnagram(string1, string2);
 
 	}

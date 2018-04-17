@@ -19,8 +19,6 @@ public class Coupon {
 	public static void main(String[] args) {
 	
 		System.out.println("Enter the N term:");
-		
-		//Taking user input for number of distinct coupon numbers
 		int n = Utility.inputInt();
 		Utility.NUMBER=n;
 		int[] b=Utility.coupon(n);
