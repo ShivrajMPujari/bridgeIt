@@ -1,5 +1,7 @@
 package com.bridgeIt.dataStructures;
 
+import java.util.Arrays;
+
 import com.bridgeIt.dataStructures.OrderedLinkedList.MyNode;
 
 public class Stack <T extends Comparable<T>> {
@@ -9,6 +11,7 @@ public class Stack <T extends Comparable<T>> {
 	T top;
 	MyNode<T> first;
 	static int size=0;
+	
 	
 	public void push(T data){
 		

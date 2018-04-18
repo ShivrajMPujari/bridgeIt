@@ -14,8 +14,7 @@ import com.bridgeIt.utility.Utility;
 public class FindNumber {
 
 	public static void main(String[] args) {
-
-								
+						
 		int range = Integer.parseInt(args[0]);							
 
 		int arr[] = Utility.createArray( range);

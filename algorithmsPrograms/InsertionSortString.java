@@ -15,15 +15,12 @@ public class InsertionSortString {
 
 	public static void main(String[] args) {
 		
-
 		System.out.println("enter the strings ");
 		String str=Utility.inputStringLong();
 		System.out.println(str);
 		String strArray[]=str.split("\\s");
 		
-	
 		Utility.insertionSort(strArray);
-		
 		
 	}
 

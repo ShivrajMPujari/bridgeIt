@@ -2,7 +2,7 @@ package com.bridgeIt.algorithmsPrograms;
 
 import com.bridgeIt.utility.Utility;
 
-public class SearchWord {
+public class NumberSearch {
 	
 	public static void main(String[] args) {
 		

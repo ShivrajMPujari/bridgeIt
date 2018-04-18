@@ -20,19 +20,10 @@ public class PrimeAnagram {
 		System.out.println("Enter the nth term:");
 		int num=Utility.inputInt();  								
 		
-	
 		int[] out=Utility.primeNumbers(num);							
 		Utility.display(out);
-		
-		for (int i = 0; i < out.length-1; i++) {
-			for (int j = i+1; j < out.length; j++) {
-				
-			
-				Utility.checkIntAnagaram(out[i], out[j]);
-			}
-			
-		}
-		
+		Utility.printAnagram(out);
 	}
-
+	
+	
 }

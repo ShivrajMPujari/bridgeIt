@@ -7,10 +7,11 @@ import com.bridgeIt.dataStructures.OrderedLinkedList.MyNode;
 public class Queue <T extends Comparable<T>> {
 
 	MyNode first;
-	static Double balanceAmount=25000.00;
+	public static Double balanceAmount;
 	public static int size=0;
 	public static Queue q = new Queue<>();
-	public void enqueue(Double data){
+
+	public void enqueue(T data){
 		
 		if(first==null){
 			
@@ -27,10 +28,7 @@ public class Queue <T extends Comparable<T>> {
 			}
 			MyNode<T> newNode = new MyNode<T>(data);
 			current.next=newNode;
-			
-			
 		}
-		
 	}
 	public boolean dequeue(){
 		
@@ -39,12 +37,12 @@ public class Queue <T extends Comparable<T>> {
 		int wantTo=sc.nextInt();
 		MyNode current=first;
 		if(wantTo==1){
-			
-			balanceAmount = balanceAmount-current.data;
+			Double data=new Double((double) current.data);
+			balanceAmount = balanceAmount-data;
 			
 		}else if(wantTo==2){
 	
-			balanceAmount = balanceAmount+current.data;
+			balanceAmount = balanceAmount+(Double)current.data;
 			
 		}else{	
 			System.out.println("Invalid entry");
@@ -105,12 +103,10 @@ public class Queue <T extends Comparable<T>> {
 		
 	}
 	
-	
-	
 	static class MyNode<T>{
-		Double data;			//data to be stored
-		MyNode<T> next;			//reference to the next node
-		MyNode(Double data){
+		T data;			
+		MyNode<T> next;		
+		MyNode(T data){
 			this.data = data;
 			next = null;
 		}

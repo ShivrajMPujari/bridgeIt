@@ -16,19 +16,13 @@ public class PalindromicPrime {
 	public static void main(String[] args) {
 
 		System.out.println("Enter the nth term:");
-		int num = Utility.inputInt();							//taking user input for nth term and storing in variable n
-		
+		int num = Utility.inputInt();				
 		
 		int[] out = Utility.primeNumbers(num);				
-		Utility.display(out);								
-
-		for (int i = 0; i < out.length - 1; i++) {
-			
-		
-			Utility.checkPalindromic(out[i]);
-
-		}
-
+		Utility.display(out);	
+		Utility.primePalindrome(out);
 	}
 
+	
+	
 }

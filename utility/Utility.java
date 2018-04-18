@@ -975,6 +975,18 @@ public class Utility {
 
 	}
  
+	/* Function takes prime array and checks for palindromic number
+	 * @param integer array of prime numbers
+	 * */
+	public static void primePalindrome(int prime[]){
+		
+		for (int i = 0; i < prime.length - 1; i++) {
+			
+			Utility.checkPalindromic(prime[i]);
+		}
+
+	}
+	
 
 	/* Function finds the prime numbers and store the numbers in an array
 	 * @param number takes the range 
@@ -986,7 +998,7 @@ public class Utility {
 	            int k=0;
 	            for(int i=0;i<n;i++)
 	            {
-	                if(isPrime(i))
+	                if(isPrime(i)&&i!=1)
 	                {
 	                    a[k]=i;
 	                    k++;
@@ -1008,7 +1020,7 @@ public class Utility {
 	                        j++;
 	                    }
 	                }
-	                System.out.println();
+	        //        System.out.println();
 	              
 	              /*  for (int integer : newArray) {
 	                    System.out.println(integer);
@@ -1018,11 +1030,30 @@ public class Utility {
 	       
 	}
 	
-	//To check number is prime or not
+		/* Function interates in array and checks for anagram numbers
+		 * @param integer array
+		 * */
+		public static void printAnagram(int prime[]){
+			
+			for (int i = 0; i < prime.length-1; i++) {
+				for (int j = i+1; j < prime.length; j++) {
+					if(Utility.checkIntAnagaram(prime[i], prime[j])){
+						System.out.println(prime[i]+" "+prime[j]+"  are anagram");
+					}
+				}
+				
+			}
+			
+			
+		}
+	 /* Function checks whether the given number is prime or not
+		 * @param integer value to check for prime number conditions
+		 * @returns boolean:true if it is prime number
+		 * */
 	    public static boolean isPrime (int number) {
 	  
 	     for(int i=2; i<=number/2; i++){
-	         if(number % i == 0){
+	         if(number % i == 0&& number!=1){
 	             return false;
 	         }
 	     }
@@ -1136,7 +1167,7 @@ public class Utility {
 		/* Function checks the number is palindrome or not
 		 * @param prime numbers from an array
 		 * */
-	    public static void checkIntAnagaram(int n1, int n2){
+	    public static boolean checkIntAnagaram(int n1, int n2){
 
 	        String num1=String.valueOf(n1);
 	        String num2=String.valueOf(n2);
@@ -1148,14 +1179,12 @@ public class Utility {
 	        String st1=new String(string1);
 	        String st2=new String(string2);
 	        if(st1.equals(st2)){
-	        	System.out.println(n1+" "+n2+"  are anagram");
+	        	
+	        	return true;
 	        }
+			return false;
 			
 		}
-	    
-	    
-	    
-	    
 	    
 	// QUESTION 4 Utility methods
 	    public static TreeMap<Double, String> TMAP = new TreeMap<Double, String>();
@@ -1760,6 +1789,10 @@ public class Utility {
 	
 	//question 9
 	//Method for merge sort
+	
+	 /* Function divdes the array recursively and make it available for merge sorting
+	  * @param generic array ,lower index,higher index
+	 * */
     public static <T extends Comparable<T>> void mergeSort (T a[] , int low , int high )
     {
         if(low < high)
@@ -1771,20 +1804,24 @@ public class Utility {
        }                   
     }
    
+
+	 /* Function merges the array which was divded
+	  * @param generic array ,lower index,mid index,higher index
+	  * */
     public static <T extends Comparable<T>> void merge(T a[] , int start, int mid, int end)
     {
-        //stores the starting position of both parts in temporary variables.
+       
         int p = start , q = mid+1;
         Object[] arr1 = new Object[end-start+1];
         int k=0;
         for(int i = start ;i <= end ;i++)
         {
-            //checks if first part comes to an end or not .
+           
             if(p>mid)     
             {
                 arr1[k++] = a[q++] ;
             }
-            //checks if second part comes to an end or not
+           
             else if ( q > end)  
             {
                arr1[k++] = a[p++];
@@ -1808,12 +1845,7 @@ public class Utility {
         {
             System.out.println(a[i]);
         }
-}
-	
-	
-	
-	
-	
+    	}
 	
 	 public static void vendingMachine( int changes)
 	    {
@@ -1827,7 +1859,6 @@ public class Utility {
 	                while(changes>=notes[i])
 	                {
 	                    changes-=notes[i];
-	                 //   System.out.print(notes[i]+" ");
 	                    count++;
 	                    num++;
 	                }
@@ -2080,6 +2111,9 @@ public class Utility {
 
 	}
 	  
-	  
+	  //DATASTRUCTURES----------
+	
+	
+	
 	  
 }
