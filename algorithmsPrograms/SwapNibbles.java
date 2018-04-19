@@ -18,16 +18,12 @@ public class SwapNibbles {
 		System.out.println("Enter any integer number which will be conveted to binary ");
 		int number=Utility.inputInt();				
 		
-		
 		String str=Utility.increseLength(number); 
 		
-	
 	    String s=Utility.swapNibble(str);
 	    
-	   
 		int num=Utility.toInt(s);
 		
-
 		boolean result=Utility.findPowOfTwo(s);
 		
 		System.out.println(num+" is resultant number");

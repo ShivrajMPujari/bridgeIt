@@ -3,23 +3,25 @@ package com.bridgeIt.dataStructures;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
-import com.bridgeIt.dataStructures.OrderedLinkedList.MyNode;
+
+import com.bridgeIt.utility.Utility;
 
 public class Demo4 {
 
-	public  void printData(String file,Integer data){
+	public static <T extends Comparable<T>> void printData(String file,T data){
 		
-		FileWriter fw;
-		PrintWriter pw;
+		FileWriter filewrite;
+		PrintWriter printwrite;
 		try {
-		//	fw = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//OrderedListOut.txt");
-			fw = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"",true);
-			pw=new PrintWriter(fw);
+
+			filewrite = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"",true);
+			printwrite=new PrintWriter(filewrite);
 			
-			pw.print(""+data+" ");
-			pw.flush();
-			pw.close();
+			printwrite.print(""+data+" ");
+			printwrite.flush();
+			printwrite.close();
 		} catch (IOException e) {
 			
 			e.printStackTrace();
@@ -31,9 +33,11 @@ public class Demo4 {
 	
 	public static void main(String[] args) {
 	
-		Demo4 d =new Demo4();
-		d.printData("HashingOut.txt", 246);
-		d.printData("HashingOut.txt", 244);
+		
+		Utility.printData("HashingOut.txt", 2345);
+		String [] str=Utility.readFile("HashingOut.txt");
+		System.out.println(Arrays.toString(str));
+	//	d.printData("HashingOut.txt", 244);
 		
 		
 	}

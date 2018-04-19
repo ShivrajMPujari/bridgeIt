@@ -17,10 +17,10 @@ public class PrimeQueue {
 		Integer[] primeanagrams=Anagram2d.primeAnagramArray(anagrams);
 		System.out.println(Arrays.toString(primeanagrams));
 		
-		Queue queue= new Queue();
+		QueueLinkList queue= new QueueLinkList();
 		for (int i = 0; i < primeanagrams.length; i++) {
 			
-			queue.enqueue(primeanagrams[i].doubleValue());
+			queue.enqueue(primeanagrams[i]);
 		}
 		queue.printQueue();
 		

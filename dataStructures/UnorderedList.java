@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import com.bridgeIt.utility.Utility;
+
 public class UnorderedList {
 
 	static Node current;										//current node
@@ -42,36 +44,6 @@ public class UnorderedList {
 		
 	}
 
-	/* Function removes the elements inside a list
-	 * @param data to be removed inside list
-	 * */
-	public static <T extends Comparable<T>> void remove(T data){
-		
-			current=head;
-			if(head.data==data){
-				System.out.println(current.data +"--- "+data);
-				head.next=head;
-				head.previous=null;
-				return;
-			}
-			
-			while(current.data!=data){
-				
-				current=current.next;
-				System.out.println(current.data +" "+data);
-			}
-			if(current.next==null){
-				
-				current.previous.next=null;
-				return;
-				
-			}
-			current.previous.next=current.next;
-			current.next.previous=current.previous;
-			current.next=null;
-			current.previous=null;
-			
-	}	
 		
 	/* Function removes the elements inside a list
 	 * @param data to be removed inside list
@@ -79,22 +51,23 @@ public class UnorderedList {
 	public static <T extends Comparable<T>> boolean search(T data){
 		
 		 current=head;
-		while(current.data==data){
-			
+		while(current.data.equals(data)!=true){
 			if(current.next==null) return false;
-			if(current.next.data==data) return true;
 			if(current.next==null){		
 				return false;}
 				current=current.next;
 			
 			
 		}
-
-	return true;	
-
-
+		
+		if(current.data.equals(data))return true;
+				
+		return false;	
 	}
 	
+	
+	/* Function prints the list in file 
+	 * */
 	public static <T extends Comparable<T>> void printList(){
 		
 	current=head;
@@ -103,20 +76,22 @@ public class UnorderedList {
 	}
 	while(current.data!=null){
 		
-		System.out.println(current.data);
-		printWriting();
+		Utility.printData("UnorderedFileOut.txt", (T) current.data);
 		current=current.next;
 		if(current==null)break;
 	}
 			}
 	
+	
+	
+	
+	/* Function perform action to remove or add the elements
+	 * @param data to be removed inside list
+	 * */
 	public static  <T extends Comparable<T>> void action(T data){
-		boolean res=search(data);
-		System.out.println(res);
 		if(search(data)==true){
-			
-		//remove(data);
-			removeing(data);
+
+			removing(data);
 		}else{
 			
 			add(data);
@@ -125,81 +100,10 @@ public class UnorderedList {
 	}
 	
 	
-	public static void main(String[] args) {
-		
-		FileReader fr;
-		try {
-			fr = new FileReader("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files/unorderedList.txt");
-			BufferedReader br = new BufferedReader(fr);
-			String read=br.readLine();
-			String concat=read;
-			while(read!=null){
-				
-				read=br.readLine();
-				if(read==null){break;}
-				concat=concat+read;
-			}
-			System.out.println(concat);
-			 String [] s=concat.split("\\s");					//Splitting a string to string array
-			  UnorderedList un= new UnorderedList();
-			  for (int i = 0; i < s.length; i++) {
-				
-				  un.add(s[i]);
-			}
-			  
-			
-			printList();
-			
-			action("raj");
-			action("world");
-			//action("raj");
-		//	printList();
-			
-			printWriting();
-			
-			
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-			
-		}
-	
-
-	}
-	
-	public static  <T extends Comparable<T>> void printWriting(){
-		
-		
-		FileWriter fw;
-		PrintWriter pw;
-		try {
-			fw = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//UnorderedFileOut.txt");
-			 pw=new PrintWriter(fw);
-			//pw.print(data);
-			
-			 current=head;
-				
-				if(current.data==null){
-					return;
-				}
-				while(current.data!=null){
-					
-					System.out.println(current.data);
-					pw.print(current.data+" ");
-					current=current.next;
-					if(current==null)break;
-				}
-
-			pw.flush();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		
-	}
-	
-	public static  <T extends Comparable<T>> void removeing(T item) 
+	/* Function removes the elements inside a list
+	 * @param data to be removed inside list
+	 * */
+	public static  <T extends Comparable<T>> void removing(T item) 
 	{
 		if(head==null)
 		{
@@ -225,7 +129,25 @@ public class UnorderedList {
 
 }
 
+	
+	public static void main(String[] args) {
+		String[] s = Utility.readFile("unorderedList.txt");
+		UnorderedList un = new UnorderedList();
+		for (int i = 0; i < s.length; i++) {
 
-	}
+			un.add(s[i]);
+
+		}
+
+		action("raj");
+		action("jay");
+		action("jack");
+		action("jay");
+		printList();
+
+	} 
+	
+	
 	
 
+}

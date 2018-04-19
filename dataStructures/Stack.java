@@ -2,10 +2,8 @@ package com.bridgeIt.dataStructures;
 
 import java.util.Arrays;
 
-import com.bridgeIt.dataStructures.OrderedLinkedList.MyNode;
 
 public class Stack <T extends Comparable<T>> {
-	
 	
 	T data;
 	T top;
@@ -33,20 +31,25 @@ public class Stack <T extends Comparable<T>> {
 		MyNode current=first;
 		while(current!=null){
 			
-			System.out.println(current.data);
+			System.out.print("\t"+current.data);
 			current=current.next;
 		}
 		
 		
 	}
 	
-	public void pop(){
+	public T pop(){
 		
 		MyNode current=first;
+		T node=first.data;
 		first=current.next;
 		current=null;
 		size--;
+		return node;
 		
+	}
+	public int size(){
+		return size;
 	}
 	
 	public static void main(String[] args) {

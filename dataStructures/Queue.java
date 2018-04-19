@@ -1,114 +1,83 @@
 package com.bridgeIt.dataStructures;
 
-import java.util.Scanner;
+public class Queue {
 
-import com.bridgeIt.dataStructures.OrderedLinkedList.MyNode;
-
-public class Queue <T extends Comparable<T>> {
-
-	MyNode first;
-	public static Double balanceAmount;
-	public static int size=0;
-	public static Queue q = new Queue<>();
-
-	public void enqueue(T data){
-		
-		if(first==null){
-			
-			MyNode<T> newNode = new MyNode<T>(data);
-			first=newNode;
-			return;
+	int size;
+	int queue[];
+	int rear;
+	int front;
+	public int capacity;
+	
+	public Queue() 
+	{
+		capacity=20;
+		size=0;
+		queue=new int[capacity];
+		rear=front=-1;
+	}
+	
+	public void enqueue(int item)
+	{
+		if(size()>capacity)
+		{
+			System.out.println("Queue is overloaded");
 		}
-		else{
-			MyNode current=first;
-			while(current.next!=null){
-				
-				current=current.next;
-				
+		else
+		{
+			if(front==-1 && rear==-1)
+			{
+			queue[++rear]=item;
+			front=0;
 			}
-			MyNode<T> newNode = new MyNode<T>(data);
-			current.next=newNode;
+			else
+			{
+				queue[++rear]=item;
+			}
+			System.out.println("You are Inserted into queue");
+			size++;
 		}
 	}
-	public boolean dequeue(){
-		
-		System.out.println("Enter the action 1.withdraw  2.deposit");
-		Scanner sc = new Scanner(System.in);
-		int wantTo=sc.nextInt();
-		MyNode current=first;
-		if(wantTo==1){
-			Double data=new Double((double) current.data);
-			balanceAmount = balanceAmount-data;
-			
-		}else if(wantTo==2){
 	
-			balanceAmount = balanceAmount+(Double)current.data;
-			
-		}else{	
-			System.out.println("Invalid entry");
+	public void dequeue()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Queue is Underflow");
+		}
+		else
+		{
+			System.out.println("You are Poped from queue:"+queue[front++]);
+		}
+		size--;
+	}
+	
+	public boolean isEmpty()
+	{
+		if(size==0)
+		{
+			return true;
+		}
+		else
 			return false;
+	}
+	
+	public int size()
+	{
+		return size;
+	}
+	
+	void display()
+	{
+		if(front==-1)
+		{
+			System.out.println("Queue is empty");
 		}
-		
-		first=current.next;
-		current=null;
-		return true;
-	}
-	
-	public void printQueue(){
-		
-		MyNode current=first;
-		while(current!=null){
-			
-			System.out.println(current.data);
-			current= current.next;
-			
-		}
-		
-	}
-	
-	public static void main(String[] args) {
-		
-		q.addOns();
-		q.printQueue();
-		q.transactions();
-		System.out.println(balanceAmount);
-	}
-	
-	public void addOns(){
-		
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the number of people in queue");
-			size=sc.nextInt();
-		for (int i = 0; i < size; i++) {
-			System.out.println("Enter the amount you want to withdraw or deposit person"+i);
-			Double b= sc.nextDouble();
-			q.enqueue(b);
-		}
-	}
-	
-	
-	
-	public void transactions(){
-		boolean result=true;
-		for (int i = 0; i < size ; i++) {
-			
-			if(dequeue()){
-				System.out.println("Transaction successfully");
-				continue;
-			}else{
-				dequeue();
+		else
+		{
+			for(int i=front;i<=rear;i++)
+			{
+				System.out.println(queue[i]);
 			}
-			
 		}
-		
 	}
-	
-	static class MyNode<T>{
-		T data;			
-		MyNode<T> next;		
-		MyNode(T data){
-			this.data = data;
-			next = null;
-		}
-}
 }

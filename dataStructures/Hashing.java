@@ -1,13 +1,6 @@
 package com.bridgeIt.dataStructures;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Arrays;
-
-import com.bridgeIt.dataStructures.OrderedLinkedList.MyNode;
+import com.bridgeIt.utility.Utility;
 
 public class Hashing {
 
@@ -59,28 +52,13 @@ public class Hashing {
 				OL[i].printer("HashingOut.txt");
 			}
 		}
-		
-		
 	}
 	
 	public static void main(String[] args) {
 		Hashing hs=new Hashing();
-		hs.hash();
-		FileReader fr;
-		try {
-			fr = new FileReader("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files/HashingIn.txt");
-			BufferedReader br = new BufferedReader(fr);
-			String read=br.readLine();
-			String concat=read;
-			while(read!=null){
-				
-				read=br.readLine();
-				if(read==null){break;}
-				concat=concat+read;
-			}
-			 System.out.println(concat);
-			 String [] s=concat.split("\\s");					//Splitting a string to string array
-			 Integer[] in= new Integer[s.length];
+		hs.hash();			
+		 String [] s=Utility.readFile("HashingIn.txt");
+			Integer[] in= new Integer[s.length];
 		
 			  for (int i = 0; i < s.length; i++) {
 				  
@@ -88,16 +66,8 @@ public class Hashing {
 				   hs.add(in[i]);
 			}
 			  
-			//System.out.println(hs.search(40));  
 			 hs.prints();
 			 
-	} catch (IOException e) {
-		
-		e.printStackTrace();
-	}
-		
-		
-	}
-	
+	} 
 	
 }

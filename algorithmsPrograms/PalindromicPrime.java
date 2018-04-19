@@ -22,7 +22,4 @@ public class PalindromicPrime {
 		Utility.display(out);	
 		Utility.primePalindrome(out);
 	}
-
-	
-	
 }

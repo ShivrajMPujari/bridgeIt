@@ -1,17 +1,17 @@
 package com.bridgeIt.dataStructures;
 
-public class Node<N> implements Comparable<N> {
+public class Node<T> implements Comparable<T> {
 
-		N data;							//data in a node
-		Node<N> previous;				//reference variable to link with previous node
-		Node<N> next;					//reference variable to link with next node
+		T data;							//data in a node
+		Node<T> previous;				//reference variable to link with previous node
+		Node<T> next;					//reference variable to link with next node
 		
 	
 	/*
 	 * parameterized constructor to initialize variables 
 	 * @param previous,data,next 
 	 * */
-	Node(Node previous,N data,Node next){
+	Node(Node previous,T data,Node next){
 		
 		this.previous=previous;
 		this.data=data;
@@ -26,7 +26,7 @@ public class Node<N> implements Comparable<N> {
 	
 
 	@Override
-	public int compareTo(N data) {
+	public int compareTo(T data) {
 		
 		return this.compareTo(data);
 	}

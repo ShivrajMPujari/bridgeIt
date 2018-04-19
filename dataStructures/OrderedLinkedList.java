@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import com.bridgeIt.utility.Utility;
+
 public class OrderedLinkedList<T extends Comparable<T>>{
 
 	MyNode<T> head;		//starting node
@@ -212,56 +214,35 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 	}
 	
 	public  void printer(String file){
-		
-		FileWriter fw;
-		PrintWriter pw;
-		try {
-		//	fw = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//OrderedListOut.txt");
-			fw = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"",true);
-			pw=new PrintWriter(fw);
-			//pw.print(data);
-			
 			 MyNode current=head;
 				if(current.data==null){
 					return;
 				}
 				while(current.data!=null){
-					
-					System.out.println(current.data);
-				//	pw.print(current.data+" ");
-					pw.append(current.data+" ");
-				//	printWriting();
+					Utility.printData(file, (T) current.data);
 					current=current.next;
 					if(current==null)break;
 				}
+		} 
 
-			pw.flush();
-			pw.close();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-
-	}
+	
+	public  void printer1(){
+		 MyNode current=head;
+			if(current.data==null){
+				return;
+			}
+			while(current.data!=null){
+				Utility.printData("OrderedListOut.txt", (T) current.data);
+				current=current.next;
+				if(current==null)break;
+			}
+	} 
 	
 	public static void main(String[] args) {
 		
-		OrderedLinkedList ol= new OrderedLinkedList<>();
-		FileReader fr;
-		try {
-			fr = new FileReader("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files/OrderedListIn.txt");
-			BufferedReader br = new BufferedReader(fr);
-			String read=br.readLine();
-			String concat=read;
-			while(read!=null){
-				
-				read=br.readLine();
-				if(read==null){break;}
-				concat=concat+read;
-			}
-			System.out.println(concat);
-			 String [] s=concat.split("\\s");					//Splitting a string to string array
-			 Integer[] in= new Integer[s.length];
+		OrderedLinkedList ol= new OrderedLinkedList<>();	 
+		 String [] s=Utility.readFile("OrderedListIn.txt");
+		Integer[] in= new Integer[s.length];
 		
 			  for (int i = 0; i < s.length; i++) {
 				  
@@ -271,13 +252,10 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 			  ol.action(32);
 			  ol.printList();
 			  ol.printer("OrderedListOut.txt");
-	} catch (IOException e) {
-		
-		e.printStackTrace();
 	}
 	}
 	
-	static class MyNode<T>{
+	class MyNode<T>{
 		T data;			//data to be stored
 		MyNode<T> next;	//reference to the next node
 		
@@ -286,5 +264,5 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 			next = null;
 		}
 }
-}
+
 

@@ -1,5 +1,9 @@
 package com.bridgeIt.utility;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -9,6 +13,10 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.TreeMap;
+
+import com.bridgeIt.dataStructures.Queue;
+import com.bridgelabz.datastucture.QueueLinkList;
+
 
 
 public class Utility {
@@ -2113,7 +2121,198 @@ public class Utility {
 	  
 	  //DATASTRUCTURES----------
 	
+	/* Function reads the files and converts it in string array
+	 * @param file name with extension
+	 * */
+	public static String [] readFile(String file){
+		String [] str=null;
+		FileReader fileRead;
+		try {
+			fileRead = new FileReader("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"");
+			BufferedReader br = new BufferedReader(fileRead);
+			String read=br.readLine();
+			String concat=read;
+			while(read!=null){
+				
+				read=br.readLine();
+				if(read==null){break;}
+				concat=concat+read;
+			}
+			System.out.println(concat);
+			  str=concat.split("\\s");	
+			 }	
+			 catch (IOException e) {
+					
+					e.printStackTrace();
+					
+				}
+		
+		return str;
+		
+	}  
 	
 	
-	  
+	/* Function writes the content in file 
+	 * @param file name with extension,data any literals
+	 * */
+	public static <T extends Comparable<T>> void printData(String file,T data){
+			
+			FileWriter filewrite;
+			PrintWriter printwrite;
+			try {
+	
+				filewrite = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"",true);
+				printwrite=new PrintWriter(filewrite);
+				
+				printwrite.print(""+data+" ");
+				printwrite.flush();
+				printwrite.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	
+		}
+	
+	 
+	  public static void bankCounter()
+	    {
+	        Queue q=new Queue();
+	        System.out.println("Enter your choice:");
+	        System.out.println("1. To add in queue");
+	        System.out.println("2. To do transaction");
+	        int choice=inputInt();
+	        int option;
+	        double sum=0;
+	        while(choice==1 && q.size()<q.capacity)
+	        {
+	           
+	            q.enqueue(choice);
+	            System.out.println("Enter your choice:");
+	            System.out.println("1. To add in queue");
+	            System.out.println("2. To do transaction");
+	            option=inputInt();
+	            if(option==1)
+	                choice=option;
+	            else
+	                choice=option;
+	        }
+	        while(choice==2 && (q.size()<q.capacity))
+	        {
+	            if(q.isEmpty())
+	            {
+	                System.out.println("Please add into queue First");
+	                System.out.println("Enter your choice:");
+	                System.out.println("1. To add in queue");
+	                System.out.println("2. To do transaction");
+	                option=inputInt();
+	                if(option==1)
+	                    q.enqueue(1);
+	                else
+	                    choice=option;
+	            }
+	            else
+	            {
+	                System.out.println("Choose Your Transaction:");
+	                System.out.println("1.Deposit\n2.Withdraw\n3.Check Balance\n4.Add in queue again\n5.No. of ppl in queue");
+	                int select=Utility.inputInt();
+	           
+	                switch (select) {
+	                case 1: System.out.println("Enter Your Amount:");
+	                        double amountdepo=inputDouble();
+	                        sum=bankDeposit(amountdepo,sum);
+	                        q.dequeue();
+	                        break;
+	                case 2: System.out.println("Enter Your Amount:");
+	                        double amountwith=inputDouble();
+	                        sum=bankWithdraw(amountwith,sum);
+	                        q.dequeue();
+	                        break;
+	                case 3: System.out.println("Balance is:"+sum);
+	                        q.dequeue();
+	                        break;
+	                case 4: q.enqueue(1);
+	                        break;
+	                case 5: int size= q.size();
+	                        System.out.println("Number of ppl in the queue are:"+size);
+	                default:
+	                        break;
+	                }
+	            }
+	        }
+	    }
+		//Method to deposit
+		    public static double bankDeposit(double amount,double sum)
+		    {
+		        System.out.println("Amount deposited is:"+amount);
+		        sum=sum+amount;
+		        System.out.println("Total amount"+sum);
+		        return sum;
+		    }
+		   
+		//Method to withdraw
+		    public static double bankWithdraw(double amount,double sum)
+		    {
+		        System.out.println("Amount withdrawn is:"+amount);
+		        sum=sum-amount;
+		        System.out.println("Total amount"+sum);
+		        return sum;
+		    }
+		 
+		    
+		//calender queue
+		    //Method for CalendarQueue
+		    public static void CalendarQueue(int month,int year)
+		    {
+		        QueueLinkList weekday=new QueueLinkList();
+		        String[] months = {"January", "February", "March","April", "May", "June",
+		                "July", "August", "September","October", "November", "December"};
+
+		            int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		            if ((month == 2) && (isLeapOrNot(year)))
+		            {
+		                days[month] = 29;
+		            }
+		            System.out.println("\t\t\t" + months[month-1] + " " + year);
+		            System.out.println("\tSun\tMon\tTue\tWed\tThu\tFri\tSat");
+		            int d = dayOfWeek(month, 1, year);
+		            for(int i=0;i<d;i++)
+		            {
+		                weekday.insert("\t");
+		            }
+		            for (int i = 1; i <= days[month-1]; i++)
+		            {
+		                weekday.insert("\t"+i);
+		                if (((i + d) % 7 == 0) || (i == days[month-1]))
+		                weekday.insert("\n");
+		            }
+		            weekday.display();
+		    }
+		    //Method to find day of a week
+		    public static int dayOfWeek(int m, int d, int y)
+		    {
+		        
+		        int y1=y-(14-m)/12;
+		        int x=y1+y1/4-y1/100+y1/400;
+		        int m1=m + 12 * ((14 - m) / 12) - 2;
+		        int d1=(d+x+31*m1/12) % 7;
+
+		        return d1;
+		    }
+		    
+			  //Method to check Leap Year
+		    public static boolean isLeapOrNot(int year)
+		    {
+		        if(year%4==0 || year%400==0 && year%100!=0)
+		        {
+		            System.out.println("Is a Leap Year");
+		            return true;
+		        }
+		        else
+		        {
+		            System.out.println("Is not a Leap Year");
+		            return false;
+		        }
+		       
+		    }
+		    
 }
