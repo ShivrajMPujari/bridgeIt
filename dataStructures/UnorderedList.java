@@ -1,3 +1,4 @@
+
 package com.bridgeIt.dataStructures;
 
 import java.io.BufferedReader;
@@ -12,7 +13,7 @@ public class UnorderedList {
 
 	static Node current;										//current node
 	static Node head;											//head node
-	
+	static int size;
 	
 	
 	/* Function adds the elements inside a list
@@ -22,31 +23,32 @@ public class UnorderedList {
 		
 		if(head==null)
 		{
-			Node node =new Node(null,data,null);
+			Node node =new Node(data,null);
 			head=node;
+			size++;
 			return;
 		}		
 		else{
 			
 			 current=head;
 			while(current.next!=null){
-				
+
 				current=current.next;
 				
 
 			}
-			Node node =new Node(current,data,null);
+			Node node =new Node(data,null);
 			current.next=node;
 			
 		}
 		
 		
-		
+		size++;
 	}
 
 		
-	/* Function removes the elements inside a list
-	 * @param data to be removed inside list
+	/* Function searches the elements inside a list
+	 * @param data to be searched inside list
 	 * */
 	public static <T extends Comparable<T>> boolean search(T data){
 		
@@ -82,11 +84,17 @@ public class UnorderedList {
 	}
 			}
 	
-	
+	/* Function appends the data
+	 * @param data to be added inside list
+	 * */
+	public <T extends Comparable<T>> void append(T data)
+	{
+		this.add(data);
+	}
 	
 	
 	/* Function perform action to remove or add the elements
-	 * @param data to be removed inside list
+	 * @param data to be added or removed inside list
 	 * */
 	public static  <T extends Comparable<T>> void action(T data){
 		if(search(data)==true){
@@ -126,18 +134,82 @@ public class UnorderedList {
 				temp.next=temp.next.next;
 			}
 		}
+			 size--;
+			}
 
-}
+	/* Function removes the elements inside a list
+	 * */
+	public void pop() 
+	{
+		if(head==null)
+		{
+			System.out.println("No elements to remove");	
+		}
+		else
+		{
+			Node curr=head;
+			Node prev=null;
+			while(curr.next!=null)
+			{
+				prev=curr;
+				curr=curr.next;
+			}
+			prev.next=null;
+		}
+		size--;
+	}
+	
+	/* Function removes the elements inside a list
+	 * @returns the size of list
+	 * */
+	public int size(){
+		
+		return size;
+		
+	}
+	
 
+	/* Function removes the elements inside a list
+	 * @param integer position
+	 * */
+	public void pop(int pos) 
+	{
+		if(pos>size()-1 || pos<1)
+		{
+			System.out.println("Cannot pop");
+		}
+		if(pos==1)
+		{
+			Node temp=head;
+			head=head.next;
+			temp.next=null;
+		}
+		else
+		{
+			Node previous=head;
+			int count=1;
+			while(count<pos-1)
+			{
+				previous=previous.next;
+				count++;
+			}
+			Node current=previous.next;
+			previous.next=current.next;
+			current.next=null;
+		}
+		size--;
+	}
+	
 	
 	public static void main(String[] args) {
+		
 		String[] s = Utility.readFile("unorderedList.txt");
 		UnorderedList un = new UnorderedList();
 		for (int i = 0; i < s.length; i++) {
 
 			un.add(s[i]);
-
 		}
+		
 		action("raj");
 		action("jay");
 		action("jack");

@@ -53,21 +53,6 @@ public class Hashing {
 			}
 		}
 	}
-	
-	public static void main(String[] args) {
-		Hashing hs=new Hashing();
-		hs.hash();			
-		 String [] s=Utility.readFile("HashingIn.txt");
-			Integer[] in= new Integer[s.length];
-		
-			  for (int i = 0; i < s.length; i++) {
-				  
-				   in[i]=Integer.valueOf(s[i]);
-				   hs.add(in[i]);
-			}
-			  
-			 hs.prints();
-			 
-	} 
+
 	
 }

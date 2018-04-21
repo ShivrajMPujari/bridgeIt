@@ -22,6 +22,9 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 	}
 
 	
+	/* Function adds the elements inside a list
+	 * @param data to add inside list
+	 * */
 	public void add(T data) 
 	{
 		
@@ -56,6 +59,9 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 	}
 	
 	
+	/* Function removes the elements inside a list
+	 * @param data to removed inside list
+	 * */
 	public void remove(T data){
 		MyNode<T> tempCurrent = head;
 		MyNode<T> tempPrev = null;
@@ -76,24 +82,54 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 	}
 	
 	
+	/* Function searches the elements inside a list
+	 * @param data to be searched inside list
+	 * */
 	public boolean search(T data){
-		return index(data) == -1 ? false : true; 
+		
+		 current=head;
+			while(current.data.equals(data)!=true){
+				if(current.next==null) return false;
+				if(current.next==null){		
+					return false;}
+					current=current.next;
+				
+				
+			}
+			
+			if(current.data.equals(data))return true;
+					
+			return false;
+		
 	}
 	
+	
+	/* Function checks whether the list is empty or not
+	 * @returns boolean true if list is empty
+	 * */
 	public boolean isEmpty(){
 		return position == -1 ? true : false;
 	}
-	
-	
-	
+
+	/* Function checks size of the list
+	 * @returns integer size 
+	 * */
 	public int size(){
 		return position + 1;
 	}
 	
+	
+	/* Function adds the element in the list
+	 * @returns integer size 
+	 * */
 	public void append(T data){
 		add(data);
 	}
 	
+	/* Function returns the position of the data 
+	 * @param generic data 
+	 * @returns the position in the list 
+	 * */
 	public int index(T data){
 		if(position == -1){
 			return -1;
@@ -111,6 +147,11 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 		return tempPosition;
 	}
 
+	
+	
+	/* Function inserts the elements in the list
+	 * @param generic data ,integer position 
+	 * */
 	public void insert(int pos , T data){
 
 		if((pos == position+1) || (position == -1)){
@@ -137,6 +178,10 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 		position++;
 	}
 	
+	
+	/* Function removes from the specified location
+	 * @param integer location
+	 * */
 	public T pop(int location){
 		MyNode<T> tempCurrent = head;
 		MyNode<T> tempPrev = null;
@@ -167,26 +212,9 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 		return pop(position);
 	}
 	
-	public T get(int location) {
-		MyNode<T> tempCurrent = head;
-		int tempPosition = 0;
-		
-		while(tempPosition != location){
-			tempCurrent = tempCurrent.next;
-			tempPosition++;
-		}
-		
-		return tempCurrent.data;
-		
-	}
-	
-	public void list(){
-		MyNode<T> tempCurrent = head;
-		while(tempCurrent != null){
-			System.out.print(tempCurrent.data+",");
-			tempCurrent = tempCurrent.next;
-		}
-		}
+
+	/* Function prints the list in file 
+	 * */
 	public  void printList(){
 			
 			MyNode current=head;
@@ -199,7 +227,11 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 				current=current.next;
 				if(current==null)break;
 			}
-					}
+		}
+	
+	/* Function perform action to remove or add the elements
+	 * @param data to be added or removed inside list
+	 * */
 	public void action(T data){
 		
 		if(search( data)==true){
@@ -208,11 +240,13 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 			
 		}else{
 			add(data);
-		}
-		
-		
+		}	
 	}
 	
+	
+	/* Function add the elements in the file
+	 * @param String file name
+	 * */
 	public  void printer(String file){
 			 MyNode current=head;
 				if(current.data==null){

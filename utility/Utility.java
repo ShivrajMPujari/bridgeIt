@@ -14,7 +14,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.TreeMap;
 
+import com.bridgeIt.dataStructures.Dequeue;
 import com.bridgeIt.dataStructures.Queue;
+import com.bridgeIt.dataStructures.Stack;
 import com.bridgelabz.datastucture.QueueLinkList;
 
 
@@ -2315,4 +2317,356 @@ public class Utility {
 		       
 		    }
 		    
+    
+    /* Function checks the expression is balanced or not
+	 * @param string equation
+	 * */ 
+    public static void checkParentheses(String equation){
+		
+		Stack st= new Stack<>();
+		for (int i = 0; i < equation.length(); i++) {
+			if(equation.charAt(i)=='('){
+				
+				st.push('(');
+				
+			}else if(equation.charAt(i)==')'){
+				
+				try {
+					st.pop();
+				} catch (Exception e) {
+					System.out.println("Unbalanced equation");
+					return;
+				}
+				
+			}
+		}
+		if(Stack.size==0){
+			System.out.println("it is balanced expression");
+		}else{
+			
+			System.out.println("it is not balanced expression");
+		}
+			
+	}
+
+	
+    
+    /* Function check whether is palindrome or not
+	 * @param string word
+	 * */ 
+	 public static void isPalindromeChecker(String string) {
+	        Dequeue d= new Dequeue();
+	        boolean status=false;
+	        char[] array=string.toCharArray();
+	        char first;
+	        char last;
+	        for(int i=0;i<array.length;i++)
+	        {
+	            d.addRear(array[i]);
+	        }
+	        /*int size=d.size();
+	        System.out.println(size);*/
+	        while(d.size()>1)
+	        {
+	            first=d.removeFront();
+	            last=d.removeRear();
+	            System.out.println(first);
+	            System.out.println(last);
+	            if(first!=last)
+	            {
+	                status=false;
+	                break;
+	            }
+	            else
+	                status=true;
+	        }
+	        System.out.println(d.size());
+	        if(status==true)
+	        {
+	            System.out.println("Is a palindrome");
+	        }
+	        else
+	            System.out.println("Not a palindrome");
+	    }  
+ 
+	 
+	 /* Function for calculating the factorial
+		 * @param integer number
+		 * @returns integer value of factorial
+		 * */ 
+	   public static int fact(int num){
+		
+		   if(num==1)
+		   return 1;
+		   
+		   return num*fact(num-1);
+	 
+	   }
+	   
+	   /* Function to calculate the catalan number 
+		 * @param integer number
+		 * @returns double value of factorial
+		 * */ 
+	   public static double binarySearchTree(int number){
+		   double result=0;
+		   
+		   result=fact(number*2)/(fact(number+1)*fact(number));
+		   
+		   return result;
+	   }
+		 
+		/* Function to calculates the day of the week
+		 * @param integer number for month ,day,year
+		 * @returns 
+		 * */ 
+	   public static int day(int month, int day, int year) {
+	        int y = year - (14 - month) / 12;
+	        int x = y + y/4 - y/100 + y/400;
+	        int m = month + 12 * ((14 - month) / 12) - 2;
+	        int d = (day + x + (31*m)/12) % 7;
+	        return d;
+	    }
+	   
+
+
+	   /* Function checks whether the given year is leap year o not
+		 * @param integer number for year
+		 * @returns boolean value true or false
+		 * */ 
+	    public static boolean isLeapYear(int year) {
+	        if  ((year % 4 == 0) && (year % 100 != 0)) return true;
+	        if  (year % 400 == 0) return true;
+	        return false;
+	    }
+	   
+	   
+	   
+	    /* Function takes the integer value for month and year, Prints the calender
+		 * @param integer number for year,month
+		 * */ 
+	    public static void printCalender(int month,int year){
+	        // months[i] = name of month i
+	        String[] months = {
+	            "",                               // leaved empty so that months[1] = "January"
+	            "January", "February", "March",
+	            "April", "May", "June",
+	            "July", "August", "September",
+	            "October", "November", "December"
+	        };
+
+	        // days[i] = number of days in month i
+	        int[] days = {
+	            0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+	        };
+
+	        // check for leap year
+	        if (month == 2 && isLeapYear(year)) days[month] = 29;
+
+	        // print calendar header
+	        System.out.println("   " + months[month] + " " + year);
+	        System.out.println(" S  M Tu  W Th  F  S");
+
+	        // starting day
+	        int d = day(month, 1, year);
+
+	        // print the calendar
+	        for (int i = 0; i < d; i++)
+	        	System.out.print("   ");
+	        for (int i = 1; i <= days[month]; i++) {
+	        	System.out.printf("%2d ", i);
+	            if (((i + d) % 7 == 0) || (i == days[month]))System.out.println();
+	        }
+	    }
+	
+		
+    /* Function takes integer array and converts it to prime anagram array
+	 * @param integer array
+	 * @returns the integer array
+	 * */ 
+	public static Integer[] primeAnagramArray(Integer arr[]){
+		//	Integer result[]=new Integer[]
+		int count=0;
+		for (int i = 0; i < arr.length; i++) {
+			
+			if(arr[i]!=null)
+				count++;
+		}
+		
+	//	System.out.println(count);
+		Integer result[]=new Integer[count];
+		int index=0;
+		for (int i = 0; i < arr.length; i++) {
+			
+			if(arr[i]!=null)
+				result[index++]=arr[i];
+		}
+		
+		return result;
+		
+	}
+						
+	
+	
+    /* Function takes integer array and separates it to prime and anagram array
+	 * @param integer array
+	 * @returns the integer array
+	 * */ 
+	public static Integer[] anagramArray(int prime[]){
+		Integer	anagramArray[][]= new Integer[1000][2];
+		Integer anagram[]=new Integer[400];
+		int index=0;
+		int row0=0;
+		int row1=0;
+		int colmn0=0;
+		int colmn1=1;
+		
+		for (int i = 0; i < prime.length-1; i++) {
+			int count=0;
+			for (int j = i+1; j < prime.length; j++) {
+				if(Utility.checkIntAnagaram(prime[i], prime[j])){
+					
+					anagramArray[row0++][colmn0]=Integer.valueOf(prime[i]);
+					count++;
+					anagramArray[row0++][colmn0]= Integer.valueOf(prime[j]);
+					anagram[index++]=prime[i];
+					anagram[index++]=prime[j];
+					
+				}
+			}
+			if(count==0)
+			anagramArray[row1++][colmn1]=prime[i];
+			
+		}
+	
+		prints2dArray(anagramArray, 200, 2);
+		return anagram;
+	}
+	
+	 /* Function reads and print the 2d array
+		 * @param integer array, row,column
+		 * */ 
+	public static <T extends Comparable<T>> void prints2dArray(T[][] array,int row ,int column){
+					
+					for (int i = 0; i < row; i++) {
+						for (int j = 0; j < column; j++) {
+							System.out.printf("%4d ", array[i][j]);
+			}
+			System.out.println( );
+				}
+	
+	}
+	
+	 /* Function split the array and divides the array 
+		 * @param integer array
+		 * */     
+	public static void arraySplit(int [] arr){
+		int row=30;
+		int column=10;
+		int row0=0;
+		int row1=0;
+		int row2=0;
+		int row3=0;
+		int row4=0;
+		int row5=0;
+		int row6=0;
+		int row7=0;
+		int row8=0;
+		int row9=0;
+		Integer arrayInteger[]=new Integer[arr.length];
+		for(int i=0;i<arr.length;i++){
+			
+			arrayInteger[i]=Integer.valueOf(arr[i]);
+			
+		}
+		 Integer array[][]=new Integer[row][column];
+		
+		 for (int i = 0; i < arrayInteger.length; i++) {
+			
+			 Integer num=arrayInteger[i];
+			 num=num/100;
+			 
+			 switch(num){
+			 
+			 case 0:{
+				 if(arrayInteger[i]<100)
+				 array[row0++][num]=arrayInteger[i];
+				 break;
+			 }
+			 case 1:{
+				 if(arrayInteger[i]<200)
+					 array[row1++][num]=arrayInteger[i];
+					 break;
+			 }
+			 case 2:{
+				 if(arrayInteger[i]<300)
+					 array[row2++][num]=arrayInteger[i];
+					 break;
+			 }
+			 case 3:{
+				 if(arrayInteger[i]<400)
+					 array[row3++][num]=arrayInteger[i];
+					 break;
+			 }
+			 case 4:{
+				 if(arrayInteger[i]<500)
+					 array[row4++][num]=arrayInteger[i];
+					 break;
+			 }
+			 case 5:{
+				 if(arrayInteger[i]<600)
+					 array[row5++][num]=arrayInteger[i];
+					 break;
+			 }
+			 case 6:{
+				 if(arrayInteger[i]<700)
+					 array[row6++][num]=arrayInteger[i];
+					 break;
+			 }
+			 case 7:{
+				 if(arrayInteger[i]<800)
+					 array[row7++][num]=arrayInteger[i];
+					 break;
+			 }
+			 case 8:{
+				 if(arrayInteger[i]<900)
+					 array[row8++][num]=arrayInteger[i];
+					 break;
+			 }
+			 case 9:{
+				 if(arrayInteger[i]<1000)
+					 array[row9++][num]=arrayInteger[i];
+					 break;
+			 }
+			 
+			 }
+			 
+			 
+			
+			 
+		}
+		 prints2dArray(array, row, column);
+		
+	}
+	
+	
+	 /* Function search the null value in array and make it to zero 
+	 * @param integer array, row ,column
+	 * */ 
+	public static  void makeZero(Integer[][] array,int row ,int column){
+	
+
+	for (int i = 0; i < row; i++) {
+		for (int j = 0; j < column; j++) {
+			
+			if(array[i][j]==null){
+				
+				array[i][j]=0;
+			}
+			
+		}
+			}
+	
+}	    
+
+
 }

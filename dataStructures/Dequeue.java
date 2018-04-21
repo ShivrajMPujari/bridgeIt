@@ -45,7 +45,7 @@ public class Dequeue {
 	
 	
 	
-	void addRear(char item)
+	public void addRear(char item)
 	{
 		if(size>capacity)
 		{
@@ -69,21 +69,13 @@ public class Dequeue {
 	
 	
 	
-	char removeFront()
+	public char removeFront()
 	{
-		/*if(isEmpty())
-		{
-			System.out.println("Queue is Underflow");
-		}
-		else
-		{
-			System.out.println("Poped from front of queue:"+queue[front++]);
-		}*/
 		size--;
 		return queue[front++];
 	}
 	
-	char removeRear()
+	public char removeRear()
 	{
 		/*if(isEmpty())
 		{
@@ -107,7 +99,7 @@ public class Dequeue {
 		else
 			return false;
 	}
-	int size()
+	public int size()
 	{
 		return size;
 	}

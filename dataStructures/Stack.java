@@ -8,7 +8,7 @@ public class Stack <T extends Comparable<T>> {
 	T data;
 	T top;
 	MyNode<T> first;
-	static int size=0;
+	public static int size=0;
 	
 	
 	public void push(T data){
@@ -67,8 +67,6 @@ public class Stack <T extends Comparable<T>> {
 				
 			}
 		}
-		
-		
 		if(size==0){
 			System.out.println("it is balanced expression");
 		}else{
@@ -76,7 +74,6 @@ public class Stack <T extends Comparable<T>> {
 			System.out.println("it is not balanced expression");
 		}
 	}
-	
 	
 	static class MyNode<T>{
 		T data;			//data to be stored
