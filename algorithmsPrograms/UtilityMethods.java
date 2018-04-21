@@ -22,7 +22,6 @@ public class UtilityMethods {
 		Integer arr[] = { 2, 3, 1, 54, 0, 7, 5 };						 // Integer array array
 		Integer arr1[] = { 2, 3, 4, 5, 6, 7, 8 }; 						// Integer sorted array arr1
 
-	
 		Double resultA = Utility.insertionStopWatch(arr);
 		Double resultB = Utility.insertionStopWatch(st);
 		Double resultC = Utility.binarySearchStopWatch(arr1, 0);
@@ -36,7 +35,6 @@ public class UtilityMethods {
 		Utility.TMAP.put(resultD, "BinarySearch String");
 		Utility.TMAP.put(resultE, "BubbleSort String");
 		Utility.TMAP.put(resultF, "BubbleSort integer");
-
 
 		Utility.sortbykey();
 
