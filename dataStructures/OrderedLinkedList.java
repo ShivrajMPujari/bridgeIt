@@ -10,8 +10,8 @@ import com.bridgeIt.utility.Utility;
 
 public class OrderedLinkedList<T extends Comparable<T>>{
 
-	MyNode<T> head;		//starting node
-	MyNode<T> current;	//last node
+	MyNode<T> head;		
+	MyNode<T> current;	
 	int position;		//position of last node
 
 	
@@ -147,71 +147,7 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 		return tempPosition;
 	}
 
-	
-	
-	/* Function inserts the elements in the list
-	 * @param generic data ,integer position 
-	 * */
-	public void insert(int pos , T data){
 
-		if((pos == position+1) || (position == -1)){
-			add(data);
-		}
-		else if(pos == 0){
-			MyNode<T> tempNode = head;
-			head = new MyNode<T>(data);
-			head.next = tempNode;
-		}
-		else{
-			MyNode<T> tempCurrent = head;
-			MyNode<T> tempPrev = null;
-			int tempPosition = 0;
-			while(tempPosition <= pos + 1){
-				tempPrev = tempCurrent;
-				tempCurrent = tempCurrent.next;
-				tempPosition++;
-			}
-			MyNode<T> newNode = new MyNode<T>(data);
-			newNode.next = tempCurrent;
-			tempPrev.next = newNode;
-		}
-		position++;
-	}
-	
-	
-	/* Function removes from the specified location
-	 * @param integer location
-	 * */
-	public T pop(int location){
-		MyNode<T> tempCurrent = head;
-		MyNode<T> tempPrev = null;
-		int tempPosition = 0;
-		position--;
-		while(tempPosition != location){
-			tempPrev = tempCurrent;
-			tempCurrent = tempCurrent.next;
-			tempPosition++;
-		}
-		if(tempCurrent == head){
-			head = head.next;
-			return tempCurrent.data;
-		}
-		else if(tempCurrent == current){
-			current = tempPrev;
-			tempPrev.next = tempCurrent.next;
-			return tempCurrent.data;
-		}
-		else{
-			tempPrev.next = tempCurrent.next;
-			return tempCurrent.data;
-		}
-	}
-	
-	
-	public T pop(){
-		return pop(position);
-	}
-	
 
 	/* Function prints the list in file 
 	 * */
@@ -272,6 +208,7 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 			}
 	} 
 	
+	
 	public static void main(String[] args) {
 		
 		OrderedLinkedList ol= new OrderedLinkedList<>();	 
@@ -289,6 +226,10 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 	}
 	}
 	
+
+
+
+
 	class MyNode<T>{
 		T data;			//data to be stored
 		MyNode<T> next;	//reference to the next node

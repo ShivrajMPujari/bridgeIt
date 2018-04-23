@@ -203,11 +203,11 @@ public class UnorderedList {
 	
 	public static void main(String[] args) {
 		
-		String[] s = Utility.readFile("unorderedList.txt");
+		String[] str = Utility.readFile("unorderedList.txt");
 		UnorderedList un = new UnorderedList();
-		for (int i = 0; i < s.length; i++) {
+		for (int i = 0; i < str.length; i++) {
 
-			un.add(s[i]);
+			un.add(str[i]);
 		}
 		
 		action("raj");
