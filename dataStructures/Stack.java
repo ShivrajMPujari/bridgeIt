@@ -31,11 +31,22 @@ public class Stack <T extends Comparable<T>> {
 		MyNode current=first;
 		while(current!=null){
 			
-			System.out.print("\t"+current.data);
+			System.out.print(" "+current.data);
 			current=current.next;
 		}
-		
-		
+
+	}
+
+	public void printStackCalender(){
+		int i=0;
+		MyNode current=first;
+		while(current!=null){
+			if(i%7==0){System.out.println();}
+			System.out.printf("%4s",current.data);
+			i++;
+			current=current.next;
+		}
+
 	}
 	
 	public T pop(){

@@ -1,6 +1,6 @@
 package com.bridgeIt.dataStructures;
 
-import com.bridgelabz.datastucture.Utility;
+import com.bridgeIt.utility.Utility;
 
 public class CalenderQueue {
 

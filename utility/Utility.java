@@ -2364,8 +2364,6 @@ public class Utility {
 	        {
 	            d.addRear(array[i]);
 	        }
-	        /*int size=d.size();
-	        System.out.println(size);*/
 	        while(d.size()>1)
 	        {
 	            first=d.removeFront();
@@ -2445,31 +2443,29 @@ public class Utility {
 		 * @param integer number for year,month
 		 * */ 
 	    public static void printCalender(int month,int year){
-	        // months[i] = name of month i
+	      
 	        String[] months = {
-	            "",                               // leaved empty so that months[1] = "January"
+	            "",                              
 	            "January", "February", "March",
 	            "April", "May", "June",
 	            "July", "August", "September",
 	            "October", "November", "December"
 	        };
-
-	        // days[i] = number of days in month i
 	        int[] days = {
 	            0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
 	        };
 
-	        // check for leap year
-	        if (month == 2 && isLeapYear(year)) days[month] = 29;
+	     
+	        if (month == 2 && Utility.isLeapYear(year)) days[month] = 29;
 
-	        // print calendar header
+	       
 	        System.out.println("   " + months[month] + " " + year);
 	        System.out.println(" S  M Tu  W Th  F  S");
 
-	        // starting day
-	        int d = day(month, 1, year);
+	        
+	        int d = Utility.day(month, 1, year);
 
-	        // print the calendar
+	        
 	        for (int i = 0; i < d; i++)
 	        	System.out.print("   ");
 	        for (int i = 1; i <= days[month]; i++) {
@@ -2484,7 +2480,7 @@ public class Utility {
 	 * @returns the integer array
 	 * */ 
 	public static Integer[] primeAnagramArray(Integer arr[]){
-		//	Integer result[]=new Integer[]
+
 		int count=0;
 		for (int i = 0; i < arr.length; i++) {
 			
@@ -2492,7 +2488,7 @@ public class Utility {
 				count++;
 		}
 		
-	//	System.out.println(count);
+
 		Integer result[]=new Integer[count];
 		int index=0;
 		for (int i = 0; i < arr.length; i++) {
@@ -2667,6 +2663,74 @@ public class Utility {
 			}
 	
 }	    
+
+	
+
+	 /* Function takes month and year and uses two stack two prints the calender
+	  * @param integer array, row ,column
+	  * */ 
+	public static void calenderArray(int month,int year){
+		
+		  QueueLinkList weekday=new QueueLinkList();
+	        String[] months = {"January", "February", "March","April", "May", "June",
+	                "July", "August", "September","October", "November", "December"};
+
+	            int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	            if ((month == 2) && (Utility.isLeapOrNot(year)))
+	            {
+	                days[month] = 29;
+	            }
+	            int day=Utility.day(month, 1, year);
+	            Integer calenderArray[][]=new Integer[6][7];
+	            int k=0,g=0;
+	        
+	            
+	            for(int j=0;j<day;j++){
+	            	
+	            	calenderArray[k][g++]=-1;
+
+	            }
+	            for (int i = 1; i <=days[month]; i++) {
+	            	
+	            	if(g==7){
+	            		k=k+1;
+	            		g=0;
+	            	}
+	            	calenderArray[k][g++]=i;
+				}
+	   
+	            Stack stack1= new Stack();
+	            Stack stack2= new Stack();
+	            
+	           
+
+		            for (int i = 0; i < 6; i++) {
+						for (int j = 0; j < 7; j++) {
+							
+							if(calenderArray[i][j]==null)break;
+							stack1.push(calenderArray[i][j]);
+						}
+					}
+		            
+		            System.out.println("   S   M  Tu   W   Th   F  S");
+		            int sizer=stack1.size();
+		            Integer num=-1;
+		            for (int i = 0; i <sizer; i++) {
+		            	Integer value=(Integer)stack1.pop();
+		        
+		            if(value==-1){
+		            	System.out.println("--");
+		            	stack2.push(" ");
+		            continue;
+		            }
+		            if(value==null)break;
+		            stack2.push(value.toString());
+		        
+					}
+		            stack2.printStackCalender();
+		            
+	}
+	
 
 
 }
