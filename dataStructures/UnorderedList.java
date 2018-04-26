@@ -78,7 +78,7 @@ public class UnorderedList {
 	}
 	while(current.data!=null){
 		
-		Utility.printData("UnorderedFileOut.txt", (T) current.data);
+		Utility.printData("unorderedList.txt", (T) current.data);
 		current=current.next;
 		if(current==null)break;
 	}

@@ -15,7 +15,7 @@ public class BalancedParenthesis {
 
 	public static void main(String[] args) {
 		
-		String equation="(5+6)∗(7+8)/(4+3)(5+6)∗(7+8)/(4+3)";
+		String equation="(5+6)∗(7+8)/(4+3)(5+6)∗(7+8)/(4+3))";
 		
 		Utility.checkParentheses(equation);
 	}

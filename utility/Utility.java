@@ -16,8 +16,10 @@ import java.util.TreeMap;
 
 import com.bridgeIt.dataStructures.Dequeue;
 import com.bridgeIt.dataStructures.Queue;
+import com.bridgeIt.dataStructures.QueueLinkList;
 import com.bridgeIt.dataStructures.Stack;
-import com.bridgelabz.datastucture.QueueLinkList;
+
+
 
 
 
@@ -2131,12 +2133,12 @@ public class Utility {
 		FileReader fileRead;
 		try {
 			fileRead = new FileReader("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"");
-			BufferedReader br = new BufferedReader(fileRead);
-			String read=br.readLine();
+			BufferedReader buffer = new BufferedReader(fileRead);
+			String read=buffer.readLine();
 			String concat=read;
 			while(read!=null){
 				
-				read=br.readLine();
+				read=buffer.readLine();
 				if(read==null){break;}
 				concat=concat+read;
 			}
@@ -2175,7 +2177,8 @@ public class Utility {
 	
 		}
 	
-	 
+	/* Function performs bank counter operations 
+	 * */
 	  public static void bankCounter()
 	    {
 	        Queue q=new Queue();
@@ -2236,13 +2239,20 @@ public class Utility {
 	                        break;
 	                case 5: int size= q.size();
 	                        System.out.println("Number of ppl in the queue are:"+size);
+	                        
+	                case 6: 
+	                	
+	                		break;        
 	                default:
 	                        break;
 	                }
 	            }
 	        }
 	    }
-		//Method to deposit
+	  		/* Function performs deposit operations 
+	  		 * @param double amount and sum 
+	  		 * @returns double sum
+	  		 * */
 		    public static double bankDeposit(double amount,double sum)
 		    {
 		        System.out.println("Amount deposited is:"+amount);
@@ -2251,7 +2261,10 @@ public class Utility {
 		        return sum;
 		    }
 		   
-		//Method to withdraw
+		    /* Function performs withdraw operations 
+	  		 * @param double amount and sum 
+	  		 * @returns double sum
+	  		 * */
 		    public static double bankWithdraw(double amount,double sum)
 		    {
 		        System.out.println("Amount withdrawn is:"+amount);
@@ -2261,8 +2274,9 @@ public class Utility {
 		    }
 		 
 		    
-		//calender queue
-		    //Method for CalendarQueue
+		    /* Function displays calendar of particular month and year
+	  		 * @param int month and year
+	  		 * */
 		    public static void CalendarQueue(int month,int year)
 		    {
 		        QueueLinkList weekday=new QueueLinkList();
@@ -2279,17 +2293,22 @@ public class Utility {
 		            int d = dayOfWeek(month, 1, year);
 		            for(int i=0;i<d;i++)
 		            {
-		                weekday.insert("\t");
+		                weekday.enqueue("\t");
 		            }
 		            for (int i = 1; i <= days[month-1]; i++)
 		            {
-		                weekday.insert("\t"+i);
+		                weekday.enqueue("\t"+i);
 		                if (((i + d) % 7 == 0) || (i == days[month-1]))
-		                weekday.insert("\n");
+		                weekday.enqueue("\n");
 		            }
-		            weekday.display();
+		            weekday.printCalender();
 		    }
-		    //Method to find day of a week
+		    
+		    
+		    /* Function gives out day of the week 
+	  		 * @param integer month,day and year
+	  		 * @returns integer particular week day 
+	  		 * */
 		    public static int dayOfWeek(int m, int d, int y)
 		    {
 		        
@@ -2301,7 +2320,9 @@ public class Utility {
 		        return d1;
 		    }
 		    
-			  //Method to check Leap Year
+		    /* Function checks whether the given year is leap year or not
+	  		 * @param boolean true if the year is leap year
+	  		 * */
 		    public static boolean isLeapOrNot(int year)
 		    {
 		        if(year%4==0 || year%400==0 && year%100!=0)
@@ -2444,22 +2465,21 @@ public class Utility {
 		 * */ 
 	    public static void printCalender(int month,int year){
 	      
-	        String[] months = {
-	            "",                              
+	        String[] months = {                             
 	            "January", "February", "March",
 	            "April", "May", "June",
 	            "July", "August", "September",
 	            "October", "November", "December"
 	        };
 	        int[] days = {
-	            0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+	             31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
 	        };
 
 	     
-	        if (month == 2 && Utility.isLeapYear(year)) days[month] = 29;
+	        if (month == 2 && Utility.isLeapYear(year)) days[month-1] = 29;
 
 	       
-	        System.out.println("   " + months[month] + " " + year);
+	        System.out.println("   " + months[month-1] + " " + year);
 	        System.out.println(" S  M Tu  W Th  F  S");
 
 	        
@@ -2534,7 +2554,7 @@ public class Utility {
 			
 		}
 	
-		prints2dArray(anagramArray, 200, 2);
+	//	prints2dArray(anagramArray, 200, 2);
 		return anagram;
 	}
 	
@@ -2634,14 +2654,9 @@ public class Utility {
 					 break;
 			 }
 			 
-			 }
-			 
-			 
-			
-			 
+			 }	
 		}
 		 prints2dArray(array, row, column);
-		
 	}
 	
 	
@@ -2661,17 +2676,14 @@ public class Utility {
 			
 		}
 			}
-	
-}	    
-
-	
+				}	    
 
 	 /* Function takes month and year and uses two stack two prints the calender
 	  * @param integer array, row ,column
 	  * */ 
 	public static void calenderArray(int month,int year){
 		
-		  QueueLinkList weekday=new QueueLinkList();
+		//  QueueLinkList weekday=new QueueLinkList();
 	        String[] months = {"January", "February", "March","April", "May", "June",
 	                "July", "August", "September","October", "November", "December"};
 
@@ -2711,7 +2723,7 @@ public class Utility {
 							stack1.push(calenderArray[i][j]);
 						}
 					}
-		            
+		            System.out.println("        "+months[month-1]+" "+year+" ");              
 		            System.out.println("   S   M  Tu   W   Th   F  S");
 		            int sizer=stack1.size();
 		            Integer num=-1;
@@ -2719,7 +2731,6 @@ public class Utility {
 		            	Integer value=(Integer)stack1.pop();
 		        
 		            if(value==-1){
-		            	System.out.println("--");
 		            	stack2.push(" ");
 		            continue;
 		            }
@@ -2727,10 +2738,7 @@ public class Utility {
 		            stack2.push(value.toString());
 		        
 					}
-		            stack2.printStackCalender();
-		            
+		            stack2.printStackCalender();        
 	}
 	
-
-
 }

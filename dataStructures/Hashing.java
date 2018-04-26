@@ -5,6 +5,9 @@ import com.bridgeIt.utility.Utility;
 public class Hashing {
 
 	public static	OrderedLinkedList [] OL=new OrderedLinkedList[11];
+	
+	 /* Function intializes the hash array 
+	  * */  
 	public void hash(){
 		
 		for (int i = 0; i < OL.length; i++) {
@@ -15,12 +18,18 @@ public class Hashing {
 		
 	}
 	
+	/* Function adds the elements in the hash array 
+	 * @param integer elements
+	  * */ 
 	public void add(Integer data){
 		Integer div=11;
 		Integer i=data%div;
 		OL[i].add(data);
 	}
 	
+	/* Function searches the element in the hash table 
+	 * @param integer elements
+	 * */ 
 	public  boolean search(Integer data){
 		
 		int j=data%11;
@@ -29,6 +38,9 @@ public class Hashing {
 		return result;
 	}
 	
+	/* Function performs searching and deletion if element is present or add the element if not present
+	 * @param integer elements
+	 * */ 
 	public void actions(Integer data){
 		
 		int j=data%11;
@@ -44,6 +56,9 @@ public class Hashing {
 		}
 	}
 	
+	
+	/* Function prints the elements in the hash table
+	 * */ 
 	public void prints(){
 		
 		for (int i = 0; i < OL.length; i++) {

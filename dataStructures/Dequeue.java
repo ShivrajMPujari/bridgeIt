@@ -1,5 +1,13 @@
 package com.bridgeIt.dataStructures;
 
+/**
+ * @author bridgeit
+ *
+ */
+/**
+ * @author bridgeit
+ *
+ */
 public class Dequeue {
 
 	int size;
@@ -8,7 +16,8 @@ public class Dequeue {
 	int front;
 	int capacity;
 	
-	
+	/* Constructor initializes  properties in the dequeue
+	 * */ 
 	public Dequeue() 
 	{
 		capacity=20;
@@ -17,8 +26,11 @@ public class Dequeue {
 		rear=front=-1;	
 	}
 	
+	  
 	
-	
+	/**Function add the elements in the front of dequeue
+	 * @param item
+	 */
 	void addFront(char item)
 	{
 		if(size>capacity)
@@ -34,7 +46,7 @@ public class Dequeue {
 			}
 			else
 				if(front==0)
-					front=capacity-1;
+				front=capacity-1;
 				else
 			front=front-1;
 			queue[front]=item;
@@ -44,7 +56,9 @@ public class Dequeue {
 	}
 	
 	
-	
+	 /* Function adds the elements at the rear end 
+	  * @param Char elements
+	  * */ 
 	public void addRear(char item)
 	{
 		if(size>capacity)
@@ -68,28 +82,30 @@ public class Dequeue {
 	}
 	
 	
-	
+	 /* Function removes the elements at the front end 
+	  * @returns Char elements
+	  * */ 
 	public char removeFront()
 	{
 		size--;
 		return queue[front++];
 	}
 	
+	
+	 /* Function removes the elements at the rear end 
+	  * @returns Char elements
+	  * */ 
 	public char removeRear()
 	{
-		/*if(isEmpty())
-		{
-			System.out.println("Queue is Underflow");
-		}
-		else
-		{
-			System.out.println("Poped from rear of queue:"+queue[rear--]);
-		}*/
+	
 		size--;
 		return queue[rear--];
 	}
 	
 	
+	 /* Function checks the is queue is empty or not
+	  * @returns boolean true or false
+	  * */ 
 	boolean isEmpty()
 	{
 		if(size()==0)
@@ -99,6 +115,10 @@ public class Dequeue {
 		else
 			return false;
 	}
+	
+	 /* Function return the size of the dequeue
+	  * @returns Integer size 
+	  * */ 
 	public int size()
 	{
 		return size;

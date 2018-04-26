@@ -8,8 +8,6 @@
  * */
 package com.bridgeIt.dataStructures;
 
-import java.util.Arrays;
-
 import com.bridgeIt.utility.Utility;
 
 public class PrimeDiv {

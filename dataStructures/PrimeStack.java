@@ -21,9 +21,8 @@ public class PrimeStack {
 		int[] out = Utility.primeNumbers(num);	
 		Integer[] anagrams=Utility.anagramArray(out);
 		Integer[] primeanagrams=Utility.primeAnagramArray(anagrams);
-		System.out.println(Arrays.toString(primeanagrams));
 		
-		Stack store= new Stack();
+		Stack<Integer> store= new Stack<Integer>();
 	
 		for (int i = 0; i < primeanagrams.length; i++) {
 			
@@ -31,5 +30,4 @@ public class PrimeStack {
 		}
 		store.printStack();
 	}
-	
 }

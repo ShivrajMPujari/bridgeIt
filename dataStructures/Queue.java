@@ -8,6 +8,8 @@ public class Queue {
 	int front;
 	public int capacity;
 	
+	/* Constructor initializes the properties of the queue
+	  * */
 	public Queue() 
 	{
 		capacity=20;
@@ -16,6 +18,10 @@ public class Queue {
 		rear=front=-1;
 	}
 	
+	
+	/* Function inserts the element in the queue   
+	  * @param integer item
+	  * */
 	public void enqueue(int item)
 	{
 		if(size()>capacity)
@@ -38,6 +44,8 @@ public class Queue {
 		}
 	}
 	
+	/* Function removes  the element in the queue   
+	  * */
 	public void dequeue()
 	{
 		if(isEmpty())
@@ -46,11 +54,15 @@ public class Queue {
 		}
 		else
 		{
-			System.out.println("You are Poped from queue:"+queue[front++]);
+			System.out.println("You are Poped from queue:"+queue[front]);
+			queue[front++]=0;
 		}
 		size--;
 	}
 	
+	/* Function checks whether the queue is empty   
+	  * @returns boolean true if queue is empty
+	  * */
 	public boolean isEmpty()
 	{
 		if(size==0)
@@ -61,11 +73,16 @@ public class Queue {
 			return false;
 	}
 	
+	/* Function give out the size of the queue   
+	  * @returns integer size of the queue
+	  * */
 	public int size()
 	{
 		return size;
 	}
 	
+	/* Function displays the elements in the queue
+	  * */
 	void display()
 	{
 		if(front==-1)

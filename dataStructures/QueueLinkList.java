@@ -1,13 +1,14 @@
 package com.bridgeIt.dataStructures;
 
-import java.util.Scanner;
-
-
 public class QueueLinkList <T extends Comparable<T>> {
 
 	MyNode first;
-	public static QueueLinkList q = new QueueLinkList<>();
+	//public static QueueLinkList QUEUE = new QueueLinkList<>();
 
+	
+	 /* Function pushes the data in the queue
+	  * @param  Comparable data 
+	  * */ 
 	public void enqueue(T data){
 		
 		if(first==null){
@@ -27,6 +28,10 @@ public class QueueLinkList <T extends Comparable<T>> {
 			current.next=newNode;
 		}
 	}
+	
+	/* Function removes  the data in the queue
+	  * @return boolean,if the data is removed
+	  * */ 
 	public boolean dequeue(){
 		
 		MyNode current=first;
@@ -35,15 +40,29 @@ public class QueueLinkList <T extends Comparable<T>> {
 		return true;
 	}
 	
+	/* Function prints  the data in the queue
+	  * */ 
 	public void printQueue(){
 		
 		MyNode current=first;
 		while(current!=null){
 			
 			System.out.println(current.data);
-			current= current.next;
-			
+			current= current.next;	
 		}
+	}
+	
+	/* Function prints the calendar by traversing in the queue
+	  * */
+	public void printCalender(){
+		
+		MyNode current=first;
+		while(current!=null){
+			
+			System.out.print(current.data);
+			current= current.next;	
+		}
+		
 		
 	}
 	

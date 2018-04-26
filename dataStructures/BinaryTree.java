@@ -14,9 +14,9 @@ public class BinaryTree {
 
 	public static void main(String[] args) {
 		System.out.println("Enter the No. of TestCases");
-		int tc=Utility.inputInt();
+		int testCase=Utility.inputInt();
 		int num=0;
-		for(int i=0;i<tc;i++)
+		for(int i=0;i<testCase;i++)
 		{
 			System.out.println("Enter Your Node Number:");
 			num=Utility.inputInt();
