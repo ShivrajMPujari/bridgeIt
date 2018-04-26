@@ -70,19 +70,38 @@ public class UnorderedList {
 	
 	/* Function prints the list in file 
 	 * */
-	public static <T extends Comparable<T>> void printList(){
+	public static <T extends Comparable<T>> void printingList(String file){
 		
-	current=head;
-	if(current.data==null){
-		return;
-	}
-	while(current.data!=null){
-		
-		Utility.printData("unorderedList.txt", (T) current.data);
-		current=current.next;
-		if(current==null)break;
-	}
+		FileWriter filewrite;
+		PrintWriter printwrite;
+		try {
+
+			filewrite = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"");
+			printwrite=new PrintWriter(filewrite);
+			
+			current=head;
+			if(current.data==null){
+				return;
 			}
+			while(current.data!=null){
+				
+				//Utility.printData("unorderedList.txt", (T) current.data);
+				printwrite.print(current.data+" ");
+				
+				current=current.next;
+				if(current==null)break;
+			}
+			printwrite.flush();
+			printwrite.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+			}
+	
+	
+	
+	
+	
 	
 	/* Function appends the data
 	 * @param data to be added inside list
@@ -214,7 +233,7 @@ public class UnorderedList {
 		action("jay");
 		action("jack");
 		action("jay");
-		printList();
+	
 
 	} 
 	

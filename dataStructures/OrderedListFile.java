@@ -6,18 +6,17 @@ public class OrderedListFile {
 
 	public static void main(String[] args) {
 		
-		OrderedLinkedList ol= new OrderedLinkedList<>();	 
-		 String [] s=Utility.readFile("OrderedListIn.txt");
-		Integer[] in= new Integer[s.length];
+		OrderedLinkedList orderedLinkedList= new OrderedLinkedList<>();	 
+		 String [] stringArray=Utility.readFile("OrderedListIn.txt");
+		Integer[] integerArray= new Integer[stringArray.length];
 		
-			  for (int i = 0; i < s.length; i++) {
+			  for (int i = 0; i < stringArray.length; i++) {
 				  
-				   in[i]=Integer.valueOf(s[i]);
-				   ol.add(in[i]);
+				  integerArray[i]=Integer.valueOf(stringArray[i]);
+				   orderedLinkedList.add(integerArray[i]);
 			}
-			  ol.action(32);
-			  ol.printList();
-			  ol.printer("OrderedListOut.txt");
+			  orderedLinkedList.action(32);
+			  orderedLinkedList.printingList("OrderedListIn.txt");
 		
 	}
 }

@@ -196,6 +196,38 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 		} 
 
 	
+	/**Function prints the data of ordered list in  the the file
+	 * @param file String name of the file
+	 */
+	public  <T extends Comparable<T>> void printingList(String file){
+		
+		FileWriter filewrite;
+		PrintWriter printwrite;
+		try {
+
+			filewrite = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"");
+			printwrite=new PrintWriter(filewrite);
+			
+			 MyNode current=head;
+			if(current.data==null){
+				return;
+			}
+			while(current.data!=null){
+				
+				printwrite.print(current.data+" ");
+				
+				current=current.next;
+				if(current==null)break;
+			}
+			printwrite.flush();
+			printwrite.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+			}
+	
+	
+	
 	public  void printer1(){
 		 MyNode current=head;
 			if(current.data==null){

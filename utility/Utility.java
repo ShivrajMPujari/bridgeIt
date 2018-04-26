@@ -2129,7 +2129,7 @@ public class Utility {
 	 * @param file name with extension
 	 * */
 	public static String [] readFile(String file){
-		String [] str=null;
+		String [] stringArray=null;
 		FileReader fileRead;
 		try {
 			fileRead = new FileReader("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"");
@@ -2143,7 +2143,7 @@ public class Utility {
 				concat=concat+read;
 			}
 			System.out.println(concat);
-			  str=concat.split("\\s");	
+			stringArray=concat.split("\\s");	
 			 }	
 			 catch (IOException e) {
 					
@@ -2151,7 +2151,7 @@ public class Utility {
 					
 				}
 		
-		return str;
+		return stringArray;
 		
 	}  
 	
@@ -2165,7 +2165,7 @@ public class Utility {
 			PrintWriter printwrite;
 			try {
 	
-				filewrite = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"",true);
+				filewrite = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"");
 				printwrite=new PrintWriter(filewrite);
 				
 				printwrite.print(""+data+" ");
@@ -2177,21 +2177,23 @@ public class Utility {
 	
 		}
 	
+	
 	/* Function performs bank counter operations 
 	 * */
-	  public static void bankCounter()
+	  public static  void bankCounter()
 	    {
-	        Queue q=new Queue();
+	        Queue queue=new Queue();
+	        double bankAmount=25000;
 	        System.out.println("Enter your choice:");
 	        System.out.println("1. To add in queue");
 	        System.out.println("2. To do transaction");
 	        int choice=inputInt();
 	        int option;
 	        double sum=0;
-	        while(choice==1 && q.size()<q.capacity)
+	        while(choice==1 && queue.size()<queue.capacity)
 	        {
 	           
-	            q.enqueue(choice);
+	        	queue.enqueue(choice);
 	            System.out.println("Enter your choice:");
 	            System.out.println("1. To add in queue");
 	            System.out.println("2. To do transaction");
@@ -2201,9 +2203,9 @@ public class Utility {
 	            else
 	                choice=option;
 	        }
-	        while(choice==2 && (q.size()<q.capacity))
+	        while(choice==2 && (queue.size()<queue.capacity))
 	        {
-	            if(q.isEmpty())
+	            if(queue.isEmpty())
 	            {
 	                System.out.println("Please add into queue First");
 	                System.out.println("Enter your choice:");
@@ -2211,7 +2213,7 @@ public class Utility {
 	                System.out.println("2. To do transaction");
 	                option=inputInt();
 	                if(option==1)
-	                    q.enqueue(1);
+	                	queue.enqueue(1);
 	                else
 	                    choice=option;
 	            }
@@ -2223,26 +2225,24 @@ public class Utility {
 	           
 	                switch (select) {
 	                case 1: System.out.println("Enter Your Amount:");
-	                        double amountdepo=inputDouble();
-	                        sum=bankDeposit(amountdepo,sum);
-	                        q.dequeue();
+	                        double amountdeposit=inputDouble();
+	                        bankAmount=bankDeposit(amountdeposit,bankAmount);
+	                        queue.dequeue();
 	                        break;
 	                case 2: System.out.println("Enter Your Amount:");
-	                        double amountwith=inputDouble();
-	                        sum=bankWithdraw(amountwith,sum);
-	                        q.dequeue();
+	                        double amountwithdraw=inputDouble();
+	                        bankAmount=bankWithdraw(amountwithdraw,bankAmount);
+	                        if(bankAmount==0)break;
+	                        queue.dequeue();
 	                        break;
-	                case 3: System.out.println("Balance is:"+sum);
-	                        q.dequeue();
+	                case 3: System.out.println("Balance left is:"+bankAmount);
+	                		queue.dequeue();
 	                        break;
-	                case 4: q.enqueue(1);
+	                case 4: queue.enqueue(1);
 	                        break;
-	                case 5: int size= q.size();
+	                case 5: int size= queue.size();
 	                        System.out.println("Number of ppl in the queue are:"+size);
 	                        
-	                case 6: 
-	                	
-	                		break;        
 	                default:
 	                        break;
 	                }
@@ -2255,9 +2255,11 @@ public class Utility {
 	  		 * */
 		    public static double bankDeposit(double amount,double sum)
 		    {
-		        System.out.println("Amount deposited is:"+amount);
+		    	
+		        System.out.println("Amount deposited is: "+amount);
 		        sum=sum+amount;
-		        System.out.println("Total amount"+sum);
+		        
+		        System.out.println("Total amount left in bank- "+sum);
 		        return sum;
 		    }
 		   
@@ -2267,9 +2269,13 @@ public class Utility {
 	  		 * */
 		    public static double bankWithdraw(double amount,double sum)
 		    {
-		        System.out.println("Amount withdrawn is:"+amount);
+		    	if(sum<amount)
+		    	{System.out.println("Bank is out of balance plz come tommorrow" );
+		    	   return 0;
+		    	}
+		        System.out.println("Amount withdrawn is: "+amount);
 		        sum=sum-amount;
-		        System.out.println("Total amount"+sum);
+		        System.out.println("Total amount left "+sum);
 		        return sum;
 		    }
 		 

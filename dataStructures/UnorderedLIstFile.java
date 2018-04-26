@@ -15,10 +15,8 @@ public class UnorderedLIstFile {
 		
 		UnorderedList.action("raj");
 		UnorderedList.action("jay");
-	//	UnorderedList.action("jack");
-	//	UnorderedList.action("developers");
-	//	UnorderedList.action("jay");
-		UnorderedList.printList();
+		UnorderedList.action("jay");
+		UnorderedList.printingList("unorderedList.txt");
 		
 	}
 
