@@ -24,12 +24,15 @@ public class HashSearch {
 				   in[i]=Integer.valueOf(s[i]);
 				   hs.add(in[i]);
 			}
-			  hs.prints();
+			 
 			 System.out.println("enter the number");
 			 Integer data =Utility.inputInt();
-			 hs.actions(data);
+			hs.actions(data);
 			 hs.prints();
-			 
+			 hs.printHashing("HashingIn.txt");
+			
+		
+		
 	}
 
 }

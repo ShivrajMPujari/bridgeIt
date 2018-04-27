@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedList;
 
 import com.bridgeIt.utility.Utility;
 
@@ -88,13 +89,12 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 	public boolean search(T data){
 		
 		 current=head;
+		 if(current==null)return false;
 			while(current.data.equals(data)!=true){
 				if(current.next==null) return false;
 				if(current.next==null){		
 					return false;}
 					current=current.next;
-				
-				
 			}
 			
 			if(current.data.equals(data))return true;
@@ -151,18 +151,20 @@ public class OrderedLinkedList<T extends Comparable<T>>{
 
 	/* Function prints the list in file 
 	 * */
-	public  void printList(){
-			
+	public  LinkedList printList(){
+			LinkedList <T>list= new LinkedList();
 			MyNode current=head;
 			if(current.data==null){
-				return;
+				return null;
 			}
 			while(current.data!=null){
 				
 				System.out.println(current.data);
+				list.add((T) current.data);
 				current=current.next;
 				if(current==null)break;
 			}
+			return list;
 		}
 	
 	/* Function perform action to remove or add the elements

@@ -2560,7 +2560,7 @@ public class Utility {
 			
 		}
 	
-	//	prints2dArray(anagramArray, 200, 2);
+		prints2dArray(anagramArray, 200, 2);
 		return anagram;
 	}
 	
@@ -2571,11 +2571,14 @@ public class Utility {
 					
 					for (int i = 0; i < row; i++) {
 						for (int j = 0; j < column; j++) {
-							System.out.printf("%4d ", array[i][j]);
+							if(array[i][j]==null){System.out.printf("%4s","");}
+							else{
+								System.out.printf("%4d", array[i][j]);
+							}
+							
 			}
 			System.out.println( );
 				}
-	
 	}
 	
 	 /* Function split the array and divides the array 

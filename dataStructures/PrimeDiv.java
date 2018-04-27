@@ -12,7 +12,6 @@ import com.bridgeIt.utility.Utility;
 
 public class PrimeDiv {
 
-	
 	public static void main(String[] args) {
 		
 		System.out.println("Enter the nth term:");
