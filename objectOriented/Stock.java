@@ -1,19 +1,19 @@
 package com.bridgeIt.objectOriented;
 
-public class Stock {
+import java.util.ArrayList;
 
+public class Stock implements Cloneable{
+
+	static ArrayList LIST= new ArrayList();
 	String stockName;
 	Integer shareNumber;
 	Integer sharePrice;
 	
-	Stock(String stockName,Integer shareNumber,Integer sharePrice){
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
 		
-		this.stockName=stockName;
-		this.shareNumber=shareNumber;
-		this.sharePrice=sharePrice;
+		return super.clone();
 	}
-	
-	
 	
 	
 }

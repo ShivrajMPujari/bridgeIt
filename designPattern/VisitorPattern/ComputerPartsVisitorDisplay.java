@@ -3,10 +3,11 @@ package com.bridgeIt.designPattern.VisitorPattern;
 public class ComputerPartsVisitorDisplay implements ComputerPartsVistor{
 
 	@Override
-	public void visit(Computer computer) {
-		System.out.println(" display all parts");
+	public ComputerPartsVistor visit(Computer computer) {
 		
-	}
+		System.out.println("display all parts");
+		return this;
+		}
 
 	@Override
 	public void visit(Mouse mouse) {
