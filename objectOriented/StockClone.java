@@ -9,6 +9,10 @@ public class StockClone {
 	static ArrayList<Stock> LIST= new ArrayList<Stock>();
 	Stock stock= new Stock();
 	
+	/**Function makes the clone of the Stock class 
+	 * @return cloned object of class Stock
+	 * @throws CloneNotSupportedException
+	 */
 	public Stock makeStock() throws CloneNotSupportedException{
 	
 	Stock stock1=(Stock) stock.clone();
@@ -17,10 +21,15 @@ public class StockClone {
 	}
 	
 	
+	/**Function sets the attributes of the Stock 
+	 * @param stock Stock class reference
+	 * @return Stock object reference
+	 */
 	public Stock setStock(Stock stock){
 		
 		System.out.println("Enter the stock name");
-		stock.stockName=Utility.inputStringLong();
+		
+		stock.stockName=Utility.inputString();
 		
 		System.out.println("Enter the number of shares");
 		stock.shareNumber=Utility.inputInt();
@@ -32,6 +41,9 @@ public class StockClone {
 		
 	}
 	
+	/**Function adds the stock object to the list
+	 * @throws CloneNotSupportedException
+	 */
 	public void addStock() throws CloneNotSupportedException{
 		
 		Stock newStock =makeStock();

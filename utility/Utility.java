@@ -19,10 +19,6 @@ import com.bridgeIt.dataStructures.Queue;
 import com.bridgeIt.dataStructures.QueueLinkList;
 import com.bridgeIt.dataStructures.Stack;
 
-
-
-
-
 public class Utility {
 
 	// all scanner inputs
@@ -45,10 +41,10 @@ public class Utility {
 	}
 	
 	public static String inputStringLong() {
+		Scanner sout=new Scanner(System.in);
+		String b = sout.nextLine();
 
-		String a = sc.nextLine();
-
-		return a;
+		return b;
 
 	}
 
