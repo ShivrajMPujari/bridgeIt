@@ -6,9 +6,13 @@ import java.util.Collections;
 import com.bridgeIt.utility.Utility;
 
 public class AddressBookImp implements AddressBook {
-
 	
 	ArrayList<Person> list=new ArrayList<Person>();
+	
+	AddressBookImp(){}
+	AddressBookImp(ArrayList list){
+		this.list=list;
+	}
 	
 	
 	@Override
@@ -29,11 +33,13 @@ public class AddressBookImp implements AddressBook {
 		System.out.println("Enter your phone Number");
 		person.setPhoneNumber(Utility.inputString());
 		list.add(person);
+		
 	}
 
 	@Override
 	public ArrayList<Person> editPerson(String name) {
 
+		print(list);
 	for (Person people : list) {
 			if(people.getFirstName().equals(name))	{
 				
@@ -46,7 +52,7 @@ public class AddressBookImp implements AddressBook {
 				people.setZipcode(Utility.inputInt());
 				System.out.println("Enter your phone Number");
 				people.setPhoneNumber(Utility.inputString());
-				print(list);
+			
 				return list;
 			}
 			
@@ -59,7 +65,7 @@ public class AddressBookImp implements AddressBook {
 	@Override
 	public void deletePerson(String name) {
 		
-
+		
 		for (Person people : list) {
 				if(people.getFirstName().equals(name))	{
 					list.remove(people);
@@ -82,7 +88,7 @@ public class AddressBookImp implements AddressBook {
 	@Override
 	public ArrayList<Person> sortByZip(ArrayList<Person> list) {
 
-		Collections.sort(list,new NameComparator());
+		Collections.sort(list,new ZipComparator());
 		
 		return list;
 	}
@@ -104,7 +110,8 @@ public class AddressBookImp implements AddressBook {
 		AddressBookImp add=new AddressBookImp();
 		add.addPerson();
 		add.addPerson();
-		
+		add.addPerson();
+		add.deletePerson("adit");
 	}
 	
 	

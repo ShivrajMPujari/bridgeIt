@@ -2281,7 +2281,7 @@ public class Utility {
 	  		 * */
 		    public static void CalendarQueue(int month,int year)
 		    {
-		        QueueLinkList weekday=new QueueLinkList();
+		        QueueLinkList<String> weekday=new QueueLinkList<String>();
 		        String[] months = {"January", "February", "March","April", "May", "June",
 		                "July", "August", "September","October", "November", "December"};
 
@@ -2719,7 +2719,7 @@ public class Utility {
 	            Stack stack1= new Stack();
 	            Stack stack2= new Stack();
 	            
-	           
+	           System.out.println();
 
 		            for (int i = 0; i < 6; i++) {
 						for (int j = 0; j < 7; j++) {
@@ -2731,6 +2731,8 @@ public class Utility {
 		            System.out.println("        "+months[month-1]+" "+year+" ");              
 		            System.out.println("   S   M  Tu   W   Th   F  S");
 		            int sizer=stack1.size();
+		            System.out.println(stack1+" "+stack2);
+		           
 		            Integer num=-1;
 		            for (int i = 0; i <sizer; i++) {
 		            	Integer value=(Integer)stack1.pop();
