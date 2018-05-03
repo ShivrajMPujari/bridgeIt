@@ -71,8 +71,6 @@ public class AddressBookOpen {
 		}
 		case 6:{
 			
-			System.out.println(bookName);
-			
 			perform.writeToFile(bookName,book.list);
 			need=7;
 			break;

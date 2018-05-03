@@ -48,6 +48,8 @@ public class AddressBookImp implements AddressBook {
 				people.setAddress(st);
 				System.out.println("Enter your City");
 				people.setCity(Utility.inputString());
+				System.out.println("Enter your state");
+				people.setState(Utility.inputString());
 				System.out.println("Enter your ZipCode");
 				people.setZipcode(Utility.inputInt());
 				System.out.println("Enter your phone Number");
@@ -96,10 +98,14 @@ public class AddressBookImp implements AddressBook {
 	
 	@Override
 	public void print(ArrayList<Person> list) {
-
+			
 		for (Person person : list) {
 			
-			System.out.println(person);
+			System.out.println("First Name:- "+person.getFirstName()+" Last Name:- "+person.getLastname());
+			System.out.println("Address:- "+person.getAddress());
+			System.out.println("City:- "+person.getCity()+" State:- "+person.getState());
+			System.out.println("Zip code:- "+person.getZipcode());
+			System.out.println();
 		}
 		
 	}
