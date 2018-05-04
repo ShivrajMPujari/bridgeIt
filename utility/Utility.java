@@ -2203,6 +2203,9 @@ public class Utility {
 	        {
 	            if(queue.isEmpty())
 	            {
+	            	System.out.println(" Enter 1. to continue \n Enter 2. to exist");
+	            	int choose=Utility.inputInt();
+	            	if(choose==2){System.exit(0);}
 	                System.out.println("Please add into queue First");
 	                System.out.println("Enter your choice:");
 	                System.out.println("1. To add in queue");

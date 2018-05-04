@@ -27,7 +27,7 @@ public class HashSearch {
 			 
 			 System.out.println("enter the number");
 			 Integer data =Utility.inputInt();
-			hs.actions(data);
+			 hs.actions(data);
 			 hs.prints();
 			 hs.printHashing("HashingIn.txt");
 			

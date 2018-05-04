@@ -54,7 +54,8 @@ public class Queue {
 		}
 		else
 		{
-			System.out.println("You are Poped from queue:"+queue[front]);
+			//System.out.println("You are Poped from queue:"+queue[front]);
+			System.out.println("You are Poped from the queue");
 			queue[front++]=0;
 		}
 		size--;

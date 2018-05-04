@@ -10,31 +10,33 @@ import org.json.simple.parser.ParseException;
 public class Inventory {
 
 	public static void main(String[] args) {
-		
-		JSONParser parser=new JSONParser();
-		
-		try {
-			FileReader read= new FileReader("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//InventoryDetails.json");
-			Object obj=	parser.parse(read);
-			JSONObject jobj=(JSONObject)obj;
-			JSONObject wheats=(JSONObject)jobj.get("Wheats");
-			JSONObject rice=(JSONObject)jobj.get("Rice");
-			JSONObject pulse=(JSONObject)jobj.get("Pulses");
-		
-			String wName=(String)wheats.get("name");
-			String wPrice=(String)wheats.get("price");
-			String wWeight=(String)wheats.get("weight");
-			
-			System.out.println(wheats);
-			System.out.println(rice);
-			System.out.println(pulse);
-		} catch (IOException | ParseException e) {
 
+		Inventory inventory = new Inventory();
+		JSONObject jsonobject = inventory.ObjectReading("InventoryDetails");
+		JSONObject rice = (JSONObject) jsonobject.get("Rice");
+		JSONObject wheat = (JSONObject) jsonobject.get("Wheats");
+		JSONObject pulses = (JSONObject) jsonobject.get("Pulses");
+		System.out.println(rice);
+		System.out.println(wheat);
+		System.out.println(pulses);
+
+	}
+
+	public JSONObject ObjectReading(String file) {
+
+		JSONParser parser = new JSONParser();
+		JSONObject jsonobject = null;
+		try {
+			FileReader read = new FileReader(
+					"//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//" + file + ".json");
+			Object object = parser.parse(read);
+			jsonobject = (JSONObject) object;
+		} catch (IOException | ParseException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
+
+		return jsonobject;
+
 	}
 
 }

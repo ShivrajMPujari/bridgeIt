@@ -30,6 +30,8 @@ public class AddressBookImp implements AddressBook {
 		person.setCity(Utility.inputString());
 		System.out.println("Enter your ZipCode");
 		person.setZipcode(Utility.inputInt());
+		System.out.println("Enter your State");
+		person.setState(Utility.inputString());
 		System.out.println("Enter your phone Number");
 		person.setPhoneNumber(Utility.inputString());
 		list.add(person);
@@ -54,7 +56,7 @@ public class AddressBookImp implements AddressBook {
 				people.setZipcode(Utility.inputInt());
 				System.out.println("Enter your phone Number");
 				people.setPhoneNumber(Utility.inputString());
-			
+				print(list);
 				return list;
 			}
 			

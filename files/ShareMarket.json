@@ -1,0 +1,17 @@
+{
+
+   "SBI":{
+   "name":"SBI","totalShare":120,"Shareprice":80
+  
+   }
+	,"Rel":{
+   "name":"Reliance","totalShare":100,"Shareprice":90
+   }
+   	,"TATA":{
+   "name":"TATA","totalShare":110,"Shareprice":60
+   }
+	 ,"IndianOil":{
+   "name":"IndianOil","totalShare":90,"Shareprice":60
+   }
+
+}

@@ -7,18 +7,21 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-import com.bridgeIt.utility.Utility;
+
 
 public class Hashing {
 
-	public static	OrderedLinkedList [] OL=new OrderedLinkedList[11];
-	 /* Function initializes the hash array 
+	@SuppressWarnings("rawtypes")
+	public static	OrderedLinkedList [] LISTARRAY=new OrderedLinkedList[11];
+	
+	/* Function initializes the hash array 
 	  * */  
+	@SuppressWarnings("rawtypes")
 	public void hash(){
 		
-		for (Integer i = 0; i < OL.length; i++) {
+		for (Integer i = 0; i < LISTARRAY.length; i++) {
 			
-			OL[i]= new OrderedLinkedList();
+			LISTARRAY[i]= new OrderedLinkedList();
 			
 		}
 		
@@ -27,10 +30,11 @@ public class Hashing {
 	/* Function adds the elements in the hash array 
 	 * @param integer elements
 	  * */ 
+	@SuppressWarnings("unchecked")
 	public void add(Integer data){
 		Integer div=11;
 		Integer i=data%div;
-		OL[i].add(data);
+		LISTARRAY[i].add(data);
 	}
 	
 	/* Function searches the element in the hash table 
@@ -39,7 +43,7 @@ public class Hashing {
 	public  boolean search(Integer data){
 		
 		int j=data%11;
-		boolean result=OL[j].search(data);
+		boolean result=LISTARRAY[j].search(data);
 		
 		return result;
 	}
@@ -54,24 +58,24 @@ public class Hashing {
 		boolean outcome=hs.search(data);
 		if(outcome==true){
 			
-			OL[j].remove(data);
+			LISTARRAY[j].remove(data);
 			
 		}else{
 			
-			OL[j].add(data);
+			LISTARRAY[j].add(data);
 		}
 	}
 	
 	
 	/* Function prints the elements in the hash table
 	 * */ 
-	public HashMap prints(){
+	public HashMap<Integer, LinkedList> prints(){
 	
 		
-		HashMap <Integer,LinkedList> mapper=new HashMap();
-		for (int i = 0; i < OL.length; i++) {
-			if (OL[i].head!=null) {
-				LinkedList list=OL[i].printList();
+		HashMap <Integer,LinkedList> mapper=new HashMap<Integer, LinkedList>();
+		for (int i = 0; i < LISTARRAY.length; i++) {
+			if (LISTARRAY[i].head!=null) {
+				LinkedList list=LISTARRAY[i].printList();
 				mapper.put(i, list);
 			
 			}
@@ -96,16 +100,20 @@ public class Hashing {
 				filewrite = new FileWriter("//home/bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//"+file+"");
 				printwrite=new PrintWriter(filewrite);
 				
-				HashMap <Integer,LinkedList> mapper=new HashMap();
-				for (int i = 0; i < OL.length; i++) {
-					if (OL[i].head!=null) {
-						LinkedList list=OL[i].printList();
+				HashMap <Integer,LinkedList> mapper=new HashMap<Integer, LinkedList>();
+				for (int i = 0; i < LISTARRAY.length; i++) {
+					if (LISTARRAY[i].head!=null) {
+						LinkedList list=LISTARRAY[i].printList();
 						mapper.put(i, list);
-					
 					}
 				}
 				 for(Map.Entry<Integer,LinkedList> m:mapper.entrySet()){  
-					 printwrite.println(m.getKey()+" "+m.getValue().toString());  
+					LinkedList lister=m.getValue();
+					for (Object object : lister) {
+						System.out.println(object);
+						printwrite.print(object+" "); 
+					}
+					 
 				 }
 				printwrite.flush();
 				printwrite.close();
