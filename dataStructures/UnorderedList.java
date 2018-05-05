@@ -84,10 +84,7 @@ public class UnorderedList {
 				return;
 			}
 			while(current.data!=null){
-				
-				//Utility.printData("unorderedList.txt", (T) current.data);
 				printwrite.print(current.data+" ");
-				
 				current=current.next;
 				if(current==null)break;
 			}
@@ -97,11 +94,6 @@ public class UnorderedList {
 			e.printStackTrace();
 		}
 			}
-	
-	
-	
-	
-	
 	
 	/* Function appends the data
 	 * @param data to be added inside list

@@ -1,5 +1,13 @@
 package com.bridgeIt.objectOriented;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import org.codehaus.jackson.map.ObjectMapper;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import com.bridgeIt.utility.Utility;
 
 public class CompanyList {
@@ -24,47 +32,40 @@ public class CompanyList {
 		totalSharePrice=totalSharePrice+company.shareprice;
 	}
 	
-	public void remove(String name,Integer amount){
+	public boolean remove(String name,Integer amount){
 		
-		if (head==null){return;}
-		CompanyShares current=head;
-		Integer num=0;
-		if(current.symbol.equals(name)){
-			if(current.shareprice<0){
-				head=current.next;
-				current=null;
-			}
-			else {
-			
+		if(search(name)==false){
+			System.out.println("no such symbol available");
+			return false;
+		}
+		else{
+			CompanyShares current=head;
+			if(current.symbol.equals(name)){
+				
 				if(current.shareprice-amount>0){
 					current.shareprice=current.shareprice-amount;
-					totalSharePrice=totalSharePrice-amount;
-					return;
+					return true;
 				}else{
-					System.out.println("amount is out of bound can't proceed");
-					return;
-				}
-			
+					System.out.println("Transaction can't be done");
+					return false;
+				}	
 			}
-			return;
-		}
-		while(current.next.symbol.equals(name)==false){
-				System.out.println(current.next.symbol+"99999 "+name);
+			if(current.next.symbol.equals(name)!=true){
+				
 				current=current.next;
 			}
-		System.out.println(current.next.symbol+"-- "+name);
-		num=current.shareprice;
-		System.out.println(num);
-		if(num-amount>0){
-			System.out.println(current.shareprice+"---------");
-			current.shareprice=current.shareprice-amount;
-			System.out.println(current.shareprice+"---------");
-			totalSharePrice=totalSharePrice-amount;
-			return;
-		}else{
-			System.out.println("amount is out of bound can't proceed");
-			return;
+			
+			if(current.next.shareprice-amount>0){
+				current.next.shareprice=current.next.shareprice-amount;
+				return true;
+			}else{
+				System.out.println("Transaction can't be done");
+				return false;
+			}	
+			
 		}
+			
+		
 	}
 	
 	public void display(){
@@ -79,6 +80,41 @@ public class CompanyList {
 			System.out.println(current.symbol+" "+current.shareprice+" "+current.date);
 			current=current.next;
 		}
+		
+	}
+	
+	
+	public void write(String file,CompanyList list){
+	
+		JSONObject object = new JSONObject();
+		JSONArray array=null;
+		
+		try {
+			FileWriter filewrite= new FileWriter("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//sharePerson//"+file+".json");
+			
+			CompanyShares current=head;
+			if(current==null){
+				
+				return;	
+			}
+			while(current!=null){
+				array =new JSONArray();
+				System.out.println(current.symbol+" "+current.shareprice+" "+current.date);
+				array.add(current.symbol);
+				array.add(current.shareprice);
+				array.add(current.date);
+				object.put(current.symbol, array);
+				current=current.next;
+			}
+			
+			filewrite.write(object.toJSONString());
+			filewrite.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
 		
 	}
 	
@@ -139,6 +175,32 @@ public class CompanyList {
 				this.date=date;
 				next = null;
 			}
+			
+			public Integer getShareprice() {
+				return shareprice;
+			}
+			public void setShareprice(Integer shareprice) {
+				this.shareprice = shareprice;
+			}
+			public String getDate() {
+				return date;
+			}
+			public void setDate(String date) {
+				this.date = date;
+			}
+			public String getSymbol() {
+				return symbol;
+			}
+			public void setSymbol(String symbol) {
+				this.symbol = symbol;
+			}
+			public CompanyShares getNext() {
+				return next;
+			}
+			public void setNext(CompanyShares next) {
+				this.next = next;
+			}
+			
 		}
 	
 	public static void main(String[] args) {

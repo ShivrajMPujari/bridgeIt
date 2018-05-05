@@ -17,8 +17,8 @@ public class JsonPerform {
 			FileWriter filewriter=new FileWriter("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//objectOriented//Json//"+file+".json");
 			PrintWriter printwrite=new PrintWriter(filewriter);
 			ObjectMapper mapping = new ObjectMapper();
-				mapping.writeValue(printwrite, list);
-				printwrite.flush();
+			mapping.writeValue(printwrite, list);
+			printwrite.flush();
 			
 			
 		} catch (IOException e) {
