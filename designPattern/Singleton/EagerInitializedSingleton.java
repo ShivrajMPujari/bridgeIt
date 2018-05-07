@@ -13,7 +13,6 @@ public class EagerInitializedSingleton {
 	public static void main(String[] args) {
 		EagerInitializedSingleton singleton=new EagerInitializedSingleton();
 		EagerInitializedSingleton singleton1=new EagerInitializedSingleton();
-		//singleton.getInstance();
 		System.out.println(singleton);
 		System.out.println(singleton1);
 	}

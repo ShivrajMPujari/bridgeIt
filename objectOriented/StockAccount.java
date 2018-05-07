@@ -2,6 +2,7 @@ package com.bridgeIt.objectOriented;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -23,11 +24,15 @@ public class StockAccount {
 			
 			try {
 				file.createNewFile();
+				System.out.println("Your account has been created");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			list=new CompanyList();
+		}else{
+			System.out.println("Your account is now active");
 		}
-		list=new CompanyList();
+		
 	}
 	
 	public double valueOf(){
@@ -60,6 +65,11 @@ public class StockAccount {
 		list.display();
 	}
 	
+	public void editDisplay(JSONObject jsonObject){
+		
+		System.out.println(jsonObject.toString());
+		
+	}
 	public boolean fileExistence(String files){
 		
 		File file= new File("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//objectOriented//Json//"+files+".json");
@@ -97,15 +107,18 @@ public class StockAccount {
 	   if(object!=null){
 		   
 		   JSONArray array =(JSONArray)object;
+		   System.out.println(array);
 		   Long stockprice=(Long)array.get(1);
 		   array.set(1, stockprice+amount);
+		   System.out.println(array);
+		   
 		   return jsonObject;
 	   }
 	   newArray.add(0, symbol);
 	   newArray.add(1, amount);
 	   System.out.println("Enter the date");
 	   String date=Utility.inputString();
-	   newArray.add(3,date);
+	   newArray.add(2,date);
 	   jsonObject.put(symbol, newArray);
 	   
 	   return jsonObject;
@@ -116,7 +129,7 @@ public class StockAccount {
 		
 		Object object=jsonObject.get(symbol);
 		if(object==null){
-			System.out.println("Entered wrong symbol");
+			System.out.println("Your transaction can't be done,Entered wrong symbol");
 			return jsonObject;
 		}
 		 JSONArray array =(JSONArray)object;
@@ -125,21 +138,37 @@ public class StockAccount {
 			   array.set(1, shareprice-amount);
 			   return jsonObject;
 		 }else{
-			 System.out.println("Sorry can't do this transaction");
+			 System.out.println("Sorry can't do this transaction,Account out of balance");
 			 return jsonObject;
 		 }
-		
 	}
-	
+	public void editPrint(JSONObject jsonObject,String file){
+		System.out.println(file);
+		try {
+			FileWriter filewrite= new FileWriter("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//sharePerson//"+file+".json");
+			filewrite.write(jsonObject.toJSONString());
+			filewrite.flush();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	public static void main(String[] args) {
 	    
 		System.out.println("enter the name");
 		String name=Utility.inputString();
 		StockAccount stock=new StockAccount(name);
 		JSONObject jsonObject=stock.editPerson(name);
+		System.out.println(jsonObject);
+		
 	    stock.editBuy(jsonObject, 15, "rel");
+	    stock.editBuy(jsonObject, 2500, "apple");
+	    stock.editSell(jsonObject, 200, "apple");
+	    System.out.println(jsonObject);
+	    stock.editPrint(jsonObject, name);
 	    
-/*		System.out.println("Enter the name of account");
+	/*	System.out.println("Enter the name of account");
 		String files=Utility.inputString();
 		StockAccount stocks=new StockAccount(files);
 		
@@ -157,7 +186,8 @@ public class StockAccount {
 		stocks.sell(2000, "rel");
 		stocks.sell(2000, "indianoil");
 		stocks.save(files, stocks.list);
-			*/
+		*/
+			
 	}
 	
 

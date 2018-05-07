@@ -13,9 +13,10 @@ public class UnorderedLIstFile {
 			UnorderedList.add(stringArray[i]);
 		}
 		
-		UnorderedList.action("raj");
-		UnorderedList.action("jay");
-		UnorderedList.action("jay");
+	
+		System.out.println("Enter the string");
+		String act=Utility.inputString();
+		UnorderedList.action(act);
 		UnorderedList.printingList("unorderedList.txt");
 		
 	}

@@ -4,9 +4,10 @@ import com.bridgeIt.utility.Utility;
 
 public class OrderedListFile {
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		
-		OrderedLinkedList orderedLinkedList= new OrderedLinkedList<>();	 
+		OrderedLinkedList<Integer> orderedLinkedList= new OrderedLinkedList<Integer>();	 
 		 String [] stringArray=Utility.readFile("OrderedListIn.txt");
 		Integer[] integerArray= new Integer[stringArray.length];
 		
@@ -15,7 +16,7 @@ public class OrderedListFile {
 				  integerArray[i]=Integer.valueOf(stringArray[i]);
 				   orderedLinkedList.add(integerArray[i]);
 			}
-			  orderedLinkedList.action(32);
+			  orderedLinkedList.action(99);
 			  orderedLinkedList.printingList("OrderedListIn.txt");
 		
 	}

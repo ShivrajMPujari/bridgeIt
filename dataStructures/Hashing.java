@@ -110,7 +110,7 @@ public class Hashing {
 				 for(Map.Entry<Integer,LinkedList> m:mapper.entrySet()){  
 					LinkedList lister=m.getValue();
 					for (Object object : lister) {
-						System.out.println(object);
+					//	System.out.println(object);
 						printwrite.print(object+" "); 
 					}
 					 

@@ -1,11 +1,11 @@
 package com.bridgeIt.dataStructures;
 
+import org.json.simple.JSONArray;
+
 public class QueueLinkList <T extends Comparable<T>> {
 
-	MyNode first;
-	//public static QueueLinkList QUEUE = new QueueLinkList<>();
+	MyNode<T> first;
 
-	
 	 /* Function pushes the data in the queue
 	  * @param  Comparable data 
 	  * */ 
@@ -18,7 +18,7 @@ public class QueueLinkList <T extends Comparable<T>> {
 			return;
 		}
 		else{
-			MyNode current=first;
+			MyNode<T> current=first;
 			while(current.next!=null){
 				
 				current=current.next;
@@ -34,7 +34,7 @@ public class QueueLinkList <T extends Comparable<T>> {
 	  * */ 
 	public boolean dequeue(){
 		
-		MyNode current=first;
+		MyNode<T> current=first;
 		first=current.next;
 		current=null;
 		return true;
@@ -44,7 +44,7 @@ public class QueueLinkList <T extends Comparable<T>> {
 	  * */ 
 	public void printQueue(){
 		
-		MyNode current=first;
+		MyNode<T> current=first;
 		while(current!=null){
 			
 			System.out.println(current.data);
@@ -52,11 +52,24 @@ public class QueueLinkList <T extends Comparable<T>> {
 		}
 	}
 	
+	public JSONArray toJsonArray(){
+		JSONArray array = new JSONArray();
+		
+		MyNode<T> current=first;
+		while(current!=null){
+			
+			System.out.println(current.data);
+			array.add(current.data);
+			current= current.next;	
+		}
+		return	array;
+	}
+	
 	/* Function prints the calendar by traversing in the queue
 	  * */
 	public void printCalender(){
 		
-		MyNode current=first;
+		MyNode<T> current=first;
 		while(current!=null){
 			
 			System.out.print(current.data);
