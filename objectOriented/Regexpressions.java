@@ -5,6 +5,11 @@ import java.util.regex.Pattern;
 
 import com.bridgeIt.utility.Utility;
 
+/**purpose:-Use Regex to do replace following statement with proper input 
+ * @author Shivraj pujari
+ * @version 1.0
+ * @since   2-5-2018
+ */
 public class Regexpressions {
 
 	public static void main(String[] args) {

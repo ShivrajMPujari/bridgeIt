@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Stock implements Cloneable{
 
 	static ArrayList<Stock> LIST= new ArrayList<Stock>();
-	String stockName;
-	Integer shareNumber;
-	Integer sharePrice;
+	public String stockName;
+	public Integer shareNumber;
+	public Integer sharePrice;
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#clone()

@@ -1,29 +1,16 @@
 
-
 package com.bridgeIt.objectOriented;
-
-import java.util.ArrayList;
 
 import com.bridgeIt.utility.Utility;
 
+/** Write a program to read in Stock Names, Number of Share, Share Price.
+ *  Print a Stock Report with total value of each Stock and the total value of Stock.
+ * @author Shivraj Pujari
+ * @version 1.0
+ * @since   2-5-2018
+ */
 public class StockPortfolio {
 
-	
-	/**Function reads the list and prints the content inside the list
-	 * @param list ArrayList contains the data of stock
-	 */
-	public void readStock(ArrayList<Stock> list){
-		
-		
-		for (Object object : list) {
-			
-			Stock stock =(Stock)object;
-			System.out.println("Stock Name- "+stock.stockName+" | No.s of Stocks- "+stock.shareNumber+" | Unit Stock Price "+stock.sharePrice+" | Total value- "+(stock.shareNumber*stock.sharePrice));
-			
-		}
-		
-	}
-	
 	@SuppressWarnings("unused")
 	public static void main(String[] args) throws CloneNotSupportedException {
 		
@@ -32,14 +19,12 @@ public class StockPortfolio {
 		int stocksNumber=Utility.inputInt();
 		for (int i = 1; i <=stocksNumber ; i++) {
 			System.out.println(stocksNumber);
-			stockObject.addStock();
-			
+			stockObject.addStock();	
 		}
-		
-		StockPortfolio StockPortfolio= new StockPortfolio();
+		Utility util =new Utility();
 		System.out.println("Stock report:-");
 		System.out.println("--------------------------------------------------------------------------------------------------");
-		StockPortfolio.readStock(StockClone.LIST);
+		util.readStock(StockClone.LIST);
 		
 		
 	}

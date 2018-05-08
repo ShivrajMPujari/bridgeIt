@@ -1,12 +1,12 @@
+
 package com.bridgeIt.objectOriented;
 
-import java.io.FileReader;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+
 import com.bridgeIt.dataStructures.QueueLinkList;
 import com.bridgeIt.utility.Utility;
 public class CompanyList {
@@ -14,14 +14,16 @@ public class CompanyList {
 	CompanyShares head;
 	CompanyShares next;
 	Integer totalSharePrice=0;
-	QueueLinkList<String> queue=new QueueLinkList<String>();
 	
+	/**function adds the a particular company to the list
+	 * @param company Company object
+	 */
 	void add(CompanyShares company){
 		
 		if(head==null){
 			head=company;	
+
 			totalSharePrice=totalSharePrice+company.shareprice;
-			queue.enqueue(company.date);
 			return;
 		}
 		CompanyShares current=head;
@@ -30,11 +32,16 @@ public class CompanyList {
 			current=current.next;
 		}
 		current.next=company;
-		queue.enqueue(company.date);
+
 		totalSharePrice=totalSharePrice+company.shareprice;
 	}
 	
-	public boolean remove(String name,Integer amount){
+	/**Function removes particular user amount from the account 
+	 * @param name company symbol
+	 * @param amount integer amount to be removed 
+	 * @return boolean true if user transaction has been done
+	 */
+	public boolean remove(String name,Integer amount,String date){
 		
 		if(search(name)==false){
 			System.out.println("no such symbol available");
@@ -46,7 +53,7 @@ public class CompanyList {
 				
 				if(current.shareprice-amount>0){
 					current.shareprice=current.shareprice-amount;
-					queue.enqueue(current.date);
+					current.setDate(date);
 					return true;
 				}else{
 					System.out.println("Transaction can't be done");
@@ -59,8 +66,8 @@ public class CompanyList {
 			}
 			
 			if(current.next.shareprice-amount>0){
+				current.next.setDate(date);
 				current.next.shareprice=current.next.shareprice-amount;
-				queue.enqueue(current.next.date);
 				return true;
 			}else{
 				System.out.println("Transaction can't be done");
@@ -72,6 +79,9 @@ public class CompanyList {
 		
 	}
 	
+	/**
+	 * Function displays the Company list
+	 */
 	public void display(){
 		
 		CompanyShares current=head;
@@ -84,13 +94,16 @@ public class CompanyList {
 			System.out.println(current.symbol+" "+current.shareprice+" "+current.date);
 			current=current.next;
 		}
-		System.out.println("queue----------");
-		queue.toJsonArray();
+
 	}
 	
 	
+	/**function write to the file of the user
+	 * @param file String name of user file
+	 * @param list CompanyList object
+	 */
 	@SuppressWarnings({ "resource", "unchecked" })
-	public void write(String file,CompanyList list){
+	public void write(String file,CompanyList list,Integer totalSharePrice){
 	
 		JSONObject object = new JSONObject();
 		JSONArray array=null;
@@ -112,8 +125,7 @@ public class CompanyList {
 				object.put(current.symbol, array);
 				current=current.next;
 			}
-			JSONArray queueArray=queue.toJsonArray();
-			object.put("DateTransaction", queueArray);
+			object.put("totalSharePrice", totalSharePrice);
 			filewrite.write(object.toJSONString());
 			filewrite.flush();
 		} catch (IOException e) {
@@ -125,6 +137,10 @@ public class CompanyList {
 		
 	}
 	
+	/**Function searches the particular user from the list
+	 * @param symbol String company symbol
+	 * @return boolean true if user exist
+	 */
 	public boolean search(String symbol){
 	
 		if (head==null){return false;}
@@ -140,15 +156,18 @@ public class CompanyList {
 		return true;
 	}
 	
-	public void addAmount(String symbol,Integer amount){
+	/**Function adds particular user amount to his account
+	 * @param symbol
+	 * @param amount
+	 */
+	public boolean addAmount(String symbol,Integer amount,String date){
 		
 		if (head==null){
-			System.out.println("enter the date");
-			String date=Utility.inputString();
+			
 			CompanyShares share= new CompanyShares(symbol, amount,date);
 			head=share;
 			totalSharePrice=totalSharePrice+amount;
-			return;	
+			return true;	
 		}
 		CompanyShares current=head;
 		CompanyShares previous=null;
@@ -156,19 +175,20 @@ public class CompanyList {
 			previous=current;
 			current=current.next;
 		if(current==null){
-			System.out.println("enter the date");
-			String date=Utility.inputString();
+			
 			CompanyShares share= new CompanyShares(symbol, amount,date);
 			previous.next=share;
-			return;
+			return true;
 		}
 			
 		}
 		current.shareprice=current.shareprice+amount;
 		totalSharePrice=totalSharePrice+amount;
+		return true;
+
 	}
 	
-	
+/*	
 
 	public JSONObject editPerson(String file){
 		
@@ -244,9 +264,9 @@ public class CompanyList {
 		System.out.println(jsonObject.toString());
 		
 		
-	}
+	}*/
 	
-	 class CompanyShares{
+	class CompanyShares{
 			
 			Integer shareprice ;
 			String date;
@@ -260,21 +280,42 @@ public class CompanyList {
 				next = null;
 			}
 			
+			/**getter method for share price 
+			 * @return integer value of share price
+			 */
 			public Integer getShareprice() {
 				return shareprice;
 			}
+			
+			/**setter method for share price 
+			 */
 			public void setShareprice(Integer shareprice) {
 				this.shareprice = shareprice;
 			}
+			
+			/**getter method for date of transaction
+			 * @return String value of date
+			 */
 			public String getDate() {
 				return date;
 			}
+			/**setter method to set the of date
+			 * @param date string date
+			 */
 			public void setDate(String date) {
 				this.date = date;
 			}
+			
+			/**getter method to get the value company symbol
+			 * @return String value of symbol of company
+			 */
 			public String getSymbol() {
 				return symbol;
 			}
+			
+			/**setter method set the value of Company symbol
+			 * @param symbol company symbol
+			 */
 			public void setSymbol(String symbol) {
 				this.symbol = symbol;
 			}
@@ -290,7 +331,7 @@ public class CompanyList {
 	public static void main(String[] args) {
 		CompanyList list= new CompanyList();
 		CompanyList.CompanyShares comp1=list.new CompanyShares("tata", 1200, "12-4-15");
-		CompanyShares comp2= list.new CompanyShares("ta", 1200, "12-4-15");
+		CompanyShares comp2= list.new CompanyShares("ta", 1200, "18-6-15");
 		list.add(comp2);
 		list.add(comp1);
 		list.display();

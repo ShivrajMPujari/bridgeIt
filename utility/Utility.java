@@ -14,10 +14,15 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.TreeMap;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import com.bridgeIt.dataStructures.Dequeue;
 import com.bridgeIt.dataStructures.Queue;
 import com.bridgeIt.dataStructures.QueueLinkList;
 import com.bridgeIt.dataStructures.Stack;
+import com.bridgeIt.objectOriented.Stock;
 
 public class Utility {
 
@@ -2750,5 +2755,47 @@ public class Utility {
 					}
 		            stack2.printStackCalender();        
 	}
+	
+	
+	//object oriented
+	
+	/**Function read the json file and content of json to object 
+	 * @param file json file 
+	 * @return json object
+	 */
+	public JSONObject ObjectReading(String file) {
+
+		JSONParser parser = new JSONParser();
+		JSONObject jsonobject = null;
+		try {
+			FileReader read = new FileReader(
+					"//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//" + file + ".json");
+			Object object = parser.parse(read);
+			jsonobject = (JSONObject) object;
+		} catch (IOException | ParseException e) {
+			e.printStackTrace();
+		}
+
+		return jsonobject;
+
+	}
+	
+	
+	/**Function reads the list and prints the content inside the list
+	 * @param list ArrayList contains the data of stock
+	 */
+	public void readStock(ArrayList<Stock> list){
+		
+		
+		for (Object object : list) {
+			
+			Stock stock =(Stock)object;
+			System.out.println("Stock Name- "+stock.stockName+" | No.s of Stocks- "+stock.shareNumber+" | Unit Stock Price "+stock.sharePrice+" | Total value- "+(stock.shareNumber*stock.sharePrice));
+			
+		}
+		
+	}
+	
+	
 	
 }

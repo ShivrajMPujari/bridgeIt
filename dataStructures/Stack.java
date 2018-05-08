@@ -34,6 +34,7 @@ public class Stack <T extends Comparable<T>> {
 		while(current!=null){
 			
 			System.out.print(" "+current.data);
+			System.out.println();
 			current=current.next;
 		}
 

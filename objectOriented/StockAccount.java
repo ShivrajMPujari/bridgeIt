@@ -9,14 +9,21 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.bridgeIt.dataStructures.QueueLinkList;
+import com.bridgeIt.dataStructures.Stack;
 import com.bridgeIt.utility.Utility;
 
 public class StockAccount {
 
-	
 	Integer shares;
-	Integer totalSharePrice;
+	Integer totalSharePrice=0;
 	CompanyList list;
+	Stack<String> symbols=new Stack<String>();
+	QueueLinkList<String> queue =new QueueLinkList<String>();
+	
+	/**Constructor to initialize file
+	 * @param files
+	 */
 	StockAccount(String files){
 		
 		File file= new File("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//files//sharePerson//"+files+".json");
@@ -35,41 +42,81 @@ public class StockAccount {
 		
 	}
 	
+	/**Function return total share price
+	 * @return
+	 */
 	public double valueOf(){
 			
 		return totalSharePrice;
 		
 	}
 	
-	public void buy(int amount, String symbol){
+	/**Function adds amount to account of the user
+	 * @param amount integer amount to be added 
+	 * @param symbol String company symbol
+	 */
+	public void buy(int amount, String symbol,String date){
 		
-	list.addAmount(symbol, amount);
+	boolean status=list.addAmount(symbol, amount,date);
+	if(status){
+	symbols.push(symbol);
+	totalSharePrice=totalSharePrice+amount;
+	queue.enqueue(date);
+	}
+	}
+	
+	/**Function reduces the amount from the user account
+	 * @param amount integer amount to be reduced
+	 * @param symbol String company symbol
+	 */
+	public void sell(int amount, String symbol,String date){
+		
+		boolean result=list.remove(symbol, amount,date);
+		if(result==true){
+			totalSharePrice=totalSharePrice-amount;	
+			symbols.push(symbol);
+			queue.enqueue(date);
 			
+		}
 	}
 	
-	public void sell(int amount, String symbol){
+	/**Function saves the details of the user in file
+	 * @param filename String file name
+	 * @param lister CompanyList object which has list of all shares
+	 */
+	public void save(String filename,CompanyList lister,Integer totalSharePrice){
 		
-		list.remove(symbol, amount);
-		
-
-	}
-	public void save(String filename,CompanyList lister){
-		
-	list.write(filename, lister);
+	list.write(filename, lister,totalSharePrice);
 
 	}
 	
 
+	/**
+	 * function print the details of the users share 
+	 */
 	public void printReport(){
 		
 		list.display();
+		System.out.println("Transactions are done with-");
+		symbols.printStack();
+		System.out.println("Transactions dates-");
+		queue.printQueue();
 	}
 	
+	
+	/**function print the details of the existing user
+	 * @param jsonObject
+	 */
 	public void editDisplay(JSONObject jsonObject){
 		
 		System.out.println(jsonObject.toString());
 		
 	}
+	
+	/**Function checks whether file exist or not and create file accordingly
+	 * @param files String file 
+	 * @return boolean true if file exist or false
+	 */
 	public boolean fileExistence(String files){
 		
 		File file= new File("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//objectOriented//Json//"+files+".json");
@@ -87,6 +134,10 @@ public class StockAccount {
 		return false;
 	}
 
+	/**function fetch the object of existing user 
+	 * @param file String file name
+	 * @return JSONObject 
+	 */
 	public JSONObject editPerson(String file){
 		
 		JSONParser parser = new JSONParser();
@@ -100,6 +151,12 @@ public class StockAccount {
 			return stocksDetails;
 	}
 	
+	/**Function adds the amount to existing users particular company share
+	 * @param jsonObject users details
+	 * @param amount integer amount get added to the account of the user
+	 * @param symbol String company symbol
+	 * @return jsonobject of user
+	 */
 	@SuppressWarnings("unchecked")
 	public JSONObject editBuy(JSONObject jsonObject,int amount, String symbol){
 		JSONArray newArray =new JSONArray();
@@ -125,6 +182,12 @@ public class StockAccount {
 	   
 	}
 	
+	/**Function reduces the particular amount from the existing user
+	 * @param jsonObject
+	 * @param amount integer amount to be reduced from users account
+	 * @param symbol String company symbol
+	 * @return
+	 */
 	public JSONObject editSell(JSONObject jsonObject,int amount, String symbol){
 		
 		Object object=jsonObject.get(symbol);
@@ -142,6 +205,11 @@ public class StockAccount {
 			 return jsonObject;
 		 }
 	}
+	
+	/**Function print the details of the existing user
+	 * @param jsonObject
+	 * @param file
+	 */
 	public void editPrint(JSONObject jsonObject,String file){
 		System.out.println(file);
 		try {

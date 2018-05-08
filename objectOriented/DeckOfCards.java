@@ -1,11 +1,15 @@
 package com.bridgeIt.objectOriented;
 
+import com.bridgeIt.dataStructures.QueueLinkList;
+import com.bridgeIt.utility.Utility;
+
 public class DeckOfCards {
 
 	public static void main(String[] args) {
 	
-		deckOfCard();
-
+	//	deckOfCard();
+		deckOfCardQueue();
+		
 	}
 	
 	public static void deckOfCard() {
@@ -22,8 +26,10 @@ public class DeckOfCards {
         	
             for (int j = 0; j < suits.length; j++)
             {
+            //	System.out.println(suits.length*i + j);
             	
-                deck[suits.length*i + j] = ranks[i] + "->" + suits[j];
+                deck[suits.length*i + j] = ranks[i] + "-" + suits[j];
+                System.out.println( deck[suits.length*i + j] );
             }
         }
    
@@ -56,7 +62,7 @@ public class DeckOfCards {
             System.out.println();
         }
 	}
-/*	public static void deckOfCardQueue() {
+	public static void deckOfCardQueue() {
         String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
         String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10","Jack", "Queen", "King", "Ace"};
         String array [][] = new String[4][9];
@@ -88,25 +94,29 @@ public class DeckOfCards {
             for (int j = 0; j < 9; j++)
             {
                 array[i][j]=deck[i + j * 4];
-                q.insert(array[i][j]+"\t");
+                q.enqueue(array[i][j]+"\t");
               
             }
-            q.insert("\n");
+            q.enqueue("\n");
         }
-        q.display();
-        SortDeck(array,q);*/
+        q.printQueue();
+        SortDeck(array,q);
     }  
-   /* public static void SortDeck(String [][]array,QueueLinkList q) {
+    public static void SortDeck(String [][]array,QueueLinkList<String> q) {
 
-		char[] rank = { 'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K' };
+  //  Utility.prints2dArray(array, 4, 9);
+    	
+    	
+    	
+/*		char[] rank = { 'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K' };
 		String[] cards=new String[51];
+		
 		for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 9; j++)
             {
                 cards[j]=array[i][j];
                // System.out.print(cards[j]);
-              
             }
         }
 		String card;
@@ -115,15 +125,17 @@ public class DeckOfCards {
 			for (int j = 0; j < cards.length; j++) 
 			{
 				card = cards[j];
+				
 				System.out.print(card);
-				char cardRank = card.charAt(card.lastIndexOf(card));
+				char cardRank = card.charAt(0);
 				if (cardRank == rank[i]){
-					q.insert(card+"\t");
+					q.enqueue(card+"\t");
 				}
 			}
-			q.insert("\n");
+			q.enqueue("\n");
 		}
-			q.display();
-	}*/
+			q.printQueue();*/
+	}
+}
 	
 

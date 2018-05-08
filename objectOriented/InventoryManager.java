@@ -1,11 +1,12 @@
 package com.bridgeIt.objectOriented;
 
 import org.json.simple.JSONObject;
+import com.bridgeIt.utility.Utility;
 
 public class InventoryManager {
 	
-	Inventory inventory = new Inventory();
-	JSONObject jsonobject = inventory.ObjectReading("InventoryDetails");
+	Utility utility= new Utility();
+	JSONObject jsonobject = utility.ObjectReading("InventoryDetails");
 	
 	public JSONObject inventoryFactory(String product){
 	

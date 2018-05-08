@@ -29,7 +29,9 @@ public class StockMain {
 						String symbol=Utility.inputString();
 						System.out.println("Enter the share amount");
 						int amount=Utility.inputInt();
-						account.buy(amount, symbol);
+						System.out.println("Enter the date");
+						String date=Utility.inputString();
+						account.buy(amount, symbol,date);
 						System.out.println("Enter the choice-\n 1. Buy the share 2.Sell the share 3.Save 4.Quit");
 						num=Utility.inputInt();
 						break;
@@ -41,15 +43,27 @@ public class StockMain {
 					String symbol=Utility.inputString();
 					System.out.println("Enter the share amount");
 					int amount=Utility.inputInt();
-					account.sell(amount, symbol);
+					System.out.println("enter the date");
+					String date=Utility.inputString();
+					account.sell(amount, symbol,date);
 					System.out.println("Enter the choice-\n 1. Buy the share 2.Sell the share 3.Save 4.Quit");
 					num=Utility.inputInt();
 					break;
 				}
 				case 3:{
 					
-					account.save(name, account.list);
+					account.save(name, account.list,account.totalSharePrice);
 					System.out.println("Your data is saved");
+					
+					System.out.println("Enter the choice 1.display details  2.total share price");
+					int option=Utility.inputInt();;
+					if(option==1){
+					//	account.list.display();
+						account.printReport();
+					}
+					else if(option==2){
+						System.out.println("total share price is "+account.totalSharePrice);
+					}
 					System.out.println("Enter the choice-\n 1. Buy the share 2.Sell the share 3.Save 4.Quit");
 					num=Utility.inputInt();
 					break;

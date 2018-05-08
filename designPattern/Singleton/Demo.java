@@ -12,15 +12,16 @@ public class Demo implements Runnable {
 	public static void main(String[] args) {
 		
 		
-		EagerInitializedSingleton singleton1=EagerInitializedSingleton.getInstance();
+	/*	EagerInitializedSingleton singleton1=EagerInitializedSingleton.getInstance();
 		EagerInitializedSingleton singleton2=EagerInitializedSingleton.getInstance();
 		System.out.println(singleton1);
-		System.out.println(singleton2);
+		System.out.println(singleton2);*/
 		
 		
-		/*StaticBlockSingleton block=StaticBlockSingleton .getInstance();
+	/*	StaticBlockSingleton block=StaticBlockSingleton .getInstance();
+		StaticBlockSingleton block1=StaticBlockSingleton.getInstance();
 		System.out.println(block);
-		*/
+		System.out.println(block1);*/
 		
 		/*LazyInitializedSingleton lazyInstance=LazyInitializedSingleton.getInstance();
 		LazyInitializedSingleton lazyInstance1=LazyInitializedSingleton.getInstance();
