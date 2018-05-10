@@ -6,6 +6,11 @@ import java.util.ArrayList;
 
 import com.bridgeIt.utility.Utility;
 
+/**purpose:-To create Address book using Object oriented analysis 
+ * @author Shivraj Pujari
+ * @version 1.0
+ * @since   2-5-2018
+ */
 public class AddressBookMain {
 
 	public static void main(String[] args) throws IOException {

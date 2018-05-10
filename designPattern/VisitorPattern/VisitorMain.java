@@ -6,7 +6,6 @@ public class VisitorMain {
 
 		ComputerParts computer = new Computer();
 	      computer.accept(new ComputerPartsVisitorDisplay());
-		
 
 	}
 

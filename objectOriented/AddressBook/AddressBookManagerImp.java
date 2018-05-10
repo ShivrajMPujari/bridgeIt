@@ -7,17 +7,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
-
 import com.bridgeIt.utility.Utility;
-
 
 public class AddressBookManagerImp implements AddressBookManager {
 
+	
+	/* function reads the file of the user
+	 * @see com.bridgeIt.objectOriented.AddressBook.AddressBookManager#readFile()
+	 */
 	@Override
 	public void readFile() throws JsonParseException, JsonMappingException, IOException {
 	
@@ -35,6 +36,9 @@ public class AddressBookManagerImp implements AddressBookManager {
 	
 	}
 
+	/* function creates file of the username
+	 * @see com.bridgeIt.objectOriented.AddressBook.AddressBookManager#createFile(java.lang.String)
+	 */
 	@Override
 	public boolean createFile(String files)  {
 	File file= new File("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//objectOriented//Json//"+files+".json");

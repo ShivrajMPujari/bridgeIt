@@ -1351,12 +1351,6 @@ public class Utility {
 	  		return result;
 	  	}
 	  	
-	    
-	    
-	    
-	    
-	    
-
 	public static void binarySearchInt(int arr[], int sIndex, int eIndex, int x) {
 
 		if (eIndex >= sIndex) {
@@ -2796,6 +2790,193 @@ public class Utility {
 		
 	}
 	
+	//deck of cards
 	
+    /**Function sorts the deck of particular player
+     * @param array STring array of cards of one player
+     * @return
+     */
+    public static String[] SortDeck(String []array) {
+
+		char[] rank = { 'A', '2', '3', '4', '5', '6', '7', '8', '9', '1', 'J', 'Q', 'K' };
+		String[] cards=new String[9];
+		
+		int len =array.length;
+		int index=0;	
+	
+		for(int i=0;i<rank.length;i++){
+			
+			for(int j=0;j<array.length;j++){
+				
+				if(rank[i]==array[j].charAt(0)){
+					
+					cards[index++]=array[j];
+					array[j]=" ";
+				}
+			}
+
+	}
+		return cards;
+}
+	
+	/**
+	 * Function print the deck for four players
+	 */
+	public static void deckOfCard() {
+        String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
+       
+        String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10","Jack", "Queen", "King", "Ace"};
+        String array [][] = new String[4][13];
+       
+        // initialize deck
+        int n = suits.length * ranks.length;
+        String[] deck = new String[n];
+        for (int i = 0; i < ranks.length; i++)
+        {
+        	
+            for (int j = 0; j < suits.length; j++)
+            {	
+                deck[suits.length*i + j] = ranks[i] + "-" + suits[j];
+            }
+        }
+   
+        // shuffle
+        for (int i = 0; i < n; i++)
+        {
+            int r = i + (int) (Math.random() * (n-i));
+            String temp = deck[r];
+            deck[r] = deck[i];
+            deck[i] = temp;
+        }
+      // print shuffled deck
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j <9; j++)
+            {
+                array[i][j]=(deck[i + j * 4]);
+            }
+        }
+       
+        for(int i=0;i<array.length;i++)
+        {System.out.println("Player:"+(i+1));
+            for(int j=0;j<array[i].length;j++)
+            {
+                System.out.print(array[i][j]+"\t");
+            }
+            System.out.println();
+        }
+	}
+	/**
+	 * Function sorts the players cards according to card and inserts in to queue
+	 */
+	public static void deckOfCardQueue() {
+        String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
+        String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10","Jack", "Queen", "King", "Ace"};
+        String array [][] = new String[4][9];
+        QueueLinkList<String> q=new QueueLinkList<String>();
+        String[] str1=new String[9];
+        String[] str2=new String[9];
+        String[] str3=new String[9];
+        String[] str4=new String[9];
+        // initialize deck
+        int n = suits.length * ranks.length;
+        String[] deck = new String[n];
+        for (int i = 0; i < ranks.length; i++)
+        {
+            for (int j = 0; j < suits.length; j++)
+            {
+                deck[suits.length*i + j] = ranks[i] + "->" + suits[j];
+            }
+        }
+   
+        // shuffle
+        for (int i = 0; i < n; i++)
+        {
+            int r = i + (int) (Math.random() * (n-i));
+            String temp = deck[r];
+            deck[r] = deck[i];
+            deck[i] = temp;
+        }
+     
+        // print shuffled deck
+   
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                array[i][j]=deck[i + j * 4];
+                q.enqueue(array[i][j]+"\t");
+              
+            }
+            q.enqueue("\n");
+        }
+        
+        for (int i = 0; i < array.length; i++) {
+		for(int j=0;j<array[i].length;j++){
+			
+			 switch(i){
+			 
+			 case 0:{
+				 str1[j]=array[i][j];
+				 
+			 		}
+			 case 1:{
+				 str2[j]=array[i][j];	 
+							 
+					 }
+			 case 2:{
+				 str3[j]=array[i][j];
+				 
+			 }
+			 case 3:{
+				 str4[j]=array[i][j];
+				 
+			 }
+			 }
+		}
+		}
+        System.out.println("before sorting -");
+        System.out.println(Arrays.toString(str1));
+        System.out.println(Arrays.toString(str2));
+        System.out.println(Arrays.toString(str3));
+        System.out.println(Arrays.toString(str4));
+        
+        str1=SortDeck(str1);
+        str2=SortDeck(str2);
+        str3=SortDeck(str3);
+        str4=SortDeck(str4);
+        
+        System.out.println("after sorting--");
+        System.out.println(Arrays.toString(str1));
+        System.out.println(Arrays.toString(str2));
+        System.out.println(Arrays.toString(str3));
+        System.out.println(Arrays.toString(str4));
+        
+        System.out.println();
+        QueueLinkList<String> queue=new QueueLinkList<String>();
+        queue.enqueue("player1-");
+        for (String string : str1) {
+			
+        	queue.enqueue(string);
+		}
+        queue.enqueue("player2-");
+        for (String string : str2) {
+			
+        	queue.enqueue(string);
+		}
+        queue.enqueue("player3-");
+        for (String string : str3) {
+			
+        	queue.enqueue(string);
+		}
+        queue.enqueue("player4-");
+        for (String string : str4) {
+			
+        	queue.enqueue(string);
+		}
+        
+        queue.printQueue();
+
+    }  
 	
 }

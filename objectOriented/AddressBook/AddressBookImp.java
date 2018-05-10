@@ -15,6 +15,9 @@ public class AddressBookImp implements AddressBook {
 	}
 	
 	
+	/* Function adds person in the list 
+	 * @see com.bridgeIt.objectOriented.AddressBook.AddressBook#addPerson()
+	 */
 	@Override
 	public void addPerson() {
 		
@@ -38,6 +41,9 @@ public class AddressBookImp implements AddressBook {
 		
 	}
 
+	/* Function edits the existing person 
+	 * @see com.bridgeIt.objectOriented.AddressBook.AddressBook#editPerson(java.lang.String)
+	 */
 	@Override
 	public ArrayList<Person> editPerson(String name) {
 
@@ -66,6 +72,9 @@ public class AddressBookImp implements AddressBook {
 		return list;
 	}
 
+	/* Function deletes the person from the list
+	 * @see com.bridgeIt.objectOriented.AddressBook.AddressBook#deletePerson(java.lang.String)
+	 */
 	@Override
 	public void deletePerson(String name) {
 		
@@ -81,6 +90,9 @@ public class AddressBookImp implements AddressBook {
 		print(list);
 	}
 
+	/* function sorts the persons according to last name
+	 * @see com.bridgeIt.objectOriented.AddressBook.AddressBook#sortByLastName(java.util.ArrayList)
+	 */
 	@Override
 	public ArrayList<Person> sortByLastName(ArrayList<Person> list) {
 		
@@ -89,6 +101,9 @@ public class AddressBookImp implements AddressBook {
 		return list;
 	}
 
+	/* function sorts the persons according to zip code
+	 * @see com.bridgeIt.objectOriented.AddressBook.AddressBook#sortByZip(java.util.ArrayList)
+	 */
 	@Override
 	public ArrayList<Person> sortByZip(ArrayList<Person> list) {
 
@@ -98,6 +113,9 @@ public class AddressBookImp implements AddressBook {
 	}
 
 	
+	/* Function prints the list of person
+	 * @see com.bridgeIt.objectOriented.AddressBook.AddressBook#print(java.util.ArrayList)
+	 */
 	@Override
 	public void print(ArrayList<Person> list) {
 			

@@ -3,7 +3,7 @@ package com.bridgeIt.objectOriented;
 import org.json.simple.JSONObject;
 import com.bridgeIt.utility.Utility;
 
-/**purpose:-  Create a JSON file having Inventory Details for Rice, Pulses and Wheats 
+/**purpose:-Create a JSON file having Inventory Details for Rice, Pulses and Wheats 
  * with properties name, weight, price per kg. 
  * @author Shivraj pujari
  * @version 1.0

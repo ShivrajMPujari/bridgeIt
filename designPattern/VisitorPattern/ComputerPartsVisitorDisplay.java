@@ -5,7 +5,7 @@ public class ComputerPartsVisitorDisplay implements ComputerPartsVistor{
 	@Override
 	public ComputerPartsVistor visit(Computer computer) {
 		
-		System.out.println("display all parts");
+		System.out.println("Displaying computer");
 		return this;
 		}
 
@@ -13,7 +13,6 @@ public class ComputerPartsVisitorDisplay implements ComputerPartsVistor{
 	public void visit(Mouse mouse) {
 	
 		System.out.println("Displaying mouse");
-		
 	}
 
 	@Override

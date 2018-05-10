@@ -1,15 +1,15 @@
 {
    "Wheats":{
     
-    "name":"wheat","weight":"5kg","price":"26rs/Kg"
+    "name":"wheat","weight(kg)":"5","price/Kg":"26"
    }
    
   ,"Rice":{
     
-    "name":"rice","weight":"5kg","price":"40rs/Kg"
+    "name":"rice","weight(kg)":"5","price/Kg":"40"
    }
    ,"Pulses":{
     
-    "name":"pulse","weight":"2kg","price":"20rs/Kg"
+    "name":"pulse","weight(kg)":"2","price/Kg":"20"
    }
 }

@@ -17,7 +17,7 @@ public class InventoryManager {
 	}
 	else if(product.equalsIgnoreCase("wheat")){
 		
-		JSONObject wheat = (JSONObject) jsonobject.get("Wheat");
+		JSONObject wheat = (JSONObject) jsonobject.get("Wheats");
 		return wheat;
 	}
 	else if(product.equalsIgnoreCase("pulses")){

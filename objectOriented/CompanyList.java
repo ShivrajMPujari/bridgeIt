@@ -7,8 +7,6 @@ import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.bridgeIt.dataStructures.QueueLinkList;
-import com.bridgeIt.utility.Utility;
 public class CompanyList {
 
 	CompanyShares head;

@@ -161,12 +161,15 @@ public class StockAccount {
 	public JSONObject editBuy(JSONObject jsonObject,int amount, String symbol){
 		JSONArray newArray =new JSONArray();
 	   Object object=jsonObject.get(symbol);
+	   Long totalSharePrice=(Long)jsonObject.get("totalSharePrice");
 	   if(object!=null){
 		   
 		   JSONArray array =(JSONArray)object;
 		   System.out.println(array);
 		   Long stockprice=(Long)array.get(1);
 		   array.set(1, stockprice+amount);
+		   totalSharePrice=totalSharePrice+amount;
+		   jsonObject.replace("totalSharePrice", totalSharePrice);
 		   System.out.println(array);
 		   
 		   return jsonObject;
@@ -177,7 +180,8 @@ public class StockAccount {
 	   String date=Utility.inputString();
 	   newArray.add(2,date);
 	   jsonObject.put(symbol, newArray);
-	   
+	   totalSharePrice=totalSharePrice+amount;
+	   jsonObject.replace("totalSharePrice", totalSharePrice);
 	   return jsonObject;
 	   
 	}
@@ -191,6 +195,7 @@ public class StockAccount {
 	public JSONObject editSell(JSONObject jsonObject,int amount, String symbol){
 		
 		Object object=jsonObject.get(symbol);
+		Long totalSharePrice=(Long)jsonObject.get("totalSharePrice");
 		if(object==null){
 			System.out.println("Your transaction can't be done,Entered wrong symbol");
 			return jsonObject;
@@ -199,6 +204,8 @@ public class StockAccount {
 		 long shareprice=(long) array.get(1);
 		 if(shareprice-amount>0){
 			   array.set(1, shareprice-amount);
+			   totalSharePrice=totalSharePrice-amount;
+			   jsonObject.replace("totalSharePrice", totalSharePrice);
 			   return jsonObject;
 		 }else{
 			 System.out.println("Sorry can't do this transaction,Account out of balance");
@@ -230,9 +237,6 @@ public class StockAccount {
 		JSONObject jsonObject=stock.editPerson(name);
 		System.out.println(jsonObject);
 		
-	    stock.editBuy(jsonObject, 15, "rel");
-	    stock.editBuy(jsonObject, 2500, "apple");
-	    stock.editSell(jsonObject, 200, "apple");
 	    System.out.println(jsonObject);
 	    stock.editPrint(jsonObject, name);
 	    

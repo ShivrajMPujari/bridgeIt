@@ -75,7 +75,6 @@ public class StockMain {
 					break;
 				}
 			}
-
 			}	
 
 		}
