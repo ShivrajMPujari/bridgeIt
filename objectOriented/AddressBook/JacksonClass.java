@@ -19,10 +19,8 @@ public class JacksonClass {
 			p.setCity("mumbai");
 			ObjectMapper mapping = new ObjectMapper();
 			mapping.writeValue(printwrite, p);
-			
 			printwrite.flush();
-			
-			
+		
 		} catch (IOException e) {
 			
 			e.printStackTrace();

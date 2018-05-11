@@ -1,5 +1,8 @@
 package com.bridgeIt.objectOriented;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,15 +20,20 @@ public class Regexpressions {
 		System.out.println("Enter your Name");
 		String username=Utility.inputString();
 		
+		
+		
+		
 		System.out.println("Enter your Fullname");
 		String userFullname=Utility.inputStringLong();
 		
 		System.out.println("Enter your Mobile number");
 		String userNumber=Utility.inputString();
 		
-		System.out.println("Enter the Date");
-		String userDate=Utility.inputStringLong();
-		
+		Date date = new Date();  
+	    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+	    String strDate= formatter.format(date);  
+	    System.out.println(strDate);  
+	
 		String paragraph="Hello <<name>>, We have your full name as <<full name>> in our system."
 				+ " your contact number is 91-xxxxxxxxxx. Please,let us know in case of any clarification "
 				+ "Thank you BridgeLabz 01/01/2016.";
@@ -34,7 +42,7 @@ public class Regexpressions {
 		String replaceFullname="<<full name>>";
 		String replaceNumber="xxxxxxxxxx";
 		String replaceDate="01/01/2016";
-		
+	
 		Pattern pattern = Pattern.compile(replaceName);
 		Matcher match = pattern.matcher(paragraph);
 		paragraph=match.replaceAll(username);
@@ -49,11 +57,10 @@ public class Regexpressions {
 		
 		Pattern pattern3 = Pattern.compile(replaceDate);
 		Matcher match3 = pattern3.matcher(paragraph);
-		paragraph=match3.replaceAll(userDate);
+		paragraph=match3.replaceAll(strDate);
 		
 		System.out.println(paragraph);
-		
-		
+
 	}
 
 }

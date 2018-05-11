@@ -4,10 +4,11 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Doctor {
-	
+
 	private String name;
-	private String mobileNumber;
-	private int id;
+	private String specialization;
+	private String id;
+	private String availability;
 	public HashMap <String,LinkedList<Patient>> patientlist=new HashMap<String,LinkedList<Patient>> ();
 	
 	public String getName() {
@@ -16,19 +17,22 @@ public class Doctor {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getMobileNumber() {
-		return mobileNumber;
+	public String getSpecialization() {
+		return specialization;
 	}
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
+	public void setSpecialization(String specialization) {
+		this.specialization = specialization;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
-	
+	public String getAvailability() {
+		return availability;
+	}
+	public void setAvailability(String availability) {
+		this.availability = availability;
+	}
 }

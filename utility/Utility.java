@@ -36,7 +36,7 @@ public class Utility {
 		return a;
 
 	}
-
+	
 	public static String inputString() {
 
 		String a = sc.next();

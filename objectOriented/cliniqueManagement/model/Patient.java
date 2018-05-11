@@ -1,11 +1,10 @@
 package com.bridgeIt.objectOriented.cliniqueManagement.model;
 
 public class Patient {
-
+	
 	private String name;
-	private String specialization;
-	private int id;
-	private String availability;
+	private String mobileNumber;
+	private String id;
 	
 	public String getName() {
 		return name;
@@ -13,22 +12,19 @@ public class Patient {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSpecialization() {
-		return specialization;
+	public String getMobileNumber() {
+		return mobileNumber;
 	}
-	public void setSpecialization(String specialization) {
-		this.specialization = specialization;
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	public String getAvailability() {
-		return availability;
-	}
-	public void setAvailability(String availability) {
-		this.availability = availability;
-	}
+	
+	
+	
 }
