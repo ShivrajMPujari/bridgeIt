@@ -28,6 +28,7 @@ public class Appointment {
 		PatientSearchImp patientImp=new PatientSearchImp();
 		JSONObject patientObject=patientImp.byId(allpatient, patientId);
 		writeDoctorAppointments(doctorObject,patientObject);
+		writePatientsAppointments(doctorObject,patientObject);
 		
 	}
 	
@@ -56,7 +57,7 @@ public class Appointment {
 	public void writeDoctorAppointments(JSONObject doctor,JSONObject patient){
 		
 		JSONObject appointments=readDoctorAppointments();
-		System.out.println(appointments+"ic");
+	//	System.out.println(appointments+"ic");
 		Object key=appointments.get((String) doctor.get("Id"));
 		System.out.println(key);
 		HashMap<String,JSONObject> map =new HashMap<String,JSONObject>();
@@ -70,16 +71,8 @@ public class Appointment {
 				JSONObject doctorList = (JSONObject)key;
 			JSONObject objects=(JSONObject)appointments.get(key);
 			doctorList.put(patient.get("Id"),patient);
-		//	System.out.println(objects+"-----");
 				
 		}
-/*		JSONObject patients=new JSONObject();
-		JSONArray j1= new JSONArray();
-		HashMap<String,HashMap<String,JSONArray>> doctorHash=new HashMap<String,HashMap<String,JSONArray>>();
-		HashMap<String,JSONArray> subHash=new  HashMap<String,JSONArray>();
-		subHash.put("Appointments",j1);
-		doctorHash.put((String) doctor.get("Id"),subHash);
-		patients.putAll(doctorHash);*/
 		try {
 			FileWriter write= new FileWriter("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//objectOriented//cliniqueManagement//files//DoctorAppointment.json");
 			write.write(appointments.toJSONString());
@@ -89,23 +82,34 @@ public class Appointment {
 		}
 
 	}
-	public void writePatientsAppointments(JSONObject patient){	
-			JSONObject patients=new JSONObject();
-			JSONArray j1= new JSONArray();
-			HashMap<String,HashMap<String,JSONArray>> doctorHash=new HashMap<String,HashMap<String,JSONArray>>();
-			HashMap<String,JSONArray> subHash=new  HashMap<String,JSONArray>();
-			subHash.put("Appointments",j1);
-	//		doctorHash.put((String) doctor.get("Id"),subHash);
-			patients.putAll(doctorHash);
-			
-			try {
-				FileWriter write= new FileWriter("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//objectOriented//cliniqueManagement//files//PatientAppointment.json");
-				write.write(patients.toJSONString());
-				write.flush();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+	public void writePatientsAppointments(JSONObject doctor,JSONObject patient){
+		
+		JSONObject appointments=readPatientAppointments();
+		//	System.out.println(appointments+"ic");
+		Object key=appointments.get((String) patient.get("Id"));
+		System.out.println(key);
+		HashMap<String,JSONObject> map =new HashMap<String,JSONObject>();
+		JSONObject jobj =new JSONObject();
+		jobj.put(doctor.get("Id"),doctor );
+		if(key==null){
+			HashMap<String,JSONObject> patientHash=new HashMap<String,JSONObject>();
+			patientHash.put((String) patient.get("Id"), jobj);
+			appointments.putAll(patientHash);
+		}else{
+				JSONObject patientList = (JSONObject)key;
+			JSONObject objects=(JSONObject)appointments.get(key);
+			patientList.put(doctor.get("Id"),doctor);
+				
 		}
+		try {
+			FileWriter write= new FileWriter("//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//objectOriented//cliniqueManagement//files//PatientAppointment.json");
+			write.write(appointments.toJSONString());
+			write.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	
 	public JSONObject readDoctorAppointments(){
 		
@@ -142,11 +146,11 @@ public class Appointment {
 		
 	}
 	public static void main(String[] args) {
+		
 		Appointment appoint=new Appointment();
 		appoint.takeAppointment();
 	//	appoint.writeAppointment(doctor, patient);
-		
-		
+
 	}
 	
 }
