@@ -1,34 +1,43 @@
 package com.bridgeIt.objectOriented.cliniqueManagement.controller;
 
-public class CliniqueManagementImp implements CliniqueManagement {
+import com.bridgeIt.objectOriented.cliniqueManagement.service.DoctorImp;
+import com.bridgeIt.objectOriented.cliniqueManagement.service.PatientImp;
 
+public class CliniqueManagementImp implements CliniqueManagement {
+	
+	DoctorImp doctorImp =new DoctorImp();
+	PatientImp patientImp= new PatientImp();
 	@Override
 	public void addDoctor() {
-		// TODO Auto-generated method stub
+		
+		doctorImp.addDoctors();
 		
 	}
 
 	@Override
 	public void addPatient() {
-		// TODO Auto-generated method stub
+
+		
+		patientImp.addPatient();
 		
 	}
 
 	@Override
 	public void viewDoctors() {
-		// TODO Auto-generated method stub
-		
+	
+		doctorImp.readDoctor();
 	}
 
 	@Override
 	public void viewPatients() {
-		// TODO Auto-generated method stub
 		
+		patientImp.readPatient();
 	}
 
 	@Override
 	public void popularSpecialization() {
-		// TODO Auto-generated method stub
+		
+		
 		
 	}
 
