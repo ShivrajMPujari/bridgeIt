@@ -1,0 +1,11 @@
+{
+"tata":{
+"symbol":"TATA","SharePrice":300,"shareNumber":150
+},
+"reliance":{
+"symbol":"REL","SharePrice":500,"shareNumber":100
+},
+"bajaj":{
+"symbol":"BAJAJ","SharePrice":600,"shareNumber":80
+}
+}

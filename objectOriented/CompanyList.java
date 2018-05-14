@@ -265,7 +265,7 @@ public class CompanyList {
 	}*/
 	
 	class CompanyShares{
-			
+
 			Integer shareprice ;
 			String date;
 			String symbol;	

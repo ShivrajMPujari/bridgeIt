@@ -9,6 +9,7 @@ public class Patient {
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -24,7 +25,10 @@ public class Patient {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+	@Override
+	public String toString() {
+		return "Patient [name=" + name + ", mobileNumber=" + mobileNumber + ", id=" + id + "]";
+	}
 	
 	
 }

@@ -5,6 +5,11 @@ import java.util.LinkedList;
 
 public class Doctor {
 
+	@Override
+	public String toString() {
+		return "Doctor [name=" + name + ", specialization=" + specialization + ", id=" + id + ", availability="
+				+ availability + "]";
+	}
 	private String name;
 	private String specialization;
 	private String id;

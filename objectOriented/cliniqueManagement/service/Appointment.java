@@ -17,18 +17,37 @@ public class Appointment {
 	public void takeAppointment(){
 		DoctorImp doctors =new DoctorImp();
 		PatientImp patients=new PatientImp(); 
-		JSONObject allDoctors= doctors.readDoctor();
-		JSONObject allpatient=patients.readPatient();
+		JSONObject allDoctors= doctors.displayDoctors();
+		JSONObject allpatient=patients.displayPatient();
 		DoctorSearchImp Doctorimp= new DoctorSearchImp();	
 		System.out.println("Enter the ID of the doctor");
 		Object doctorId=Utility.inputString();
 		JSONObject doctorObject=Doctorimp.byId(allDoctors,doctorId);
-		System.out.println("Enter the your ID");
+		if(doctorObject==null){
+			System.out.println("No such doctor is present with this Id");
+			return;
+		}
+		if(doctorObject.size()==5){
+			System.out.println("Todays appointments are full..plz visit tommorrow");
+			return;
+		}
+		System.out.println("Enter your patient ID");
 		Object patientId=Utility.inputString();
 		PatientSearchImp patientImp=new PatientSearchImp();
 		JSONObject patientObject=patientImp.byId(allpatient, patientId);
-		writeDoctorAppointments(doctorObject,patientObject);
-		writePatientsAppointments(doctorObject,patientObject);
+		
+		if(patientObject==null){
+			
+			System.out.println("No such patient Id is present");
+			return;
+		}
+		try {
+			writeDoctorAppointments(doctorObject,patientObject);
+			writePatientsAppointments(doctorObject,patientObject);
+		} catch (Exception e) {
+			System.out.println("Appointment is taken already");
+			return;
+		}
 		
 	}
 	
