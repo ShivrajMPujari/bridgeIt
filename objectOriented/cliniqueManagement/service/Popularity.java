@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -68,10 +67,8 @@ public class Popularity {
 				System.out.println("One of the popular Doctor in the clinique is "+jsonObj.get("Name"));
 			}
 		}
-		
 		return jsonobject;
-		
-		
+
 		}
 	
 

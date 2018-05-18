@@ -1,7 +1,5 @@
 
 package com.bridgeIt.objectOriented;
-
-
 import java.io.FileWriter;
 import java.io.IOException;
 import org.json.simple.JSONArray;
@@ -129,10 +127,6 @@ public class CompanyList {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
 	}
 	
 	/**Function searches the particular user from the list
@@ -323,7 +317,7 @@ public class CompanyList {
 			public void setNext(CompanyShares next) {
 				this.next = next;
 			}
-			
+			   
 		}
 	
 	public static void main(String[] args) {

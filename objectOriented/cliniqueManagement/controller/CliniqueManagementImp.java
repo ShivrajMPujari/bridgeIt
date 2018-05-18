@@ -1,7 +1,6 @@
 package com.bridgeIt.objectOriented.cliniqueManagement.controller;
 
 import org.json.simple.JSONObject;
-
 import com.bridgeIt.objectOriented.cliniqueManagement.model.Doctor;
 import com.bridgeIt.objectOriented.cliniqueManagement.model.Patient;
 import com.bridgeIt.objectOriented.cliniqueManagement.service.Appointment;
@@ -190,10 +189,7 @@ public class CliniqueManagementImp implements CliniqueManagement {
 			
 		}
 		}
-		
-		
 	}
-	
 	}
 
 	@Override
