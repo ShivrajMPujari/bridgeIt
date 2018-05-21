@@ -7,28 +7,17 @@ import java.util.Set;
 import org.json.simple.JSONObject;
 
 public class DoctorSearchImp implements SearchDoctor {
-
-
-
-
-   public static void main(String[] args) {
 	
-	   Object obj1="str";
-	   String obj2="str";
-	   System.out.println(obj1.equals(obj2));
- 
-	   
-}
-
-	
+	/*  
+	 * Function searches the doctor in jsonObject of doctor list by Id
+	 * */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public JSONObject byId(JSONObject jsonObject,Object id) {
 		  Set set=jsonObject.entrySet();//Converting to Set so that we can traverse  
 		    Iterator itr=set.iterator();  
-		    while(itr.hasNext()){  
-	    //Converting to Map.Entry so that we can get key and value separately  
+		    while(itr.hasNext()){    
 		        Map.Entry entry=(Map.Entry)itr.next();  
-		  //      System.out.println(entry.getKey()+"-"+entry.getValue()); 
 		       JSONObject jobj= (JSONObject) entry.getValue();
 		        Set set1= jobj.entrySet();
 		        Iterator itr1=set1.iterator(); 
@@ -45,14 +34,17 @@ public class DoctorSearchImp implements SearchDoctor {
 		    
 	}
 	
+	
+	/*  
+	 * Function searches the doctor in jsonObject of doctor list by Specilization
+	 * */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public JSONObject bySpecilization(JSONObject jsonObject,Object Specilization) {
 		  Set set=jsonObject.entrySet();//Converting to Set so that we can traverse  
 		    Iterator itr=set.iterator();  
-		    while(itr.hasNext()){  
-	    //Converting to Map.Entry so that we can get key and value separately  
+		    while(itr.hasNext()){   
 		        Map.Entry entry=(Map.Entry)itr.next();  
-		  //      System.out.println(entry.getKey()+"-"+entry.getValue()); 
 		       JSONObject jobj= (JSONObject) entry.getValue();
 		        Set set1= jobj.entrySet();
 		        Iterator itr1=set1.iterator(); 
@@ -61,13 +53,15 @@ public class DoctorSearchImp implements SearchDoctor {
 		            if(entry1.getKey().equals("Specialization")&&entry1.getValue().equals(Specilization)){
 		            	System.out.println(jobj);
 		            }
-		         //   System.out.println(entry1.getKey()+" "+entry1.getValue()); 
 		        }
 	}
 			return null;  	
 		    
 	}
-	
+	/*  
+	 * Function searches the doctor in jsonObject of doctor list
+	 * */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public JSONObject byAvailability(JSONObject jsonObject,Object Availability) {
 		  Set set=jsonObject.entrySet();//Converting to Set so that we can traverse  
@@ -75,7 +69,6 @@ public class DoctorSearchImp implements SearchDoctor {
 		    while(itr.hasNext()){  
 	    //Converting to Map.Entry so that we can get key and value separately  
 		        Map.Entry entry=(Map.Entry)itr.next();  
-		  //      System.out.println(entry.getKey()+"-"+entry.getValue()); 
 		       JSONObject jobj= (JSONObject) entry.getValue();
 		        Set set1= jobj.entrySet();
 		        Iterator itr1=set1.iterator(); 
@@ -84,13 +77,16 @@ public class DoctorSearchImp implements SearchDoctor {
 		            if(entry1.getKey().equals("Availability")&&entry1.getValue().equals(Availability)){
 		            	System.out.println(jobj);
 		            }
-		       //     System.out.println(entry1.getKey()+" "+entry1.getValue()); 
 		        }
 	}
 			return null;  	
 		    
 	}
-
+	
+	/*  
+	 * Function searches the name in jsonObject of doctor list
+	 * */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public JSONObject byName(JSONObject jsonObject, Object name) {
 		  Set<Object> set=jsonObject.entrySet();//Converting to Set so that we can traverse  

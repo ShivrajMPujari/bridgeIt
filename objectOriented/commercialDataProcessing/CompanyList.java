@@ -4,23 +4,8 @@ public class CompanyList {
 	
 	public static void main(String[] args) {
 		
-		
-		
-		
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
  class CompanyShare{

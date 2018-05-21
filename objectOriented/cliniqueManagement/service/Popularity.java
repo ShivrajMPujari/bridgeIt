@@ -12,6 +12,10 @@ import org.json.simple.parser.ParseException;
 public class Popularity {
 
 	
+	/**function checks the popular specialization
+	 * @return jsonObject
+	 */
+	@SuppressWarnings("rawtypes")
 	public JSONObject popularSpecilization(){
 		
 		JSONParser parser = new JSONParser();
@@ -26,7 +30,6 @@ public class Popularity {
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();
 		}
-	//	System.out.println(jsonobject);
 		Set set=jsonobject.entrySet();
 		Iterator itr=set.iterator();
 		while(itr.hasNext()){
@@ -43,6 +46,10 @@ public class Popularity {
 		
 	}
 	
+	/**function checks the popular doctor in the clinic
+	 * @return JsonObject
+	 */
+	@SuppressWarnings("rawtypes")
 	public JSONObject popularDoctor(){
 		
 		JSONParser parser = new JSONParser();

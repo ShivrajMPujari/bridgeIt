@@ -14,6 +14,9 @@ import com.bridgeIt.utility.Utility;
 
 public class Appointment {
 
+	/**
+	 * function makes the appointment between doctor and patient
+	 */
 	public void takeAppointment(){
 		DoctorImp doctors =new DoctorImp();
 		PatientImp patients=new PatientImp(); 
@@ -51,6 +54,11 @@ public class Appointment {
 		
 	}
 	
+	/**function takes doctor and patient object to write it into file
+	 * @param doctor jsonObject of doctor
+	 * @param patient jsonObject of patient
+	 */
+	@SuppressWarnings({ "unchecked", "resource" })
 	public void writeAppointment(JSONObject doctor,JSONObject patient){
 		
 		
@@ -73,6 +81,11 @@ public class Appointment {
 		
 	}
 	
+	/**function adds the patient into doctors list 
+	 * @param doctor jsonObject
+	 * @param patient jsonObject
+	 */
+	@SuppressWarnings({ "unchecked", "unused", "resource" })
 	public void writeDoctorAppointments(JSONObject doctor,JSONObject patient){
 		
 		JSONObject appointments=readDoctorAppointments();
@@ -101,6 +114,11 @@ public class Appointment {
 		}
 
 	}
+	/**function adds the doctors in patients appointment list
+	 * @param doctor
+	 * @param patient
+	 */
+	@SuppressWarnings({ "unchecked", "unused", "resource" })
 	public void writePatientsAppointments(JSONObject doctor,JSONObject patient){
 		
 		JSONObject appointments=readPatientAppointments();
@@ -130,6 +148,9 @@ public class Appointment {
 
 	}
 	
+	/**function reads the doctors appointments of the day
+	 * @return jsonObject
+	 */
 	public JSONObject readDoctorAppointments(){
 		
 		JSONObject jsonObject=null;
@@ -147,6 +168,9 @@ public class Appointment {
 		return jsonObject;
 		
 	}
+	/**function reads patients appointment with doctors
+	 * @return
+	 */
 	public JSONObject readPatientAppointments(){
 		
 		JSONObject jsonObject=null;
