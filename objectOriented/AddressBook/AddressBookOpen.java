@@ -47,7 +47,8 @@ public class AddressBookOpen {
 		case 3:{
 			
 			System.out.println("Enter the person first name to delete");
-			book.deletePerson(bookName);
+			String names=Utility.inputStringLong();
+			book.deletePerson(names);
 			System.out.println(" 1.Add person \n 2.Edit person \n 3.Remove person \n 4.Sort By name \n 5.Sort By zip \n 6.Quit");
 			need=Utility.inputInt();
 			break;

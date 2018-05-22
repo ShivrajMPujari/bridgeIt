@@ -2827,7 +2827,7 @@ public class Utility {
         String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
        
         String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10","Jack", "Queen", "King", "Ace"};
-        String array [][] = new String[4][13];
+        String array [][] = new String[4][9];
        
         // initialize deck
         int n = suits.length * ranks.length;
@@ -2855,6 +2855,7 @@ public class Utility {
             for (int j = 0; j <9; j++)
             {
                 array[i][j]=(deck[i + j * 4]);
+                //System.out.println((i + j * 4)+" "+i+" "+j);
             }
         }
        

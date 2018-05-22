@@ -250,20 +250,4 @@ public class LinkedList<N> {
 	}
 	
 	
-	
-/*	public static void main(String[] args) {
-		LinkedList list= new LinkedList();
-		list.add(5);
-		list.add(9);
-		list.add(8);
-		list.append(10);
-		list.display();
-		list.index(9);
-		list.insertAt(2, 12);
-		list.pop();
-		list.pop(1);
-		list.display();
-		
-	
-	}*/
 }

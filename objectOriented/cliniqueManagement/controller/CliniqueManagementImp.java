@@ -19,6 +19,9 @@ public class CliniqueManagementImp implements CliniqueManagement {
 	DoctorSearchImp doctorSearch= new DoctorSearchImp();
 	PatientSearchImp patientSearch= new PatientSearchImp();
 	Popularity popular=new Popularity();
+	/* (non-Javadoc)
+	 * @see com.bridgeIt.objectOriented.cliniqueManagement.controller.CliniqueManagement#addDoctor()
+	 */
 	@Override
 	public void addDoctor() {
 		
@@ -46,6 +49,7 @@ public class CliniqueManagementImp implements CliniqueManagement {
 		System.out.println("1.Take Appointment  2.Search Doctor  3.View all appointments 4.Back");
 		int choice = Utility.inputInt();
 		int loop=7;
+		int loop1=88;
 		while(loop==7){
 			
 			switch(choice){
@@ -56,9 +60,11 @@ public class CliniqueManagementImp implements CliniqueManagement {
 				break;
 			}
 			case 2:{
+
 				
+				while(loop1==88){
 				System.out.println("Search by:- ");
-				System.out.println("1.ByName 2.ById 3.BySpecialization 4.ByAvailabilty");
+				System.out.println("1.ByName 2.ById 3.BySpecialization 4.ByAvailabilty 5.back");
 				int choose=Utility.inputInt();
 			
 				switch(choose){
@@ -69,7 +75,11 @@ public class CliniqueManagementImp implements CliniqueManagement {
 					JSONObject doctor=doctorSearch.byName(doctors, name);
 					doctorImp.readOneAppointment(doctor.get("Id"));
 					System.out.println("1.Take Appointment  2.Search Doctor 3.Back");
-					choice = Utility.inputInt();
+					choose = Utility.inputInt();
+					
+					if(choose==3){
+					loop1=9;
+					};
 					break;
 				}
 				case 2:{
@@ -77,49 +87,65 @@ public class CliniqueManagementImp implements CliniqueManagement {
 					System.out.println("Enter the Id of the doctor");
 					Object id=Utility.inputString();
 					JSONObject doctor=doctorSearch.byId(doctors, id);
+					System.out.println(doctor);
 					JSONObject appointments=doctorImp.readOneAppointment(doctor.get("Id"));
 					System.out.println(appointments);
 					System.out.println("1.Take Appointment  2.Search Doctor 3.Back");
-					choice = Utility.inputInt();
-					break;
+					choose = Utility.inputInt();
 					
+					if(choose==3){
+					loop1=9;
+					};
+					break;
 				}
 				case 3:{
 					
 					System.out.println("Enter the Specialization of the doctor");
 					Object specialization=Utility.inputStringLong();
 					JSONObject doctor=doctorSearch.bySpecilization(doctors, specialization);
-					JSONObject appointments=doctorImp.readOneAppointment(doctor.get("Id"));
-					System.out.println(appointments);
 					System.out.println("1.Take Appointment  2.Search Doctor 3.Back");
-					choice = Utility.inputInt();
+					choose = Utility.inputInt();
+										
+					if(choose==3){
+					loop1=9;
+					};
+										
 					break;
 				}
 				case 4:{
 					
 					System.out.println("Enter the Availabilty of the doctor");
-					Object availabilty=Utility.inputLong();
+					Object availabilty=Utility.inputString();
 					JSONObject doctor=doctorSearch.byAvailability(doctors, availabilty);
-					JSONObject appointments=doctorImp.readOneAppointment(doctor.get("Id"));
-					System.out.println(appointments);
+					/*JSONObject appointments=doctorImp.readOneAppointment(doctor.get("Id"));
+					System.out.println(appointments);*/
 					System.out.println("1.Take Appointment  2.Search Doctor 3.Back");
-					choice = Utility.inputInt();
+					choose = Utility.inputInt();
+					
+					if(choose==3){
+						loop1=9;
+					};
+					
 					break;
 				}
 				default:{
-					
-					System.out.println("Entered wrong option");
-					System.out.println("1.Take Appointment  2.Search Doctor 3.Back");
-					choice = Utility.inputInt();
+					loop1=9;
 					break;
+				}
+				
 				}
 				
 				}	
 				
+				
+				
+				System.out.println("1.Take Appointment  2.Search Doctor  3.View all appointments 4.Back");
+			    choice = Utility.inputInt();
+				break;
+				
 			}
 			case 3:{
 				doctorImp.readDoctorAppointments();
-				
 			}
 			case 4:{
 				

@@ -11,7 +11,6 @@ public class DoctorSearchImp implements SearchDoctor {
 	/*  
 	 * Function searches the doctor in jsonObject of doctor list by Id
 	 * */
-	@SuppressWarnings("rawtypes")
 	@Override
 	public JSONObject byId(JSONObject jsonObject,Object id) {
 		  Set set=jsonObject.entrySet();//Converting to Set so that we can traverse  
@@ -109,5 +108,10 @@ public class DoctorSearchImp implements SearchDoctor {
 			return null;  	
 		    
 	}
-
+public static void main(String[] args) {
+	DoctorSearchImp doc= new DoctorSearchImp();
+	
+	
+	
+}
 }

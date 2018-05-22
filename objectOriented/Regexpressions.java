@@ -20,9 +20,6 @@ public class Regexpressions {
 		System.out.println("Enter your Name");
 		String username=Utility.inputString();
 		
-		
-		
-		
 		System.out.println("Enter your Fullname");
 		String userFullname=Utility.inputStringLong();
 		

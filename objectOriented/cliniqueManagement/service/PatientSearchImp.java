@@ -15,7 +15,7 @@ public class PatientSearchImp implements PatientSearch {
 		    while(itr.hasNext()){  
 	    //Converting to Map.Entry so that we can get key and value separately  
 		        Map.Entry entry=(Map.Entry)itr.next();  
-		        System.out.println(entry.getKey()+"-"+entry.getValue()); 
+		  //      System.out.println(entry.getKey()+"-"+entry.getValue()); 
 		       JSONObject jobj= (JSONObject) entry.getValue();
 		        Set set1= jobj.entrySet();
 		        Iterator itr1=set1.iterator(); 
@@ -24,7 +24,7 @@ public class PatientSearchImp implements PatientSearch {
 		            if(entry1.getKey().equals("Name")&&entry1.getValue().equals(name)){
 		            	return jobj;
 		            }
-		            System.out.println(entry1.getKey()+" "+entry1.getValue()); 
+		     //       System.out.println(entry1.getKey()+" "+entry1.getValue()); 
 		        }
 	}
 			return null;  	

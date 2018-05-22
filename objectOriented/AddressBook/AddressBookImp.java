@@ -10,7 +10,7 @@ public class AddressBookImp implements AddressBook {
 	ArrayList<Person> list=new ArrayList<Person>();
 	
 	AddressBookImp(){}
-	AddressBookImp(ArrayList list){
+	AddressBookImp(ArrayList<Person> list){
 		this.list=list;
 	}
 	
@@ -129,16 +129,4 @@ public class AddressBookImp implements AddressBook {
 		}
 		
 	}
-												
-	public static void main(String[] args) {
-		
-		
-		AddressBookImp add=new AddressBookImp();
-		add.addPerson();
-		add.addPerson();
-		add.addPerson();
-		add.deletePerson("adit");
-	}
-	
-	
 }

@@ -7,7 +7,6 @@ import java.io.PrintWriter;
 import org.codehaus.jackson.map.ObjectMapper;
 
 public class JacksonClass {
-
 	
 	public static void main(String[] args) {
 		try {

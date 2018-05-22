@@ -11,7 +11,8 @@ import org.json.simple.parser.ParseException;
 
 public class Popularity {
 
-	
+	DoctorImp doctors =new DoctorImp();
+	DoctorSearchImp Doctorimp= new DoctorSearchImp();	
 	/**function checks the popular specialization
 	 * @return jsonObject
 	 */
@@ -22,7 +23,7 @@ public class Popularity {
 		JSONObject jsonobject = null;
 		try {
 			FileReader read = new FileReader(
-					"//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//objectOriented//cliniqueManagement//files//Doctors.json");
+					"//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//objectOriented//cliniqueManagement//files//DoctorAppointment.json");
 			Object object = parser.parse(read);
 			jsonobject = (JSONObject) object;
 			
@@ -36,9 +37,12 @@ public class Popularity {
 		
 			Map.Entry entry=(Map.Entry)itr.next();
 			JSONObject jsonObj=(JSONObject)entry.getValue();
-			if(jsonObj.size()==5){
+			if(jsonObj.size()==3){
 				jsonObj.get("Name");
-				System.out.println("One of the popular specialization in the clinique is "+jsonObj.get("Specialization"));
+			//	System.out.println("One of the popular specialization in the clinique is "+entry.getKey());
+				JSONObject allDoctors= doctors.displayDoctors();
+				JSONObject doctorObject=Doctorimp.byId(allDoctors,entry.getKey());
+				System.out.println("One of the popular specialization in the clinique is "+doctorObject);
 			}
 		}
 		
@@ -56,7 +60,7 @@ public class Popularity {
 		JSONObject jsonobject = null;
 		try {
 			FileReader read = new FileReader(
-					"//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//objectOriented//cliniqueManagement//files//Doctors.json");
+					"//home//bridgeit//Downloads//shiv//JavaPrograms//src//com//bridgeIt//objectOriented//cliniqueManagement//files//DoctorAppointment.json");
 			Object object = parser.parse(read);
 			jsonobject = (JSONObject) object;
 			
@@ -69,9 +73,8 @@ public class Popularity {
 		
 			Map.Entry entry=(Map.Entry)itr.next();
 			JSONObject jsonObj=(JSONObject)entry.getValue();
-			if(jsonObj.size()>=4){
-				jsonObj.get("Name");
-				System.out.println("One of the popular Doctor in the clinique is "+jsonObj.get("Name"));
+			if(jsonObj.size()>=3){
+				System.out.println("One of the popular DoctorId in the clinique is "+entry.getKey());
 			}
 		}
 		return jsonobject;
@@ -83,7 +86,7 @@ public class Popularity {
 		
 		
 		Popularity popular=new Popularity();
-		popular.popularDoctor();
+		popular.popularSpecilization();
 		
 	}
 }
